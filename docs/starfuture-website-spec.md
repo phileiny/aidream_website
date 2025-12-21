@@ -818,7 +818,7 @@ xl: 1280px
 - [x] ContraX 產品截圖 — 已加入 /public/images/products/contraX.png
 - [x] MemoBot 產品截圖 — 已加入 /public/images/products/memobot.png
 - [ ] MemoBot LINE Bot 加入好友連結 / QR Code
-- [ ] Formspree 表單 ID
+- [x] Formspree 表單 ID — mjgbogzr
 - [ ] LINE 官方帳號（如有）
 - [ ] GitHub 組織/帳號名稱
 - [ ] ContraX 下載連結或試用申請方式
