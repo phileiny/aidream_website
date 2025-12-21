@@ -1,55 +1,64 @@
 @import "tailwindcss";
 
 @theme {
-  /* Light Mode 色彩（預設） */
+  /* Light Mode 色彩（預設）- 基於 Logo 色系 */
   --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F9FAFB;
-  --color-bg-tertiary: #F3F4F6;
+  --color-bg-secondary: #FBF9F7;
+  --color-bg-tertiary: #F5F2EE;
 
-  --color-primary: #6366F1;
-  --color-primary-dark: #4F46E5;
-  --color-primary-light: #818CF8;
+  /* 主色 - 銅橙色 (Logo 主色 #d0702e) */
+  --color-primary: #d0702e;
+  --color-primary-dark: #b8612a;
+  --color-primary-light: #e08a4a;
 
-  --color-accent: #F97316;
-  --color-accent-hover: #EA580C;
+  /* 強調色 - 深紅色 (Logo 紅色 #cb2530) */
+  --color-accent: #cb2530;
+  --color-accent-hover: #a91f28;
 
-  --color-text-primary: #111827;
-  --color-text-secondary: #4B5563;
-  --color-text-muted: #9CA3AF;
+  /* 金棕色 - 輔助色 (Logo #c6a565) */
+  --color-gold: #c6a565;
+  --color-gold-dark: #a8894d;
 
-  --color-border: #E5E7EB;
-  --color-border-hover: #D1D5DB;
+  /* 文字色 - 深棕色系 (Logo #715725) */
+  --color-text-primary: #3d2e1f;
+  --color-text-secondary: #715725;
+  --color-text-muted: #a09080;
+
+  --color-border: #e5ddd3;
+  --color-border-hover: #d4c9bc;
 
   /* 語意色 */
   --color-success: #10B981;
-  --color-warning: #F59E0B;
-  --color-error: #EF4444;
+  --color-warning: #d0702e;
+  --color-error: #cb2530;
 
   /* Dark Mode 專用色 */
-  --color-deep: #0B0D1A;
-  --color-space: #121530;
-  --color-nebula: #1A1F4E;
-  --color-star-blue: #A5C4FF;
-  --color-star-gold: #FFD700;
+  --color-deep: #1a1410;
+  --color-space: #231c16;
+  --color-nebula: #2d241c;
+  --color-star-blue: #c6a565;
+  --color-star-gold: #e08a4a;
 }
 
 /* Dark Mode 覆蓋 */
 .dark {
-  --color-bg-primary: #0B0D1A;
-  --color-bg-secondary: #121530;
-  --color-bg-tertiary: #1A1F4E;
+  --color-bg-primary: #1a1410;
+  --color-bg-secondary: #231c16;
+  --color-bg-tertiary: #2d241c;
 
-  --color-primary: #6B7FFF;
-  --color-primary-dark: #4F5BD5;
-  --color-primary-light: #8B9FFF;
+  /* 主色 - 較亮的銅橙色 */
+  --color-primary: #e08a4a;
+  --color-primary-dark: #d0702e;
+  --color-primary-light: #eca76a;
 
-  --color-accent: #F5A623;
-  --color-accent-hover: #FFB940;
+  /* 強調色 - 金色 (暗色模式下用金色作 CTA) */
+  --color-accent: #c6a565;
+  --color-accent-hover: #d4b87a;
 
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #A0AEC0;
-  --color-text-muted: #718096;
+  --color-text-primary: #f5f0eb;
+  --color-text-secondary: #c6b8a8;
+  --color-text-muted: #8a7a68;
 
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-border-hover: rgba(255, 255, 255, 0.2);
+  --color-border: rgba(198, 165, 101, 0.2);
+  --color-border-hover: rgba(198, 165, 101, 0.3);
 }

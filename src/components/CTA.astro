@@ -34,29 +34,29 @@
   .cta-button {
     background: var(--color-primary);
     color: white;
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 0 20px rgba(208, 112, 46, 0.3);
   }
 
   .cta-button:hover {
     background: var(--color-primary-dark);
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 0 40px rgba(208, 112, 46, 0.5);
     transform: translateY(-2px);
   }
 
   /* Dark Mode 按鈕 */
   :global(.dark) .cta-button {
     background: var(--color-accent);
-    color: #0B0D1A;
-    box-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
+    color: #1a1410;
+    box-shadow: 0 0 20px rgba(198, 165, 101, 0.4);
     animation: pulse-glow 2s ease-in-out infinite;
   }
 
   :global(.dark) .cta-button:hover {
-    box-shadow: 0 0 40px rgba(245, 166, 35, 0.6);
+    box-shadow: 0 0 40px rgba(198, 165, 101, 0.6);
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(245, 166, 35, 0.4); }
-    50% { box-shadow: 0 0 40px rgba(245, 166, 35, 0.6); }
+    0%, 100% { box-shadow: 0 0 20px rgba(198, 165, 101, 0.4); }
+    50% { box-shadow: 0 0 40px rgba(198, 165, 101, 0.6); }
   }
 </style>
