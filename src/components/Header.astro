@@ -3,6 +3,7 @@ import ThemeToggle from './ThemeToggle.astro';
 
 const navLinks = [
   { href: '/products', label: '產品' },
+  { href: 'https://blog.aidream.com.tw', label: '部落格', external: true },
   { href: '/about', label: '關於我們' },
   { href: '/contact', label: '聯繫我們' },
 ];
@@ -33,6 +34,8 @@ const navLinks = [
           <a
             href={link.href}
             class="text-text-secondary hover:text-text-primary transition-colors font-medium"
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
           >
             {link.label}
           </a>
@@ -72,6 +75,8 @@ const navLinks = [
           <a
             href={link.href}
             class="text-text-secondary hover:text-text-primary transition-colors py-2 font-medium"
+            target={link.external ? '_blank' : undefined}
+            rel={link.external ? 'noopener noreferrer' : undefined}
           >
             {link.label}
           </a>
