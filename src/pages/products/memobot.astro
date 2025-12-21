@@ -1,0 +1,448 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
+
+const features = [
+  {
+    icon: 'chat',
+    title: '自然語言輸入',
+    description: '說「明天下午 3 點開會」就能建立行程，不需學習任何操作。',
+  },
+  {
+    icon: 'sync',
+    title: 'Google 日曆同步',
+    description: '與 Google Calendar 雙向即時同步，任何裝置都能查看行程。',
+  },
+  {
+    icon: 'brain',
+    title: '智能識別',
+    description: '自動識別時間、地點、參與者，相對時間（明天、下週一）也能理解。',
+  },
+  {
+    icon: 'alert',
+    title: '衝突檢測',
+    description: '自動偵測時間衝突，新行程與現有行程重疊時主動提醒。',
+  },
+  {
+    icon: 'clock',
+    title: '時間空檔查詢',
+    description: '問「這週三到五下午有空嗎」，秒速找出可用時段。',
+  },
+  {
+    icon: 'video',
+    title: 'Google Meet 整合',
+    description: '建立線上會議時自動產生 Google Meet 連結，一步到位。',
+  },
+];
+
+const painPoints = [
+  '行程分散在不同 App，難以統整',
+  '想快速記事，還要打開 App 慢慢填',
+  '重要約會容易忘，缺少主動提醒',
+  '查空檔時間要一個個翻日曆',
+];
+
+const examples = [
+  {
+    input: '明天下午 3 點和小明開會',
+    output: '✅ 已建立行程\n📅 2025/12/22（週一）15:00-16:00\n📝 和小明開會\n已同步至 Google Calendar',
+  },
+  {
+    input: '這週有什麼行程',
+    output: '📅 本週行程（12/16-12/22）\n\n週一 12/16\n• 09:00 週會\n• 14:00 客戶拜訪\n\n週三 12/18\n• 10:00 專案會議',
+  },
+  {
+    input: '這週三到五下午有空嗎',
+    output: '📅 空檔時段\n\n週三 12/18\n• 13:00-14:00 ✓\n• 15:00-18:00 ✓\n\n週四 12/19\n• 13:00-18:00 ✓',
+  },
+];
+
+const workflow = [
+  { step: '1', title: '加入好友', desc: '在 LINE 搜尋 MemoBot 並加入好友' },
+  { step: '2', title: '授權 Google', desc: '依引導完成 Google 帳號授權' },
+  { step: '3', title: '開始對話', desc: '用自然語言管理你的行程' },
+];
+
+const targets = [
+  '個人工作者與自由接案者',
+  '業務人員與專案經理',
+  '需要整合行程管理的一般使用者',
+  '希望提升工作效率的專業人士',
+];
+---
+
+<Layout title="MemoBot 咩猛 - AI 行程秘書 - 星智未來 AI Dream" description="LINE Bot 智能行程助理，用自然語言對話管理行程。像和朋友聊天一樣，輕鬆掌控工作與生活。">
+  <Header />
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="py-20 md:py-28 bg-bg-secondary relative overflow-hidden">
+      <!-- 背景裝飾 -->
+      <div class="absolute inset-0 opacity-30 dark:opacity-20">
+        <div class="absolute top-10 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 left-10 w-72 h-72 bg-accent/30 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- 文字內容 -->
+          <div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 text-sm rounded-full bg-accent/10 text-accent">行程管理</span>
+              <span class="px-3 py-1 text-sm rounded-full bg-accent/10 text-accent">LINE Bot</span>
+              <span class="px-3 py-1 text-sm rounded-full bg-green-500/10 text-green-600 dark:text-green-400">免費使用</span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 text-text-primary">
+              MemoBot
+              <span class="text-text-muted font-normal text-2xl md:text-3xl ml-2">咩猛</span>
+            </h1>
+            <p class="text-2xl text-accent font-medium mb-4">
+              你的 AI 行程秘書
+            </p>
+            <p class="text-lg text-text-secondary mb-8">
+              LINE Bot 智能行程助理，用自然語言對話管理行程。<br class="hidden md:block" />
+              像和朋友聊天一樣，輕鬆掌控工作與生活。
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="#"
+                class="inline-flex items-center px-6 py-3 bg-[#06C755] hover:bg-[#05b04c] text-white font-semibold rounded-lg transition-all"
+              >
+                <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .195-.095.371-.252.477l-4.396 2.92c-.209.139-.364.139-.573 0l-4.396-2.92c-.157-.106-.252-.282-.252-.477 0-.346.282-.631.63-.631h8.609zm-8.609 4.772h8.609c.349 0 .63.284.63.63v5.124c0 .347-.281.63-.63.63h-8.609c-.349 0-.63-.283-.63-.63v-5.124c0-.346.281-.63.63-.63zM12 2C6.477 2 2 5.79 2 10.5c0 3.025 1.837 5.673 4.5 7.087v3.413l3.014-1.657C10.294 19.44 11.144 19.5 12 19.5c5.523 0 10-3.79 10-8.5S17.523 2 12 2z"/>
+                </svg>
+                加入 LINE 好友
+              </a>
+              <a
+                href="/contact"
+                class="inline-flex items-center px-6 py-3 border border-border hover:border-accent text-text-primary font-semibold rounded-lg transition-all"
+              >
+                了解更多
+              </a>
+            </div>
+          </div>
+
+          <!-- 產品圖片 -->
+          <div class="product-image-wrapper rounded-2xl p-4 md:p-6">
+            <img
+              src="/images/products/memobot.png"
+              alt="MemoBot 咩猛 AI 行程秘書"
+              class="w-full rounded-xl shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="py-16 md:py-24 bg-bg-primary">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            這些困擾，我們懂
+          </h2>
+          <p class="text-text-secondary">
+            行程管理不該這麼複雜
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          {painPoints.map(point => (
+            <div class="pain-point-card flex items-start gap-4 p-5 rounded-xl">
+              <div class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </div>
+              <p class="text-text-secondary">{point}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 md:py-24 bg-bg-secondary">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            功能亮點
+          </h2>
+          <p class="text-text-secondary">
+            用說的就能管理行程
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map(feature => (
+            <div class="feature-card p-6 rounded-xl">
+              <div class="w-12 h-12 rounded-xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center mb-4">
+                {feature.icon === 'chat' && (
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  </svg>
+                )}
+                {feature.icon === 'sync' && (
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                  </svg>
+                )}
+                {feature.icon === 'brain' && (
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                  </svg>
+                )}
+                {feature.icon === 'alert' && (
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                )}
+                {feature.icon === 'clock' && (
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )}
+                {feature.icon === 'video' && (
+                  <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="text-lg font-bold mb-2 text-text-primary">{feature.title}</h3>
+              <p class="text-text-secondary text-sm">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="py-16 md:py-24 bg-bg-primary">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            對話示範
+          </h2>
+          <p class="text-text-secondary">
+            看看 MemoBot 如何理解你的需求
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          {examples.map(example => (
+            <div class="chat-demo rounded-2xl overflow-hidden">
+              <!-- User Message -->
+              <div class="p-4 bg-bg-secondary dark:bg-bg-tertiary border-b border-border">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-4 h-4 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p class="text-sm text-text-muted mb-1">你</p>
+                    <p class="text-text-primary">{example.input}</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Bot Response -->
+              <div class="p-4 bg-accent/5 dark:bg-accent/10">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+                    <span class="text-white text-xs font-bold">咩</span>
+                  </div>
+                  <div>
+                    <p class="text-sm text-text-muted mb-1">MemoBot</p>
+                    <pre class="text-text-primary text-sm whitespace-pre-wrap font-sans">{example.output}</pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section class="py-16 md:py-24 bg-bg-secondary">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            三步開始使用
+          </h2>
+          <p class="text-text-secondary">
+            簡單設定，立即享受智能行程管理
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          {workflow.map(item => (
+            <div class="workflow-card text-center p-8 rounded-xl">
+              <div class="w-16 h-16 mx-auto rounded-full bg-accent text-white flex items-center justify-center font-bold text-2xl mb-6">
+                {item.step}
+              </div>
+              <h3 class="font-bold text-text-primary text-lg mb-2">{item.title}</h3>
+              <p class="text-text-secondary text-sm">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <!-- LINE QR Code placeholder -->
+        <div class="mt-12 text-center">
+          <a
+            href="#"
+            class="inline-flex items-center px-8 py-4 bg-[#06C755] hover:bg-[#05b04c] text-white font-semibold rounded-lg transition-all text-lg"
+          >
+            <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .195-.095.371-.252.477l-4.396 2.92c-.209.139-.364.139-.573 0l-4.396-2.92c-.157-.106-.252-.282-.252-.477 0-.346.282-.631.63-.631h8.609zm-8.609 4.772h8.609c.349 0 .63.284.63.63v5.124c0 .347-.281.63-.63.63h-8.609c-.349 0-.63-.283-.63-.63v-5.124c0-.346.281-.63.63-.63zM12 2C6.477 2 2 5.79 2 10.5c0 3.025 1.837 5.673 4.5 7.087v3.413l3.014-1.657C10.294 19.44 11.144 19.5 12 19.5c5.523 0 10-3.79 10-8.5S17.523 2 12 2z"/>
+            </svg>
+            立即加入 LINE 好友
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Target & Pricing Section -->
+    <section class="py-16 md:py-24 bg-bg-primary">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- 適用對象 -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6 text-text-primary">適用對象</h2>
+            <div class="space-y-3">
+              {targets.map(target => (
+                <div class="flex items-center gap-3 p-4 rounded-lg bg-bg-secondary dark:bg-bg-tertiary">
+                  <svg class="w-5 h-5 text-accent flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-text-secondary">{target}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- 定價 -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6 text-text-primary">定價方案</h2>
+            <div class="pricing-card p-8 rounded-xl text-center">
+              <div class="inline-block px-4 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full text-sm font-medium mb-4">
+                目前免費
+              </div>
+              <div class="text-5xl font-bold text-text-primary mb-2">$0</div>
+              <p class="text-text-secondary mb-6">所有功能皆可使用</p>
+
+              <ul class="text-left space-y-3 mb-8">
+                <li class="flex items-center gap-2 text-text-secondary">
+                  <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  自然語言行程管理
+                </li>
+                <li class="flex items-center gap-2 text-text-secondary">
+                  <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Google Calendar 雙向同步
+                </li>
+                <li class="flex items-center gap-2 text-text-secondary">
+                  <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  智能衝突檢測
+                </li>
+                <li class="flex items-center gap-2 text-text-secondary">
+                  <svg class="w-5 h-5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  Google Meet 自動建立
+                </li>
+              </ul>
+
+              <a
+                href="#"
+                class="block w-full py-3 bg-accent hover:bg-accent/90 text-gray-900 font-semibold rounded-lg transition-all"
+              >
+                免費開始使用
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .product-image-wrapper {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.05) 100%);
+  }
+
+  :global(.dark) .product-image-wrapper {
+    background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(245, 166, 35, 0.05) 100%);
+  }
+
+  .pain-point-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .pain-point-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .feature-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+  }
+
+  :global(.dark) .feature-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.dark) .feature-card:hover {
+    background: rgba(245, 166, 35, 0.05);
+    border-color: var(--color-accent);
+  }
+
+  .chat-demo {
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .chat-demo {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .workflow-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .workflow-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .pricing-card {
+    background: var(--color-bg-secondary);
+    border: 2px solid var(--color-accent);
+  }
+
+  :global(.dark) .pricing-card {
+    background: rgba(245, 166, 35, 0.05);
+    border-color: var(--color-accent);
+  }
+</style>

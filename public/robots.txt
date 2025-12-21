@@ -1,0 +1,10 @@
+# robots.txt for aidream.com.tw
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://aidream.com.tw/sitemap.xml
+
+# Disallow admin or private paths (if any)
+# Disallow: /admin/

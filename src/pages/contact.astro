@@ -1,0 +1,314 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const inquiryTypes = [
+  { value: 'product', label: '產品諮詢' },
+  { value: 'cooperation', label: '合作提案' },
+  { value: 'support', label: '技術支援' },
+  { value: 'other', label: '其他' },
+];
+---
+
+<Layout title="聯繫我們 - 星智未來 AI Dream" description="有任何問題或合作想法，歡迎與星智未來聯繫">
+  <Header />
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24 bg-bg-secondary relative overflow-hidden">
+      <!-- 背景裝飾 -->
+      <div class="absolute inset-0 opacity-30 dark:opacity-20">
+        <div class="absolute top-10 left-20 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-20 w-80 h-80 bg-accent/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-text-primary">
+          與我們<span class="text-primary">聯繫</span>
+        </h1>
+        <p class="text-xl text-text-secondary">
+          有任何問題或合作想法，歡迎聯繫我們
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 md:py-24 bg-bg-primary">
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="grid md:grid-cols-5 gap-12">
+          <!-- Contact Form -->
+          <div class="md:col-span-3">
+            <div class="contact-form-card p-8 md:p-10 rounded-2xl">
+              <h2 class="text-2xl font-bold mb-6 text-text-primary">發送訊息</h2>
+
+              <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
+                <!-- 姓名 -->
+                <div>
+                  <label for="name" class="block text-sm font-medium text-text-primary mb-2">
+                    姓名 <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    class="form-input w-full px-4 py-3 rounded-lg transition-all"
+                    placeholder="您的姓名"
+                  />
+                </div>
+
+                <!-- Email -->
+                <div>
+                  <label for="email" class="block text-sm font-medium text-text-primary mb-2">
+                    Email <span class="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    class="form-input w-full px-4 py-3 rounded-lg transition-all"
+                    placeholder="your@email.com"
+                  />
+                </div>
+
+                <!-- 公司/團隊名稱 -->
+                <div>
+                  <label for="company" class="block text-sm font-medium text-text-primary mb-2">
+                    公司/團隊名稱 <span class="text-text-muted">(選填)</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    class="form-input w-full px-4 py-3 rounded-lg transition-all"
+                    placeholder="您的公司或團隊"
+                  />
+                </div>
+
+                <!-- 詢問類型 -->
+                <div>
+                  <label for="inquiry-type" class="block text-sm font-medium text-text-primary mb-2">
+                    詢問類型 <span class="text-red-500">*</span>
+                  </label>
+                  <select
+                    id="inquiry-type"
+                    name="inquiry-type"
+                    required
+                    class="form-input w-full px-4 py-3 rounded-lg transition-all"
+                  >
+                    <option value="">請選擇</option>
+                    {inquiryTypes.map(type => (
+                      <option value={type.value}>{type.label}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <!-- 訊息內容 -->
+                <div>
+                  <label for="message" class="block text-sm font-medium text-text-primary mb-2">
+                    訊息內容 <span class="text-red-500">*</span>
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows="5"
+                    class="form-input w-full px-4 py-3 rounded-lg transition-all resize-none"
+                    placeholder="請描述您的需求或問題..."
+                  ></textarea>
+                </div>
+
+                <!-- 送出按鈕 -->
+                <button
+                  type="submit"
+                  class="submit-btn w-full py-4 px-6 font-semibold rounded-lg transition-all"
+                >
+                  送出訊息
+                </button>
+              </form>
+
+              <!-- Success Message (hidden by default) -->
+              <div id="success-message" class="hidden text-center py-12">
+                <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                  <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold text-text-primary mb-2">訊息已送出</h3>
+                <p class="text-text-secondary">感謝您的來信，我們會盡快回覆您！</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="md:col-span-2">
+            <div class="space-y-8">
+              <!-- Email -->
+              <div class="contact-info-card p-6 rounded-xl">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-text-primary mb-1">Email</h3>
+                    <a href="mailto:contact@aidream.com.tw" class="text-primary hover:underline">
+                      contact@aidream.com.tw
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Response Time -->
+              <div class="contact-info-card p-6 rounded-xl">
+                <div class="flex items-start gap-4">
+                  <div class="w-12 h-12 rounded-lg bg-accent/10 dark:bg-accent/20 flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-semibold text-text-primary mb-1">回覆時間</h3>
+                    <p class="text-text-secondary">
+                      我們通常會在 1-2 個工作日內回覆
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Hint -->
+              <div class="p-6 rounded-xl bg-bg-secondary dark:bg-bg-tertiary border border-border">
+                <h3 class="font-semibold text-text-primary mb-2">常見問題</h3>
+                <p class="text-text-secondary text-sm mb-4">
+                  在聯繫我們之前，您可能想了解：
+                </p>
+                <ul class="space-y-2 text-sm text-text-secondary">
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    ContraX 支援 Windows 和 macOS
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    MemoBot 完全免費使用
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <svg class="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    提供免費產品諮詢服務
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .contact-form-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .contact-form-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .form-input {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+  }
+
+  .form-input::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+
+  :global(.dark) .form-input {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.dark) .form-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(107, 127, 255, 0.2);
+  }
+
+  .submit-btn {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .submit-btn:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-1px);
+  }
+
+  :global(.dark) .submit-btn {
+    background: var(--color-accent);
+    color: #0B0D1A;
+  }
+
+  :global(.dark) .submit-btn:hover {
+    background: var(--color-accent);
+    opacity: 0.9;
+  }
+
+  .contact-info-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .contact-info-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+</style>
+
+<script>
+  // Form submission handling
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successMessage = document.getElementById('success-message');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        successMessage?.classList.remove('hidden');
+      } else {
+        alert('送出失敗，請稍後再試或直接寄信至 contact@aidream.com.tw');
+      }
+    } catch (error) {
+      alert('送出失敗，請稍後再試或直接寄信至 contact@aidream.com.tw');
+    }
+  });
+</script>

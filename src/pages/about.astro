@@ -1,0 +1,237 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CTA from '../components/CTA.astro';
+
+const values = [
+  {
+    icon: 'simple',
+    title: '簡單至上',
+    description: '我們相信最好的工具是讓人感覺不到它的存在。複雜的功能，簡單的操作。',
+  },
+  {
+    icon: 'focus',
+    title: '專注核心',
+    description: '不追求大而全，專注解決微型團隊最痛的幾個問題，把它們做到極致。',
+  },
+  {
+    icon: 'ai',
+    title: 'AI 賦能',
+    description: '善用 AI 技術處理重複性工作，讓人專注於需要創意和判斷的事情。',
+  },
+];
+
+const team = [
+  {
+    name: '猛姊',
+    role: 'AI 專案管理',
+    description: '創新產品創新開發',
+  },
+  {
+    name: '阿瑞',
+    role: '軟體系統開發',
+    description: 'AI 賦能技術創新',
+  },
+  {
+    name: '妮可',
+    role: '商務資源開發',
+    description: '企業經營管理',
+  },
+];
+---
+
+<Layout title="關於我們 - 星智未來 AI Dream" description="星智未來致力於為微型團隊打造簡單好用的 AI 工具">
+  <Header />
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="py-20 md:py-28 bg-bg-secondary relative overflow-hidden">
+      <!-- 背景裝飾 -->
+      <div class="absolute inset-0 opacity-30 dark:opacity-20">
+        <div class="absolute top-10 right-20 w-80 h-80 bg-primary/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 left-10 w-64 h-64 bg-accent/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-text-primary">
+          用 AI 簡化<span class="text-primary">繁瑣</span>
+        </h1>
+        <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+          星智未來專注為微型團隊打造 AI 工具，<br class="hidden md:block" />
+          讓科技真正服務於人，而非增加負擔。
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="py-20 md:py-28 bg-bg-primary">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6 text-text-primary">
+            我們的使命
+          </h2>
+          <p class="text-lg text-text-secondary leading-relaxed">
+            在資訊爆炸的時代，小團隊往往被繁瑣的行政工作淹沒：<br />
+            合約散落各處、行程混亂、重要事項遺漏...
+          </p>
+          <p class="text-lg text-text-secondary leading-relaxed mt-4">
+            我們相信 <span class="text-primary font-semibold">AI 應該處理瑣事，人應該專注重要的事</span>。
+          </p>
+          <p class="text-lg text-text-secondary leading-relaxed mt-4">
+            這就是星智未來存在的原因——打造簡單、實用的 AI 工具，<br class="hidden md:block" />
+            讓微型團隊也能擁有大企業級的效率。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-20 md:py-28 bg-bg-secondary">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            核心價值
+          </h2>
+          <p class="text-text-secondary">
+            指引我們打造產品的三個原則
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {values.map(value => (
+            <div class="value-card p-8 rounded-2xl text-center">
+              <!-- Icon -->
+              <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                {value.icon === 'simple' && (
+                  <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                )}
+                {value.icon === 'focus' && (
+                  <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                )}
+                {value.icon === 'ai' && (
+                  <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                )}
+              </div>
+
+              <h3 class="text-xl font-bold mb-3 text-text-primary">{value.title}</h3>
+              <p class="text-text-secondary">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-20 md:py-28 bg-bg-primary">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            團隊
+          </h2>
+          <p class="text-text-secondary">
+            用熱情打造好產品的人
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          {team.map(member => (
+            <div class="team-card p-8 rounded-2xl text-center">
+              <!-- Avatar Placeholder -->
+              <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                <span class="text-3xl font-bold text-white">{member.name[0]}</span>
+              </div>
+
+              <h3 class="text-xl font-bold mb-1 text-text-primary">{member.name}</h3>
+              <p class="text-primary font-medium mb-4">{member.role}</p>
+              <p class="text-text-secondary">{member.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Company Info -->
+    <section class="py-20 md:py-28 bg-bg-secondary">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            公司資訊
+          </h2>
+        </div>
+
+        <div class="info-card p-8 md:p-12 rounded-2xl">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-lg font-semibold text-text-primary mb-2">公司名稱</h3>
+              <p class="text-text-secondary">星智未來 AI Dream</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-text-primary mb-2">成立時間</h3>
+              <p class="text-text-secondary">2024 年</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-text-primary mb-2">專注領域</h3>
+              <p class="text-text-secondary">AI 應用工具開發</p>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-text-primary mb-2">服務對象</h3>
+              <p class="text-text-secondary">微型團隊、個人工作者</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .value-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .value-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+  }
+
+  :global(.dark) .value-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.dark) .value-card:hover {
+    background: rgba(107, 127, 255, 0.05);
+    border-color: var(--color-primary);
+  }
+
+  .team-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .team-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .info-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .info-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+</style>

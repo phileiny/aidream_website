@@ -1,0 +1,62 @@
+---
+
+---
+
+<section class="py-20 md:py-32 bg-bg-tertiary relative overflow-hidden">
+  <!-- Light Mode 背景效果 -->
+  <div class="absolute inset-0 dark:hidden">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-gradient-to-b from-primary/10 to-transparent blur-3xl"></div>
+  </div>
+
+  <!-- Dark Mode 背景效果 -->
+  <div class="absolute inset-0 hidden dark:block">
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-gradient-to-b from-primary/20 to-transparent blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-text-primary">
+      準備好提升工作效率了嗎？
+    </h2>
+    <p class="text-xl text-text-secondary mb-10">
+      讓我們幫你找到最適合的解決方案
+    </p>
+    <a
+      href="/contact"
+      class="cta-button inline-block px-10 py-4 font-semibold text-lg rounded-full transition-all"
+    >
+      預約免費諮詢
+    </a>
+  </div>
+</section>
+
+<style>
+  /* Light Mode 按鈕 */
+  .cta-button {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+  }
+
+  .cta-button:hover {
+    background: var(--color-primary-dark);
+    box-shadow: 0 0 40px rgba(99, 102, 241, 0.5);
+    transform: translateY(-2px);
+  }
+
+  /* Dark Mode 按鈕 */
+  :global(.dark) .cta-button {
+    background: var(--color-accent);
+    color: #0B0D1A;
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.4);
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  :global(.dark) .cta-button:hover {
+    box-shadow: 0 0 40px rgba(245, 166, 35, 0.6);
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(245, 166, 35, 0.4); }
+    50% { box-shadow: 0 0 40px rgba(245, 166, 35, 0.6); }
+  }
+</style>

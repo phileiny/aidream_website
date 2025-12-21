@@ -1,0 +1,97 @@
+---
+const agencyPains = [
+  '合約散落各處，到期日漏追蹤',
+  '收款排程靠記憶，發票開立常遺漏',
+  '紙本作業效率低，查找耗時',
+];
+
+const personalPains = [
+  '行程分散多平台，難以統整',
+  '想快速記事，還要打開 App 慢慢填',
+  '重要約會容易忘，缺少主動提醒',
+];
+---
+
+<section class="py-20 md:py-32 bg-bg-secondary relative">
+  <div class="relative z-10 max-w-6xl mx-auto px-4">
+    <!-- 標題 -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+        工作中的繁瑣，消耗你的
+        <span class="text-primary">專注力</span>
+      </h2>
+      <p class="text-text-secondary max-w-2xl mx-auto">
+        不論是經紀公司還是個人工作者，都有各自的管理痛點
+      </p>
+    </div>
+
+    <!-- 痛點卡片 -->
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- 經紀公司 -->
+      <div class="card p-8 rounded-2xl">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-text-primary">經紀公司</h3>
+        </div>
+        <ul class="space-y-4">
+          {agencyPains.map(pain => (
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 w-2 h-2 rounded-full bg-error shrink-0"></span>
+              <span class="text-text-secondary">{pain}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- 個人工作者 -->
+      <div class="card p-8 rounded-2xl">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-12 h-12 rounded-xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center">
+            <svg class="w-6 h-6 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-text-primary">個人工作者</h3>
+        </div>
+        <ul class="space-y-4">
+          {personalPains.map(pain => (
+            <li class="flex items-start gap-3">
+              <span class="mt-1.5 w-2 h-2 rounded-full bg-error shrink-0"></span>
+              <span class="text-text-secondary">{pain}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+  }
+
+  :global(.dark) .card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  :global(.dark) .card:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(107, 127, 255, 0.3);
+    box-shadow: 0 12px 24px -8px rgba(107, 127, 255, 0.15);
+  }
+</style>

@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="頁面不存在 - 星智未來 AI Dream" description="您要找的頁面可能已移除或網址錯誤">
+  <Header />
+  <main class="pt-20 min-h-[calc(100vh-200px)] flex items-center">
+    <section class="w-full py-20 md:py-32 bg-bg-primary relative overflow-hidden">
+      <!-- 背景裝飾 -->
+      <div class="absolute inset-0 opacity-20">
+        <div class="absolute top-20 left-1/4 w-64 h-64 bg-primary/30 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-20 right-1/4 w-80 h-80 bg-accent/30 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10 max-w-2xl mx-auto px-4 text-center">
+        <!-- 404 數字 -->
+        <div class="error-code text-[120px] md:text-[180px] font-bold leading-none mb-4">
+          404
+        </div>
+
+        <!-- 標題 -->
+        <h1 class="text-2xl md:text-3xl font-bold mb-4 text-text-primary">
+          頁面不存在
+        </h1>
+
+        <!-- 說明 -->
+        <p class="text-text-secondary mb-8">
+          您要找的頁面可能已移除或網址錯誤
+        </p>
+
+        <!-- 按鈕 -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center px-6 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-all"
+          >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+            </svg>
+            返回首頁
+          </a>
+          <a
+            href="/contact"
+            class="inline-flex items-center justify-center px-6 py-3 border border-border hover:border-primary text-text-primary font-semibold rounded-lg transition-all"
+          >
+            聯繫我們
+          </a>
+        </div>
+
+        <!-- 快速連結 -->
+        <div class="mt-12 pt-8 border-t border-border">
+          <p class="text-text-muted text-sm mb-4">或許您想找的是：</p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/products" class="text-primary hover:underline">產品列表</a>
+            <a href="/products/contrax" class="text-primary hover:underline">ContraX</a>
+            <a href="/products/memobot" class="text-primary hover:underline">MemoBot</a>
+            <a href="/about" class="text-primary hover:underline">關於我們</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .error-code {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  :global(.dark) .error-code {
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>

@@ -1,0 +1,100 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, 'https://aidream.com.tw');
+
+const {
+  title = '星智未來 AI Dream',
+  description = '用 AI 簡化工作的繁瑣，讓 AI 處理瑣事，你專注重要的事。專為微型團隊打造的 AI 工具：ContraX 合約管理系統、MemoBot 智能行程助理。',
+  image = '/images/og-image.svg',
+  type = 'website'
+} = Astro.props;
+
+const siteName = '星智未來 AI Dream';
+---
+
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="AI, 人工智慧, 合約管理, 行程管理, ContraX, MemoBot, 經紀公司, LINE Bot, 星智未來" />
+    <meta name="author" content="星智未來 AI Dream" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, 'https://aidream.com.tw')} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content="zh_TW" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, 'https://aidream.com.tw')} />
+
+    <!-- Additional Meta -->
+    <meta name="theme-color" content="#6366F1" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B0D1A" media="(prefers-color-scheme: dark)" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap.xml" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- 防止 FOUC（主題閃爍） -->
+    <script is:inline>
+      const theme = localStorage.getItem('theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+  </head>
+  <body class="bg-bg-primary text-text-primary font-sans antialiased transition-colors duration-300">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* 減少動畫（無障礙） */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

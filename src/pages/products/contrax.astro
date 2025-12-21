@@ -1,0 +1,355 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
+
+const features = [
+  {
+    icon: 'number',
+    title: '自動編號',
+    description: '三段式編碼規則，自動產生唯一合約編號，永不重複、不混亂。',
+  },
+  {
+    icon: 'progress',
+    title: '進度追蹤',
+    description: '七階段狀態管理（草擬→審核→協商→用印→履約→完成），清楚掌握每份合約。',
+  },
+  {
+    icon: 'bell',
+    title: '收款提醒',
+    description: '系統啟動自動檢查，區分即將到期與已逾期，搭配 Google 日曆 5 天前推播。',
+  },
+  {
+    icon: 'file',
+    title: '合約調閱',
+    description: '上傳合約 PDF/Word/掃描檔，支援版本管理、快速預覽與下載。',
+  },
+  {
+    icon: 'search',
+    title: '快速查詢',
+    description: '多條件組合搜尋：編號、職人、對象、狀態、日期、收款狀態，秒找目標。',
+  },
+  {
+    icon: 'export',
+    title: '資料匯出',
+    description: '匯出 Excel 報表，便於分析存檔；支援 Excel 批次匯入現有資料。',
+  },
+];
+
+const painPoints = [
+  '合約散落 Excel、資料夾、Email，找不到',
+  '收款到期日靠記憶，常常漏追',
+  '發票開立時程沒系統提醒',
+  '職人越多，管理越混亂',
+];
+
+const workflow = [
+  { step: '1', title: '新增合約', desc: '選擇職人與類別，系統自動編號' },
+  { step: '2', title: '設定收款', desc: '最多三期收款排程，同步 Google 日曆' },
+  { step: '3', title: '追蹤進度', desc: '七階段狀態，隨時更新' },
+  { step: '4', title: '收款確認', desc: '記錄實收金額、發票號碼' },
+  { step: '5', title: '完成歸檔', desc: '上傳合約文件，妥善保存' },
+];
+
+const specs = [
+  { label: '支援平台', value: 'macOS 11+、Windows 10+ (64-bit)' },
+  { label: '資料儲存', value: '單機本機儲存，安全可靠' },
+  { label: '網路需求', value: '離線可用，Google 同步需網路' },
+  { label: '檔案支援', value: 'PDF、DOC、DOCX、JPG、PNG、ZIP' },
+];
+
+const targets = [
+  '經紀公司行政人員',
+  '合約管理專員',
+  '財務收款人員',
+  '公司主管（查詢與報表）',
+];
+---
+
+<Layout title="ContraX 合約管理系統 - 星智未來 AI Dream" description="專為經紀公司設計的合約管理系統，從建立、追蹤、收款到歸檔，一站式管理合約生命週期。">
+  <Header />
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="py-20 md:py-28 bg-bg-secondary relative overflow-hidden">
+      <!-- 背景裝飾 -->
+      <div class="absolute inset-0 opacity-30 dark:opacity-20">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-72 h-72 bg-primary/30 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- 文字內容 -->
+          <div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary">合約管理</span>
+              <span class="px-3 py-1 text-sm rounded-full bg-primary/10 text-primary">桌面軟體</span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 text-text-primary">
+              ContraX
+            </h1>
+            <p class="text-2xl text-primary font-medium mb-4">
+              經紀公司的合約管家
+            </p>
+            <p class="text-lg text-text-secondary mb-8">
+              專為影視、出版、內容經紀公司設計的合約管理系統，<br class="hidden md:block" />
+              從建立、追蹤、收款到歸檔，一站式管理合約生命週期。
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="/contact"
+                class="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary-dark text-white font-semibold rounded-lg transition-all"
+              >
+                預約 Demo
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+              <a
+                href="/contact"
+                class="inline-flex items-center px-6 py-3 border border-border hover:border-primary text-text-primary font-semibold rounded-lg transition-all"
+              >
+                聯繫我們
+              </a>
+            </div>
+          </div>
+
+          <!-- 產品圖片 -->
+          <div class="product-image-wrapper rounded-2xl p-4 md:p-6">
+            <img
+              src="/images/products/contraX.png"
+              alt="ContraX 合約管理系統"
+              class="w-full rounded-xl shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pain Points Section -->
+    <section class="py-16 md:py-24 bg-bg-primary">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            這些困擾，我們懂
+          </h2>
+          <p class="text-text-secondary">
+            經紀公司的日常，被合約管理消耗太多時間
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          {painPoints.map(point => (
+            <div class="pain-point-card flex items-start gap-4 p-5 rounded-xl">
+              <div class="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/30 flex items-center justify-center flex-shrink-0">
+                <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </div>
+              <p class="text-text-secondary">{point}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 md:py-24 bg-bg-secondary">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            功能亮點
+          </h2>
+          <p class="text-text-secondary">
+            專為合約管理設計的完整功能
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map(feature => (
+            <div class="feature-card p-6 rounded-xl">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-4">
+                {feature.icon === 'number' && (
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                  </svg>
+                )}
+                {feature.icon === 'progress' && (
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                  </svg>
+                )}
+                {feature.icon === 'bell' && (
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                  </svg>
+                )}
+                {feature.icon === 'file' && (
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                )}
+                {feature.icon === 'search' && (
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                )}
+                {feature.icon === 'export' && (
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="text-lg font-bold mb-2 text-text-primary">{feature.title}</h3>
+              <p class="text-text-secondary text-sm">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Section -->
+    <section class="py-16 md:py-24 bg-bg-primary">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            使用流程
+          </h2>
+          <p class="text-text-secondary">
+            簡單五步驟，完整管理合約生命週期
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {workflow.map((item, index) => (
+            <div class="workflow-item flex items-center gap-6 p-6 rounded-xl">
+              <div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
+                {item.step}
+              </div>
+              <div>
+                <h3 class="font-bold text-text-primary mb-1">{item.title}</h3>
+                <p class="text-text-secondary text-sm">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Target & Specs Section -->
+    <section class="py-16 md:py-24 bg-bg-secondary">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- 適用對象 -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6 text-text-primary">適用對象</h2>
+            <div class="space-y-3">
+              {targets.map(target => (
+                <div class="flex items-center gap-3 p-4 rounded-lg bg-bg-primary dark:bg-bg-tertiary">
+                  <svg class="w-5 h-5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-text-secondary">{target}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- 技術規格 -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6 text-text-primary">技術規格</h2>
+            <div class="specs-card p-6 rounded-xl">
+              <dl class="space-y-4">
+                {specs.map(spec => (
+                  <div class="flex flex-col sm:flex-row sm:justify-between gap-1">
+                    <dt class="font-medium text-text-primary">{spec.label}</dt>
+                    <dd class="text-text-secondary text-sm sm:text-right">{spec.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            <div class="mt-6 p-4 rounded-lg bg-primary/5 dark:bg-primary/10 border border-primary/20">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                <div>
+                  <p class="font-medium text-text-primary text-sm">資料安全</p>
+                  <p class="text-text-secondary text-sm">單機運作，資料存放於本機，不上傳雲端</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .product-image-wrapper {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.05) 100%);
+  }
+
+  :global(.dark) .product-image-wrapper {
+    background: linear-gradient(135deg, rgba(107, 127, 255, 0.15) 0%, rgba(107, 127, 255, 0.05) 100%);
+  }
+
+  .pain-point-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .pain-point-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .feature-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+  }
+
+  :global(.dark) .feature-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.dark) .feature-card:hover {
+    background: rgba(107, 127, 255, 0.05);
+    border-color: var(--color-primary);
+  }
+
+  .workflow-item {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .workflow-item {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .specs-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .specs-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+</style>

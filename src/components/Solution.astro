@@ -1,0 +1,99 @@
+---
+const values = [
+  {
+    icon: 'focus',
+    title: '專注本業',
+    description: '瑣事交給系統，把時間留給真正重要的事',
+  },
+  {
+    icon: 'simple',
+    title: '簡單上手',
+    description: '直覺的操作介面，不需要額外學習成本',
+  },
+  {
+    icon: 'reliable',
+    title: '可靠穩定',
+    description: '該提醒的不會漏，該追蹤的不會忘',
+  },
+];
+---
+
+<section class="py-20 md:py-32 bg-bg-tertiary relative overflow-hidden">
+  <!-- Light Mode 背景裝飾 -->
+  <div class="absolute inset-0 dark:hidden">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+  </div>
+
+  <!-- Dark Mode 背景星雲 -->
+  <div class="absolute inset-0 opacity-30 hidden dark:block">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-4">
+    <!-- 標題 -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+        讓 <span class="text-accent">AI</span> 幫你處理
+      </h2>
+      <p class="text-text-secondary max-w-2xl mx-auto">
+        針對不同需求，我們打造專屬工具，讓你從繁瑣中解放
+      </p>
+    </div>
+
+    <!-- 價值卡片 -->
+    <div class="grid md:grid-cols-3 gap-8">
+      {values.map((value) => (
+        <div class="value-card text-center p-8 rounded-2xl transition-all group">
+          <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+            {value.icon === 'focus' && (
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            )}
+            {value.icon === 'simple' && (
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            )}
+            {value.icon === 'reliable' && (
+              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            )}
+          </div>
+          <h3 class="text-xl font-semibold mb-3 text-text-primary">{value.title}</h3>
+          <p class="text-text-secondary">{value.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Light Mode 卡片 */
+  .value-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  .value-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Dark Mode 卡片 */
+  :global(.dark) .value-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  :global(.dark) .value-card:hover {
+    background: linear-gradient(135deg, rgba(107,127,255,0.08) 0%, rgba(107,127,255,0.02) 100%);
+    border-color: rgba(107, 127, 255, 0.3);
+    box-shadow: 0 12px 24px -8px rgba(107, 127, 255, 0.15);
+  }
+</style>

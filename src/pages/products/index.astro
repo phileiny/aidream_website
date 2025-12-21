@@ -1,0 +1,175 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
+
+const products = [
+  {
+    id: 'contrax',
+    name: 'ContraX',
+    tagline: '經紀公司的合約管家',
+    description: '專為影視、出版、內容經紀公司設計的合約管理系統，從建立、追蹤、收款到歸檔，一站式管理合約生命週期。',
+    features: [
+      { title: '合約建立', desc: '快速建立各類合約模板，自動填入常用條款' },
+      { title: '進度追蹤', desc: '即時追蹤合約狀態，掌握每一份合約的生命週期' },
+      { title: '收款管理', desc: '自動計算分潤、提醒收款時程，帳務一目了然' },
+      { title: '智能歸檔', desc: 'AI 自動分類歸檔，搜尋秒速找到所需文件' },
+    ],
+    tags: ['合約管理', '桌面軟體', 'AI 輔助'],
+    image: '/images/products/contraX.png',
+    color: 'primary',
+    href: '/products/contrax',
+  },
+  {
+    id: 'memobot',
+    name: 'MemoBot',
+    nickname: '咩猛',
+    tagline: '你的 AI 行程秘書',
+    description: 'LINE Bot 智能行程助理，用自然語言對話管理行程。像和朋友聊天一樣，輕鬆掌控工作與生活。',
+    features: [
+      { title: '自然語言輸入', desc: '說「下週三下午三點開會」就能建立行程' },
+      { title: '智能提醒', desc: '根據行程類型自動設定合適的提醒時間' },
+      { title: '行程查詢', desc: '問「這週有什麼安排」即可查看行程' },
+      { title: '衝突偵測', desc: '自動檢查時間衝突，避免重複預約' },
+    ],
+    tags: ['行程管理', 'LINE Bot', 'AI 助理'],
+    image: '/images/products/memobot.png',
+    color: 'accent',
+    href: '/products/memobot',
+  },
+];
+---
+
+<Layout title="產品 - 星智未來 AI Dream" description="ContraX 合約管理系統與 MemoBot AI 行程助理，為微型團隊打造的 AI 工具">
+  <Header />
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="py-20 md:py-28 bg-bg-secondary relative overflow-hidden">
+      <!-- 背景裝飾 -->
+      <div class="absolute inset-0 opacity-30 dark:opacity-20">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-text-primary">
+          為微型團隊打造的<br />
+          <span class="text-primary">AI 工具</span>套件
+        </h1>
+        <p class="text-xl text-text-secondary max-w-2xl mx-auto">
+          我們專注解決小團隊的核心痛點：合約管理與行程安排。
+          讓 AI 處理繁瑣工作，你專注在真正重要的事。
+        </p>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-20 md:py-28 bg-bg-primary">
+      <div class="max-w-6xl mx-auto px-4">
+        {products.map((product, index) => (
+          <div class={`product-block flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 items-center ${index > 0 ? 'mt-24 md:mt-32' : ''}`}>
+            <!-- 產品視覺 -->
+            <div class="w-full md:w-1/2">
+              <div class={`product-visual rounded-2xl p-4 md:p-6 ${product.color === 'primary' ? 'bg-primary/5 dark:bg-primary/10' : 'bg-accent/5 dark:bg-accent/10'}`}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  class="w-full rounded-xl shadow-lg"
+                />
+              </div>
+            </div>
+
+            <!-- 產品資訊 -->
+            <div class="w-full md:w-1/2">
+              <!-- 標籤 -->
+              <div class="flex flex-wrap gap-2 mb-4">
+                {product.tags.map(tag => (
+                  <span class={`px-3 py-1 text-sm rounded-full ${product.color === 'primary' ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'}`}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <!-- 名稱 -->
+              <h2 class="text-3xl md:text-4xl font-bold mb-2 text-text-primary">
+                {product.name}
+                {product.nickname && (
+                  <span class="text-text-muted font-normal text-xl ml-2">
+                    {product.nickname}
+                  </span>
+                )}
+              </h2>
+
+              <!-- 標語 -->
+              <p class={`text-xl font-medium mb-4 ${product.color === 'primary' ? 'text-primary' : 'text-accent'}`}>
+                {product.tagline}
+              </p>
+
+              <!-- 描述 -->
+              <p class="text-text-secondary mb-8">
+                {product.description}
+              </p>
+
+              <!-- 功能列表 -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                {product.features.map(feature => (
+                  <div class="feature-item p-4 rounded-xl bg-bg-secondary dark:bg-bg-tertiary">
+                    <h4 class="font-semibold text-text-primary mb-1">{feature.title}</h4>
+                    <p class="text-sm text-text-secondary">{feature.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <!-- CTA -->
+              <a
+                href={product.href}
+                class={`inline-flex items-center px-6 py-3 font-semibold rounded-lg transition-all ${
+                  product.color === 'primary'
+                    ? 'bg-primary hover:bg-primary-dark text-white'
+                    : 'bg-accent hover:bg-accent/90 text-gray-900'
+                }`}
+              >
+                了解更多
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .product-visual {
+    transition: transform 0.3s ease;
+  }
+
+  .product-visual:hover {
+    transform: scale(1.02);
+  }
+
+  .feature-item {
+    border: 1px solid var(--color-border);
+    transition: all 0.2s ease;
+  }
+
+  .feature-item:hover {
+    border-color: var(--color-primary);
+  }
+
+  :global(.dark) .feature-item {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.dark) .feature-item:hover {
+    border-color: var(--color-primary);
+    background: rgba(107, 127, 255, 0.05);
+  }
+</style>

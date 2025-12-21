@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme {
+  /* Light Mode 色彩（預設） */
+  --color-bg-primary: #FFFFFF;
+  --color-bg-secondary: #F9FAFB;
+  --color-bg-tertiary: #F3F4F6;
+
+  --color-primary: #6366F1;
+  --color-primary-dark: #4F46E5;
+  --color-primary-light: #818CF8;
+
+  --color-accent: #F97316;
+  --color-accent-hover: #EA580C;
+
+  --color-text-primary: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-muted: #9CA3AF;
+
+  --color-border: #E5E7EB;
+  --color-border-hover: #D1D5DB;
+
+  /* 語意色 */
+  --color-success: #10B981;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+
+  /* Dark Mode 專用色 */
+  --color-deep: #0B0D1A;
+  --color-space: #121530;
+  --color-nebula: #1A1F4E;
+  --color-star-blue: #A5C4FF;
+  --color-star-gold: #FFD700;
+}
+
+/* Dark Mode 覆蓋 */
+.dark {
+  --color-bg-primary: #0B0D1A;
+  --color-bg-secondary: #121530;
+  --color-bg-tertiary: #1A1F4E;
+
+  --color-primary: #6B7FFF;
+  --color-primary-dark: #4F5BD5;
+  --color-primary-light: #8B9FFF;
+
+  --color-accent: #F5A623;
+  --color-accent-hover: #FFB940;
+
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #A0AEC0;
+  --color-text-muted: #718096;
+
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-hover: rgba(255, 255, 255, 0.2);
+}

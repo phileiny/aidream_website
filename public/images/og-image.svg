@@ -1,0 +1,74 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0B0D1A"/>
+
+  <!-- Gradient overlay -->
+  <defs>
+    <radialGradient id="glow1" cx="30%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#6B7FFF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#6B7FFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="70%" cy="70%" r="50%">
+      <stop offset="0%" stop-color="#F5A623" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#F5A623" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6B7FFF"/>
+      <stop offset="100%" stop-color="#F5A623"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Glow effects -->
+  <ellipse cx="360" cy="200" rx="400" ry="300" fill="url(#glow1)"/>
+  <ellipse cx="840" cy="430" rx="350" ry="250" fill="url(#glow2)"/>
+
+  <!-- Stars -->
+  <circle cx="100" cy="80" r="2" fill="white" opacity="0.8"/>
+  <circle cx="250" cy="150" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="400" cy="50" r="2" fill="white" opacity="0.7"/>
+  <circle cx="550" cy="120" r="1" fill="white" opacity="0.5"/>
+  <circle cx="700" cy="60" r="2.5" fill="white" opacity="0.9"/>
+  <circle cx="850" cy="100" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="1000" cy="80" r="2" fill="white" opacity="0.7"/>
+  <circle cx="1100" cy="150" r="1" fill="white" opacity="0.5"/>
+  <circle cx="150" cy="500" r="1.5" fill="white" opacity="0.6"/>
+  <circle cx="300" cy="550" r="2" fill="white" opacity="0.7"/>
+  <circle cx="900" cy="520" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="1050" cy="480" r="2" fill="white" opacity="0.8"/>
+
+  <!-- Company Name -->
+  <text x="600" y="240" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="white">
+    星智未來
+  </text>
+
+  <!-- English Name with gradient -->
+  <text x="600" y="310" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="42" font-weight="600" fill="url(#textGradient)">
+    AI Dream
+  </text>
+
+  <!-- Slogan -->
+  <text x="600" y="400" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="32" fill="#A0AEC0">
+    用 AI 簡化工作的繁瑣
+  </text>
+
+  <!-- Sub slogan -->
+  <text x="600" y="450" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#718096">
+    讓 AI 處理瑣事，你專注重要的事
+  </text>
+
+  <!-- Products -->
+  <rect x="380" y="500" width="180" height="40" rx="20" fill="#6B7FFF" fill-opacity="0.2" stroke="#6B7FFF" stroke-width="1"/>
+  <text x="470" y="527" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#6B7FFF">
+    ContraX
+  </text>
+
+  <rect x="640" y="500" width="180" height="40" rx="20" fill="#F5A623" fill-opacity="0.2" stroke="#F5A623" stroke-width="1"/>
+  <text x="730" y="527" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#F5A623">
+    MemoBot
+  </text>
+
+  <!-- Domain -->
+  <text x="600" y="600" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#4A5568">
+    aidream.com.tw
+  </text>
+</svg>
