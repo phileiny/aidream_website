@@ -4,12 +4,13 @@
 
 <button
   id="theme-toggle"
-  class="p-2 rounded-lg hover:bg-bg-tertiary transition-colors"
+  class="relative z-10 p-2 rounded-lg hover:bg-bg-tertiary transition-colors touch-manipulation"
   aria-label="切換主題"
+  type="button"
 >
   <!-- 太陽圖示（Light Mode 顯示） -->
   <svg
-    class="w-5 h-5 sun-icon"
+    class="w-5 h-5 sun-icon pointer-events-none"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
@@ -23,7 +24,7 @@
   </svg>
   <!-- 月亮圖示（Dark Mode 顯示） -->
   <svg
-    class="w-5 h-5 moon-icon hidden"
+    class="w-5 h-5 moon-icon hidden pointer-events-none"
     fill="none"
     stroke="currentColor"
     viewBox="0 0 24 24"
