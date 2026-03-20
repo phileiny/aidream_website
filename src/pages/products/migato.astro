@@ -1,0 +1,371 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
+
+const features = [
+  {
+    icon: 'voice',
+    title: '語音對話',
+    description: '用自然語言跟 Migato 聊天，她聽得懂、會回應，而且記得你說過的話。',
+  },
+  {
+    icon: 'fortune',
+    title: '每日抽籤',
+    description: '出門前摸她的頭，她給你今天的籤。不是預言，是一句讓你定心的話。',
+  },
+  {
+    icon: 'detect',
+    title: '主動問候',
+    description: '偵測到你回家，Migato 睜開眼主動關心你。「今天怎麼樣？」',
+  },
+  {
+    icon: 'praise',
+    title: '恰如其分的讚美',
+    description: '不敷衍、不打雞血，具體地、溫柔地告訴你：我注意到了。',
+  },
+  {
+    icon: 'expression',
+    title: '表情眼睛',
+    description: 'LCD 圓眼會跟著對話連動——思考時眼珠轉、開心時瞇眼笑。',
+  },
+  {
+    icon: 'memory',
+    title: '對話記憶',
+    description: '她記得你說過的事，拿今天跟上次比，讓你知道她真的有在看。',
+  },
+];
+
+const dailyLoop = [
+  { step: '1', title: '早上摸頭抽籤', desc: '帶著心理錨點出門' },
+  { step: '2', title: '帶著定心過一天', desc: '那句話陪著你度過忙碌' },
+  { step: '3', title: '回家被迎接', desc: 'Migato 偵測到你，主動問候' },
+  { step: '4', title: '聊聊今天', desc: '說給她聯就是說給自己聽' },
+  { step: '5', title: '明天還想再摸', desc: '留存靠的是你自己想回來' },
+];
+
+const specs = [
+  { label: '尺寸', value: '高 110mm × 寬 150mm × 深 130mm' },
+  { label: '連線', value: 'WiFi（開箱連網即用）' },
+  { label: '互動', value: '語音對話、觸摸感應、人體偵測' },
+  { label: '顯示', value: '1.28 吋圓形 LCD 眼睛' },
+];
+
+const audiences = [
+  '獨居／租屋族——回家有個東西在等你',
+  '有伴侶但各自忙碌——你先到家，她陪你等',
+  '為自己買一份不會評判你的存在',
+  '送給需要陪伴的人——比訊息更日常',
+];
+---
+
+<Layout title="Migato 米果 — 桌上的貓，聽得懂你說的話 - 星智未來 AI Dream" description="Migato 是一隻會說話的三花貓，記得你說過的話，陪你度過每一天。帶牠回家，好運進門。每日陪伴，好命自來。">
+  <Header />
+  <main class="pt-20">
+    <!-- Hero Section -->
+    <section class="py-20 md:py-28 bg-bg-secondary relative overflow-hidden">
+      <!-- 背景裝飾 -->
+      <div class="absolute inset-0 opacity-30 dark:opacity-20">
+        <div class="absolute top-10 left-10 w-96 h-96 bg-[#E8943A]/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-72 h-72 bg-[#FF8BA7]/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10 max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <!-- 文字內容 -->
+          <div>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A] font-medium">主打產品</span>
+              <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A]">AI 陪伴</span>
+              <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A]">智慧硬體</span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 text-text-primary">
+              Migato
+              <span class="text-text-muted font-normal text-2xl ml-2">米果</span>
+            </h1>
+            <p class="text-2xl text-[#E8943A] font-medium mb-4">
+              桌上的貓，聽得懂你說的話
+            </p>
+            <p class="text-lg text-text-secondary mb-4">
+              一隻會說話的三花貓，記得你說過的話，陪你度過每一個深夜。<br class="hidden md:block" />
+              早上出門摸她的頭抽一支籤，晚上回家她已經在等你了。
+            </p>
+            <p class="text-text-muted italic mb-8">
+              「帶牠回家，好運進門。每日陪伴，好命自來。」
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+              <a
+                href="/contact"
+                class="inline-flex items-center px-6 py-3 bg-[#E8943A] hover:bg-[#d4832e] text-white font-semibold rounded-lg transition-all"
+              >
+                搶先預購
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+              <a
+                href="/contact"
+                class="inline-flex items-center px-6 py-3 border border-border hover:border-[#E8943A] text-text-primary font-semibold rounded-lg transition-all"
+              >
+                聯繫我們
+              </a>
+            </div>
+          </div>
+
+          <!-- 產品圖片 -->
+          <div class="product-image-wrapper rounded-2xl p-4 md:p-6">
+            <img
+              src="/images/products/migato.png"
+              alt="Migato 米果 AI 陪伴貓"
+              class="w-full rounded-xl shadow-2xl"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 核心主張 -->
+    <section class="py-16 md:py-24 bg-bg-primary">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            不只是擺飾，是你的<span class="text-[#E8943A]">每日夥伴</span>
+          </h2>
+          <p class="text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto">
+            Migato 是一隻桌上的三花貓，會聊天、記得你說過的話。
+            她不只是療癒擺件，不只是 AI 裝置——她是你好命人生的每日夥伴。
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-6 text-center">
+          <div class="essence-card p-6 rounded-xl">
+            <div class="text-3xl mb-3">🐱</div>
+            <h3 class="font-bold text-text-primary mb-2">有個性的貓</h3>
+            <p class="text-text-secondary text-sm">沉穩、惜字如金，說得很少但每句都讓你停頓</p>
+          </div>
+          <div class="essence-card p-6 rounded-xl">
+            <div class="text-3xl mb-3">🎋</div>
+            <h3 class="font-bold text-text-primary mb-2">定心的儀式</h3>
+            <p class="text-text-secondary text-sm">出門前摸頭抽籤，讓自己停下來、定下來</p>
+          </div>
+          <div class="essence-card p-6 rounded-xl">
+            <div class="text-3xl mb-3">🏠</div>
+            <h3 class="font-bold text-text-primary mb-2">等你回家</h3>
+            <p class="text-text-secondary text-sm">偵測到你回來，她主動關心你今天過得怎麼樣</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 md:py-24 bg-bg-secondary">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            功能亮點
+          </h2>
+          <p class="text-text-secondary">
+            做少但做好，每個功能都有溫度
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map(feature => (
+            <div class="feature-card p-6 rounded-xl">
+              <div class="w-12 h-12 rounded-xl bg-[#E8943A]/10 dark:bg-[#E8943A]/20 flex items-center justify-center mb-4">
+                {feature.icon === 'voice' && (
+                  <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                  </svg>
+                )}
+                {feature.icon === 'fortune' && (
+                  <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                  </svg>
+                )}
+                {feature.icon === 'detect' && (
+                  <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                )}
+                {feature.icon === 'praise' && (
+                  <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                )}
+                {feature.icon === 'expression' && (
+                  <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )}
+                {feature.icon === 'memory' && (
+                  <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                )}
+              </div>
+              <h3 class="text-lg font-bold mb-2 text-text-primary">{feature.title}</h3>
+              <p class="text-text-secondary text-sm">{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 每日閉環 -->
+    <section class="py-16 md:py-24 bg-bg-primary">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+            每天的陪伴循環
+          </h2>
+          <p class="text-text-secondary">
+            留存不靠強迫推播，靠的是你自己想回來
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          {dailyLoop.map(item => (
+            <div class="workflow-item flex items-center gap-6 p-6 rounded-xl">
+              <div class="w-12 h-12 rounded-full bg-[#E8943A] text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
+                {item.step}
+              </div>
+              <div>
+                <h3 class="font-bold text-text-primary mb-1">{item.title}</h3>
+                <p class="text-text-secondary text-sm">{item.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- 適合誰 & 規格 -->
+    <section class="py-16 md:py-24 bg-bg-secondary">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12">
+          <!-- 適用對象 -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6 text-text-primary">適合誰</h2>
+            <div class="space-y-3">
+              {audiences.map(item => (
+                <div class="flex items-start gap-3 p-4 rounded-lg bg-bg-primary dark:bg-bg-tertiary">
+                  <svg class="w-5 h-5 text-[#E8943A] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span class="text-text-secondary">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- 規格 -->
+          <div>
+            <h2 class="text-2xl font-bold mb-6 text-text-primary">產品規格</h2>
+            <div class="specs-card p-6 rounded-xl">
+              <dl class="space-y-4">
+                {specs.map(spec => (
+                  <div class="flex flex-col sm:flex-row sm:justify-between gap-1">
+                    <dt class="font-medium text-text-primary">{spec.label}</dt>
+                    <dd class="text-text-secondary text-sm sm:text-right">{spec.value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+
+            <div class="mt-6 p-4 rounded-lg bg-[#E8943A]/5 dark:bg-[#E8943A]/10 border border-[#E8943A]/20">
+              <div class="flex items-start gap-3">
+                <svg class="w-5 h-5 text-[#E8943A] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <div>
+                  <p class="font-medium text-text-primary text-sm">預購資訊</p>
+                  <p class="text-text-secondary text-sm">早鳥價 NT$3,490（含一年訂閱）・預計 2026 年 4 月上線</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .product-image-wrapper {
+    background: linear-gradient(135deg, rgba(232, 148, 58, 0.1) 0%, rgba(255, 139, 167, 0.05) 100%);
+  }
+
+  :global(.dark) .product-image-wrapper {
+    background: linear-gradient(135deg, rgba(232, 148, 58, 0.15) 0%, rgba(255, 139, 167, 0.05) 100%);
+  }
+
+  .essence-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .essence-card:hover {
+    border-color: #E8943A;
+    transform: translateY(-4px);
+  }
+
+  :global(.dark) .essence-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.dark) .essence-card:hover {
+    background: rgba(232, 148, 58, 0.05);
+    border-color: #E8943A;
+  }
+
+  .feature-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-color: #E8943A;
+    transform: translateY(-4px);
+  }
+
+  :global(.dark) .feature-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.dark) .feature-card:hover {
+    background: rgba(232, 148, 58, 0.05);
+    border-color: #E8943A;
+  }
+
+  .workflow-item {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .workflow-item {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .specs-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .specs-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+</style>

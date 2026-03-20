@@ -6,6 +6,23 @@ import CTA from '../../components/CTA.astro';
 
 const products = [
   {
+    id: 'migato',
+    name: 'Migato',
+    nickname: '米果',
+    tagline: '桌上的貓，聽得懂你說的話',
+    description: '一隻會說話的三花貓，記得你說過的話，陪你度過每一個深夜。早上出門摸她的頭抽一支籤，晚上回家她已經在等你了。',
+    features: [
+      { title: '語音對話', desc: '用自然語言跟 Migato 聊天，她聽得懂也記得住' },
+      { title: '每日抽籤', desc: '出門前摸頭抽籤，帶著一句溫暖的話出門' },
+      { title: '主動問候', desc: '偵測到你回家，她主動關心你今天過得怎麼樣' },
+      { title: '恰如其分的讚美', desc: '不敷衍、不打雞血，溫柔地告訴你：我注意到了' },
+    ],
+    tags: ['AI 陪伴', '智慧硬體', '療癒系'],
+    image: '/images/products/migato.png',
+    color: 'migato',
+    href: '/products/migato',
+  },
+  {
     id: 'contrax',
     name: 'ContraX',
     tagline: '中小企業的合約管家',
@@ -41,7 +58,7 @@ const products = [
 ];
 ---
 
-<Layout title="產品 - 星智未來 AI Dream" description="ContraX 合約管理系統與 MemoBot AI 行程助理，為微型團隊打造的 AI 工具">
+<Layout title="產品 - 星智未來 AI Dream" description="Migato AI 陪伴貓、ContraX 合約管理系統與 MemoBot AI 行程助理，星智未來的 AI 產品">
   <Header />
   <main class="pt-20">
     <!-- Hero Section -->
@@ -54,12 +71,12 @@ const products = [
 
       <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-text-primary">
-          為微型團隊打造的<br />
-          <span class="text-primary">AI 工具</span>套件
+          星智未來的<br />
+          <span class="text-primary">AI 產品</span>
         </h1>
         <p class="text-xl text-text-secondary max-w-2xl mx-auto mb-4">
-          我們專注解決小團隊的核心痛點：合約管理與行程安排。
-          讓 AI 處理繁瑣工作，你專注在真正重要的事。
+          從桌上的 AI 陪伴貓到工作效率工具，
+          讓 AI 融入你的生活與工作。
         </p>
         <p class="text-text-muted">
           歡迎<a href="/contact" class="text-primary hover:underline">提出客製化產品需求</a>
@@ -74,7 +91,7 @@ const products = [
           <div class={`product-block flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 items-center ${index > 0 ? 'mt-24 md:mt-32' : ''}`}>
             <!-- 產品視覺 -->
             <div class="w-full md:w-1/2">
-              <div class={`product-visual rounded-2xl p-4 md:p-6 ${product.color === 'primary' ? 'bg-primary/5 dark:bg-primary/10' : 'bg-accent/5 dark:bg-accent/10'}`}>
+              <div class={`product-visual rounded-2xl p-4 md:p-6 ${product.color === 'migato' ? 'bg-[#E8943A]/5 dark:bg-[#E8943A]/10' : product.color === 'primary' ? 'bg-primary/5 dark:bg-primary/10' : 'bg-accent/5 dark:bg-accent/10'}`}>
                 <img
                   src={product.image}
                   alt={product.name}
@@ -88,7 +105,7 @@ const products = [
               <!-- 標籤 -->
               <div class="flex flex-wrap gap-2 mb-4">
                 {product.tags.map(tag => (
-                  <span class={`px-3 py-1 text-sm rounded-full ${product.color === 'primary' ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'}`}>
+                  <span class={`px-3 py-1 text-sm rounded-full ${product.color === 'migato' ? 'bg-[#E8943A]/10 text-[#E8943A]' : product.color === 'primary' ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'}`}>
                     {tag}
                   </span>
                 ))}
@@ -105,7 +122,7 @@ const products = [
               </h2>
 
               <!-- 標語 -->
-              <p class={`text-xl font-medium mb-4 ${product.color === 'primary' ? 'text-primary' : 'text-accent'}`}>
+              <p class={`text-xl font-medium mb-4 ${product.color === 'migato' ? 'text-[#E8943A]' : product.color === 'primary' ? 'text-primary' : 'text-accent'}`}>
                 {product.tagline}
               </p>
 
@@ -128,7 +145,9 @@ const products = [
               <a
                 href={product.href}
                 class={`inline-flex items-center px-6 py-3 font-semibold rounded-lg transition-all ${
-                  product.color === 'primary'
+                  product.color === 'migato'
+                    ? 'bg-[#E8943A] hover:bg-[#d4832e] text-white'
+                    : product.color === 'primary'
                     ? 'bg-primary hover:bg-primary-dark text-white'
                     : 'bg-accent hover:bg-accent/90 text-gray-900'
                 }`}

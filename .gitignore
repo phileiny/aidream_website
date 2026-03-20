@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# 品牌參考資料（不納入版控）
+brand/
+Migato-film/

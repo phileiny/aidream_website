@@ -1,5 +1,17 @@
 ---
-const products = [
+const featured = {
+  id: 'migato',
+  name: 'Migato',
+  nickname: '米果',
+  tagline: '桌上的貓，聽得懂你說的話',
+  description: '一隻會說話的三花貓，記得你說過的話，陪你度過每一個深夜。早上出門摸她的頭抽一支籤，晚上回家她已經在等你了。',
+  tags: ['AI 陪伴', '智慧硬體', '療癒系'],
+  image: '/images/products/migato.png',
+  color: 'migato',
+  href: '/products/migato',
+};
+
+const others = [
   {
     id: 'contrax',
     name: 'ContraX',
@@ -32,13 +44,70 @@ const products = [
         我們的<span class="text-primary">產品</span>
       </h2>
       <p class="text-text-secondary max-w-2xl mx-auto">
-        為微型團隊打造的 AI 工具套件
+        帶牠回家，好運進門。每日陪伴，好命自來。
       </p>
     </div>
 
-    <!-- 產品卡片 -->
+    <!-- 主打產品：Migato -->
+    <a
+      href={featured.href}
+      class="featured-card group block p-8 md:p-12 rounded-2xl transition-all mb-12"
+    >
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <!-- Product Image -->
+        <div class="w-full md:w-1/2 rounded-xl overflow-hidden bg-bg-secondary dark:bg-bg-tertiary">
+          <img
+            src={featured.image}
+            alt={featured.name}
+            class="w-full h-64 md:h-80 object-cover"
+          />
+        </div>
+
+        <div class="w-full md:w-1/2">
+          <!-- 標籤 -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A] font-medium">
+              主打產品
+            </span>
+            {featured.tags.map(tag => (
+              <span class="px-3 py-1 text-sm rounded-full bg-bg-tertiary dark:bg-white/5 text-text-secondary">
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          <!-- 名稱與標語 -->
+          <div class="mb-4">
+            <h3 class="text-3xl md:text-4xl font-bold mb-2 text-text-primary">
+              {featured.name}
+              <span class="text-text-muted font-normal text-xl ml-2">
+                {featured.nickname}
+              </span>
+            </h3>
+            <p class="text-lg font-medium text-[#E8943A]">
+              {featured.tagline}
+            </p>
+          </div>
+
+          <!-- 描述 -->
+          <p class="text-text-secondary mb-6 text-lg leading-relaxed">
+            {featured.description}
+          </p>
+
+          <!-- 了解更多 -->
+          <div class="flex items-center text-[#E8943A] group-hover:text-[#d4832e] transition-colors text-lg font-medium">
+            <span>了解更多</span>
+            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- 其他產品 -->
     <div class="grid md:grid-cols-2 gap-8">
-      {products.map(product => (
+      {others.map(product => (
         <a
           href={product.href}
           class="product-card group block p-8 rounded-2xl transition-all"
@@ -95,6 +164,29 @@ const products = [
 </section>
 
 <style>
+  /* 主打產品卡片 */
+  .featured-card {
+    background: var(--color-bg-primary);
+    border: 2px solid #E8943A;
+    box-shadow: 0 4px 20px rgba(232, 148, 58, 0.1);
+  }
+
+  .featured-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(232, 148, 58, 0.2);
+  }
+
+  :global(.dark) .featured-card {
+    background: linear-gradient(135deg, rgba(232, 148, 58, 0.06) 0%, rgba(255,255,255,0.01) 100%);
+    border-color: rgba(232, 148, 58, 0.5);
+  }
+
+  :global(.dark) .featured-card:hover {
+    background: linear-gradient(135deg, rgba(232, 148, 58, 0.1) 0%, rgba(232, 148, 58, 0.02) 100%);
+    border-color: #E8943A;
+    box-shadow: 0 20px 40px rgba(232, 148, 58, 0.2);
+  }
+
   /* Light Mode 卡片 */
   .product-card {
     background: var(--color-bg-primary);
