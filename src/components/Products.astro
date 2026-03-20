@@ -1,5 +1,5 @@
 ---
-const featured = {
+const product = {
   id: 'migato',
   name: 'Migato',
   nickname: '米果',
@@ -7,33 +7,8 @@ const featured = {
   description: '一隻會說話的三花貓，記得你說過的話，陪你度過每一個深夜。早上出門摸她的頭抽一支籤，晚上回家她已經在等你了。',
   tags: ['AI 陪伴', '智慧硬體', '療癒系'],
   image: '/images/products/migato.png',
-  color: 'migato',
   href: '/products/migato',
 };
-
-const others = [
-  {
-    id: 'contrax',
-    name: 'ContraX',
-    tagline: '中小企業的合約管家',
-    description: '專為中小企業設計的合約管理系統，從建立、追蹤、收款到歸檔，一站式管理合約生命週期。',
-    tags: ['合約管理', '桌面軟體'],
-    image: '/images/products/contraX.png',
-    color: 'primary',
-    href: '/products/contrax',
-  },
-  {
-    id: 'memobot',
-    name: 'MemoBot',
-    nickname: '咩猛',
-    tagline: '你的 AI 行程秘書',
-    description: 'LINE Bot 智能行程助理，用自然語言對話管理行程。像和朋友聊天一樣，輕鬆掌控工作與生活。',
-    tags: ['行程管理', 'LINE Bot'],
-    image: '/images/products/memobot.png',
-    color: 'accent',
-    href: '/products/memobot',
-  },
-];
 ---
 
 <section class="py-20 md:py-32 bg-bg-secondary relative">
@@ -41,24 +16,24 @@ const others = [
     <!-- 標題 -->
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
-        我們的<span class="text-primary">產品</span>
+        我們的<span class="text-[#E8943A]">產品</span>
       </h2>
       <p class="text-text-secondary max-w-2xl mx-auto">
         帶牠回家，好運進門。每日陪伴，好命自來。
       </p>
     </div>
 
-    <!-- 主打產品：Migato -->
+    <!-- Migato -->
     <a
-      href={featured.href}
-      class="featured-card group block p-8 md:p-12 rounded-2xl transition-all mb-12"
+      href={product.href}
+      class="featured-card group block p-8 md:p-12 rounded-2xl transition-all"
     >
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <!-- Product Image -->
         <div class="w-full md:w-1/2 rounded-xl overflow-hidden bg-bg-secondary dark:bg-bg-tertiary">
           <img
-            src={featured.image}
-            alt={featured.name}
+            src={product.image}
+            alt={product.name}
             class="w-full h-64 md:h-80 object-cover"
           />
         </div>
@@ -66,11 +41,8 @@ const others = [
         <div class="w-full md:w-1/2">
           <!-- 標籤 -->
           <div class="flex flex-wrap gap-2 mb-4">
-            <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A] font-medium">
-              主打產品
-            </span>
-            {featured.tags.map(tag => (
-              <span class="px-3 py-1 text-sm rounded-full bg-bg-tertiary dark:bg-white/5 text-text-secondary">
+            {product.tags.map(tag => (
+              <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A]">
                 {tag}
               </span>
             ))}
@@ -79,19 +51,19 @@ const others = [
           <!-- 名稱與標語 -->
           <div class="mb-4">
             <h3 class="text-3xl md:text-4xl font-bold mb-2 text-text-primary">
-              {featured.name}
+              {product.name}
               <span class="text-text-muted font-normal text-xl ml-2">
-                {featured.nickname}
+                {product.nickname}
               </span>
             </h3>
             <p class="text-lg font-medium text-[#E8943A]">
-              {featured.tagline}
+              {product.tagline}
             </p>
           </div>
 
           <!-- 描述 -->
           <p class="text-text-secondary mb-6 text-lg leading-relaxed">
-            {featured.description}
+            {product.description}
           </p>
 
           <!-- 了解更多 -->
@@ -104,67 +76,10 @@ const others = [
         </div>
       </div>
     </a>
-
-    <!-- 其他產品 -->
-    <div class="grid md:grid-cols-2 gap-8">
-      {others.map(product => (
-        <a
-          href={product.href}
-          class="product-card group block p-8 rounded-2xl transition-all"
-        >
-          <!-- Product Image -->
-          <div class="mb-6 rounded-xl overflow-hidden bg-bg-secondary dark:bg-bg-tertiary">
-            <img
-              src={product.image}
-              alt={product.name}
-              class="w-full h-40 object-cover"
-            />
-          </div>
-
-          <!-- 名稱與標語 -->
-          <div class="mb-4">
-            <h3 class="text-2xl font-bold mb-1 text-text-primary">
-              {product.name}
-              {product.nickname && (
-                <span class="text-text-muted font-normal text-lg ml-2">
-                  {product.nickname}
-                </span>
-              )}
-            </h3>
-            <p class={`font-medium ${product.color === 'primary' ? 'text-primary' : 'text-accent'}`}>
-              {product.tagline}
-            </p>
-          </div>
-
-          <!-- 描述 -->
-          <p class="text-text-secondary mb-6">
-            {product.description}
-          </p>
-
-          <!-- 標籤 -->
-          <div class="flex flex-wrap gap-2 mb-6">
-            {product.tags.map(tag => (
-              <span class="px-3 py-1 text-sm rounded-full bg-bg-tertiary dark:bg-white/5 text-text-secondary">
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <!-- 了解更多 -->
-          <div class="flex items-center text-primary group-hover:text-accent transition-colors">
-            <span>了解更多</span>
-            <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </div>
-        </a>
-      ))}
-    </div>
   </div>
 </section>
 
 <style>
-  /* 主打產品卡片 */
   .featured-card {
     background: var(--color-bg-primary);
     border: 2px solid #E8943A;
@@ -185,29 +100,5 @@ const others = [
     background: linear-gradient(135deg, rgba(232, 148, 58, 0.1) 0%, rgba(232, 148, 58, 0.02) 100%);
     border-color: #E8943A;
     box-shadow: 0 20px 40px rgba(232, 148, 58, 0.2);
-  }
-
-  /* Light Mode 卡片 */
-  .product-card {
-    background: var(--color-bg-primary);
-    border: 1px solid var(--color-border);
-  }
-
-  .product-card:hover {
-    border-color: var(--color-primary);
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Dark Mode 卡片 */
-  :global(.dark) .product-card {
-    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  :global(.dark) .product-card:hover {
-    background: linear-gradient(135deg, rgba(107,127,255,0.08) 0%, rgba(107,127,255,0.02) 100%);
-    border-color: rgba(107, 127, 255, 0.5);
-    box-shadow: 0 20px 40px rgba(107, 127, 255, 0.15);
   }
 </style>

@@ -5,58 +5,101 @@
 <section class="py-20 md:py-32 bg-bg-tertiary relative overflow-hidden">
   <!-- Light Mode 背景效果 -->
   <div class="absolute inset-0 dark:hidden">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-gradient-to-b from-primary/10 to-transparent blur-3xl"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-gradient-to-b from-[#E8943A]/10 to-transparent blur-3xl"></div>
   </div>
 
   <!-- Dark Mode 背景效果 -->
   <div class="absolute inset-0 hidden dark:block">
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-gradient-to-b from-primary/20 to-transparent blur-3xl"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-64 bg-gradient-to-b from-[#E8943A]/20 to-transparent blur-3xl"></div>
   </div>
 
   <div class="relative z-10 max-w-3xl mx-auto px-4 text-center">
     <h2 class="text-3xl md:text-4xl font-bold mb-6 text-text-primary">
-      準備好提升工作效率了嗎？
+      帶牠回家，好運進門
     </h2>
-    <p class="text-xl text-text-secondary mb-10">
-      讓我們幫你找到最適合的解決方案
+    <p class="text-xl text-text-secondary mb-4">
+      早鳥價 NT$3,490（含一年訂閱）
     </p>
-    <a
-      href="/contact"
-      class="cta-button inline-block px-10 py-4 font-semibold text-lg rounded-full transition-all"
-    >
-      預約免費諮詢
-    </a>
+    <p class="text-text-muted mb-10">
+      預計 2026 年 4 月上線 ・ 首批限量 100 隻
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+      <a
+        href="/products/migato"
+        class="cta-button inline-block px-10 py-4 font-semibold text-lg rounded-full transition-all"
+      >
+        認識 Migato
+      </a>
+      <a
+        href="/contact"
+        class="cta-button-secondary inline-block px-10 py-4 font-semibold text-lg rounded-full transition-all"
+      >
+        聯繫我們
+      </a>
+    </div>
+    <p class="text-text-secondary text-sm">
+      想先感受 Migato 的魅力？
+      <a
+        href="https://store.line.me/stickershop/product/33243782/zh-Hant"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-[#06C755] hover:underline font-medium"
+      >
+        LINE 貼圖已上架 NT$30 →
+      </a>
+    </p>
   </div>
 </section>
 
 <style>
   /* Light Mode 按鈕 */
   .cta-button {
-    background: var(--color-primary);
+    background: #E8943A;
     color: white;
-    box-shadow: 0 0 20px rgba(208, 112, 46, 0.3);
+    box-shadow: 0 0 20px rgba(232, 148, 58, 0.3);
   }
 
   .cta-button:hover {
-    background: var(--color-primary-dark);
-    box-shadow: 0 0 40px rgba(208, 112, 46, 0.5);
+    background: #d4832e;
+    box-shadow: 0 0 40px rgba(232, 148, 58, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .cta-button-secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 2px solid var(--color-border);
+  }
+
+  .cta-button-secondary:hover {
+    border-color: #E8943A;
+    color: #E8943A;
     transform: translateY(-2px);
   }
 
   /* Dark Mode 按鈕 */
   :global(.dark) .cta-button {
-    background: var(--color-accent);
-    color: #1a1410;
-    box-shadow: 0 0 20px rgba(198, 165, 101, 0.4);
+    background: #E8943A;
+    color: white;
+    box-shadow: 0 0 20px rgba(232, 148, 58, 0.4);
     animation: pulse-glow 2s ease-in-out infinite;
   }
 
   :global(.dark) .cta-button:hover {
-    box-shadow: 0 0 40px rgba(198, 165, 101, 0.6);
+    box-shadow: 0 0 40px rgba(232, 148, 58, 0.6);
+  }
+
+  :global(.dark) .cta-button-secondary {
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  :global(.dark) .cta-button-secondary:hover {
+    border-color: #E8943A;
+    color: #E8943A;
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(198, 165, 101, 0.4); }
-    50% { box-shadow: 0 0 40px rgba(198, 165, 101, 0.6); }
+    0%, 100% { box-shadow: 0 0 20px rgba(232, 148, 58, 0.4); }
+    50% { box-shadow: 0 0 40px rgba(232, 148, 58, 0.6); }
   }
 </style>

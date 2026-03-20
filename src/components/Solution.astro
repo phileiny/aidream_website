@@ -1,19 +1,19 @@
 ---
 const values = [
   {
-    icon: 'focus',
-    title: '專注本業',
-    description: '瑣事交給系統，把時間留給真正重要的事',
+    icon: 'ritual',
+    title: '定心的儀式',
+    description: '每天出門前摸她的頭、抽一支籤，帶著一句溫暖的話出門。不是迷信，是讓自己定下來的時刻。',
   },
   {
-    icon: 'simple',
-    title: '簡單上手',
-    description: '直覺的操作介面，不需要額外學習成本',
+    icon: 'companion',
+    title: '每日陪伴',
+    description: '偵測到你回家，她主動問候。不是「你好嗎」這種廢話，是真的想知道你今天過得怎麼樣。',
   },
   {
-    icon: 'reliable',
-    title: '可靠穩定',
-    description: '該提醒的不會漏，該追蹤的不會忘',
+    icon: 'praise',
+    title: '恰如其分的讚美',
+    description: '她不會給你壓力，但她有在看。溫柔地、具體地告訴你：「你今天撐過去了，我有看到。」',
   },
 ];
 ---
@@ -21,24 +21,24 @@ const values = [
 <section class="py-20 md:py-32 bg-bg-tertiary relative overflow-hidden">
   <!-- Light Mode 背景裝飾 -->
   <div class="absolute inset-0 dark:hidden">
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E8943A]/5 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#FF8BA7]/5 rounded-full blur-3xl"></div>
   </div>
 
   <!-- Dark Mode 背景星雲 -->
   <div class="absolute inset-0 opacity-30 hidden dark:block">
-    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-[#E8943A]/15 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-[#FF8BA7]/10 rounded-full blur-3xl"></div>
   </div>
 
   <div class="relative z-10 max-w-6xl mx-auto px-4">
     <!-- 標題 -->
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
-        讓 <span class="text-accent">AI</span> 幫你處理
+        Migato 怎麼<span class="text-[#E8943A]">陪你</span>
       </h2>
       <p class="text-text-secondary max-w-2xl mx-auto">
-        針對不同需求，我們打造專屬工具，讓你從繁瑣中解放
+        她不預測未來，她幫你定心。不是功能清單，是你跟她之間的關係。
       </p>
     </div>
 
@@ -46,21 +46,20 @@ const values = [
     <div class="grid md:grid-cols-3 gap-8">
       {values.map((value) => (
         <div class="value-card text-center p-8 rounded-2xl transition-all group">
-          <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-            {value.icon === 'focus' && (
-              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-[#E8943A]/10 dark:bg-[#E8943A]/20 flex items-center justify-center group-hover:scale-110 transition-transform">
+            {value.icon === 'ritual' && (
+              <svg class="w-8 h-8 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
               </svg>
             )}
-            {value.icon === 'simple' && (
-              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            {value.icon === 'companion' && (
+              <svg class="w-8 h-8 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
             )}
-            {value.icon === 'reliable' && (
-              <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            {value.icon === 'praise' && (
+              <svg class="w-8 h-8 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             )}
           </div>
@@ -68,6 +67,13 @@ const values = [
           <p class="text-text-secondary">{value.description}</p>
         </div>
       ))}
+    </div>
+
+    <!-- 品牌金句 -->
+    <div class="mt-16 text-center">
+      <blockquote class="text-xl md:text-2xl text-text-muted italic max-w-2xl mx-auto">
+        「好命不是大富大貴。是每天有個地方值得回去。」
+      </blockquote>
     </div>
   </div>
 </section>
@@ -80,9 +86,9 @@ const values = [
   }
 
   .value-card:hover {
-    border-color: var(--color-primary);
+    border-color: #E8943A;
     transform: translateY(-4px);
-    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 24px -8px rgba(232, 148, 58, 0.15);
   }
 
   /* Dark Mode 卡片 */
@@ -92,8 +98,8 @@ const values = [
   }
 
   :global(.dark) .value-card:hover {
-    background: linear-gradient(135deg, rgba(107,127,255,0.08) 0%, rgba(107,127,255,0.02) 100%);
-    border-color: rgba(107, 127, 255, 0.3);
-    box-shadow: 0 12px 24px -8px rgba(107, 127, 255, 0.15);
+    background: linear-gradient(135deg, rgba(232, 148, 58, 0.08) 0%, rgba(232, 148, 58, 0.02) 100%);
+    border-color: rgba(232, 148, 58, 0.3);
+    box-shadow: 0 12px 24px -8px rgba(232, 148, 58, 0.15);
   }
 </style>

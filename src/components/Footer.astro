@@ -4,6 +4,7 @@ const currentYear = new Date().getFullYear();
 const links = {
   products: [
     { label: 'Migato', href: '/products/migato' },
+    { label: 'LINE 貼圖', href: 'https://store.line.me/stickershop/product/33243782/zh-Hant', external: true },
     { label: 'ContraX', href: '/products/contrax' },
     { label: 'MemoBot', href: '/products/memobot' },
   ],
@@ -34,7 +35,12 @@ const links = {
         <ul class="space-y-3">
           {links.products.map(link => (
             <li>
-              <a href={link.href} class="text-text-secondary hover:text-primary transition-colors">
+              <a
+                href={link.href}
+                class="text-text-secondary hover:text-primary transition-colors"
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+              >
                 {link.label}
               </a>
             </li>
