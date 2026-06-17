@@ -1,5 +1,9 @@
 ---
-
+const {
+  primaryLabel = '認識 Migato',
+  primaryHref = '/products/migato',
+  primaryExternal = false,
+} = Astro.props;
 ---
 
 <section class="py-20 md:py-32 bg-bg-tertiary relative overflow-hidden">
@@ -19,10 +23,11 @@
     </h2>
     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
       <a
-        href="/products/migato"
+        href={primaryHref}
+        {...(primaryExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
         class="cta-button inline-block px-10 py-4 font-semibold text-lg rounded-full transition-all"
       >
-        認識 Migato
+        {primaryLabel}
       </a>
       <a
         href="/contact"
