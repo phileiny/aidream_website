@@ -6,14 +6,9 @@ import CTA from '../../components/CTA.astro';
 
 const features = [
   {
-    icon: 'voice',
-    title: '語音對話',
-    description: '用自然語言跟 Migato 聊天，她聽得懂、會回應，而且記得你說過的話。',
-  },
-  {
     icon: 'fortune',
-    title: '每日抽籤',
-    description: '出門前摸她的頭，她給你今天的籤。不是預言，是一句讓你定心的話。',
+    title: '每天一張塔羅',
+    description: '出門前摸摸她的頭，抽一張塔羅大牌。不預測未來，幫你定心，帶著一個有意圖的今天出門。',
   },
   {
     icon: 'detect',
@@ -26,22 +21,27 @@ const features = [
     description: '不敷衍、不打雞血，具體地、溫柔地告訴你：我注意到了。',
   },
   {
+    icon: 'memory',
+    title: '記得你',
+    description: '她記得你說過的事、抽過的牌，拿今天跟上次比——不是工具，是真的有在看你。',
+  },
+  {
+    icon: 'voice',
+    title: '用她的方式聊天',
+    description: '不是冷冰冰的問答助手。像跟一隻有脾氣的貓聊天，聊久了她會說「我快融化了⋯⋯明天再聊」。',
+  },
+  {
     icon: 'expression',
     title: '表情眼睛',
     description: 'LCD 圓眼會跟著對話連動——思考時眼珠轉、開心時瞇眼笑。',
   },
-  {
-    icon: 'memory',
-    title: '對話記憶',
-    description: '她記得你說過的事，拿今天跟上次比，讓你知道她真的有在看。',
-  },
 ];
 
 const dailyLoop = [
-  { step: '1', title: '早上摸頭抽籤', desc: '帶著心理錨點出門' },
+  { step: '1', title: '早上摸頭抽塔羅', desc: '帶著心理錨點出門' },
   { step: '2', title: '帶著定心過一天', desc: '那句話陪著你度過忙碌' },
   { step: '3', title: '回家被迎接', desc: 'Migato 偵測到你，主動問候' },
-  { step: '4', title: '聊聊今天', desc: '說給她聯就是說給自己聽' },
+  { step: '4', title: '聊聊今天', desc: '說給她聽就是說給自己聽' },
   { step: '5', title: '明天還想再摸', desc: '留存靠的是你自己想回來' },
 ];
 
@@ -60,7 +60,7 @@ const audiences = [
 ];
 ---
 
-<Layout title="Migato 米果 — 桌上的貓，聽得懂你說的話 - 星智未來 AI Dream" description="Migato 是一隻會說話的三花貓，記得你說過的話，陪你度過每一天。帶牠回家，好運進門。每日陪伴，好命自來。">
+<Layout title="Migato 米果 — 台灣第一隻 AI 塔羅陪伴貓 - 星智未來 AI Dream" description="Migato（米果）是台灣第一隻 AI 塔羅陪伴貓。每天為你抽一張塔羅、陪你定心——一隻有名字、有個性、有來歷的貓。帶牠回家，好運進門。每日陪伴，好命自來。">
   <Header />
   <main class="pt-20">
     <!-- Hero Section -->
@@ -77,8 +77,8 @@ const audiences = [
           <div>
             <div class="flex flex-wrap gap-2 mb-4">
               <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A] font-medium">主打產品</span>
-              <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A]">AI 陪伴</span>
-              <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A]">智慧硬體</span>
+              <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A]">AI 塔羅陪伴貓</span>
+              <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A]">台灣原創 IP</span>
             </div>
 
             <h1 class="text-4xl md:text-5xl font-bold mb-2 text-text-primary">
@@ -86,11 +86,11 @@ const audiences = [
               <span class="text-text-muted font-normal text-2xl ml-2">米果</span>
             </h1>
             <p class="text-2xl text-[#E8943A] font-medium mb-4">
-              桌上的貓，聽得懂你說的話
+              台灣第一隻 AI 塔羅陪伴貓
             </p>
             <p class="text-lg text-text-secondary mb-4">
-              一隻會說話的三花貓，記得你說過的話，陪你度過每一個深夜。<br class="hidden md:block" />
-              早上出門摸她的頭抽一支籤，晚上回家她已經在等你了。
+              一隻有名字、有個性、有來歷的三花貓。每天早上為你抽一張塔羅，帶著定心出門；<br class="hidden md:block" />
+              晚上回家，她已經在等你了。
             </p>
             <p class="text-text-muted italic mb-8">
               「帶牠回家，好運進門。每日陪伴，好命自來。」
@@ -98,13 +98,21 @@ const audiences = [
 
             <div class="flex flex-wrap gap-4">
               <a
-                href="/contact"
+                href="https://hi.migato.aidream.com.tw/"
+                target="_blank"
+                rel="noopener noreferrer"
                 class="inline-flex items-center px-6 py-3 bg-[#E8943A] hover:bg-[#d4832e] text-white font-semibold rounded-lg transition-all"
               >
-                聯繫我們
+                加入等候名單
                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
+              </a>
+              <a
+                href="/contact"
+                class="inline-flex items-center px-6 py-3 border border-[#E8943A] text-[#E8943A] hover:bg-[#E8943A]/10 font-semibold rounded-lg transition-all"
+              >
+                聯繫我們
               </a>
             </div>
           </div>
@@ -126,11 +134,11 @@ const audiences = [
       <div class="max-w-4xl mx-auto px-4">
         <div class="text-center mb-12">
           <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
-            不只是擺飾，是你的<span class="text-[#E8943A]">每日夥伴</span>
+            不是語音助手，是一隻<span class="text-[#E8943A]">有來歷的貓</span>
           </h2>
           <p class="text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto">
-            Migato 是一隻桌上的三花貓，會聊天、記得你說過的話。
-            她不只是療癒擺件，不只是 AI 裝置——她是你好命人生的每日夥伴。
+            Migato 有自己的故事——她來自一場塔羅占卜，那張「命運之輪」是一切的起點（《Migato 的轉動之輪》）。
+            她不是冰冷的 AI 裝置，也不只是療癒擺件，而是一隻有名字、有個性、會陪你過每一天的貓。
           </p>
         </div>
 
@@ -141,9 +149,9 @@ const audiences = [
             <p class="text-text-secondary text-sm">沉穩、惜字如金，說得很少但每句都讓你停頓</p>
           </div>
           <div class="essence-card p-6 rounded-xl">
-            <div class="text-3xl mb-3">🎋</div>
+            <div class="text-3xl mb-3">🔮</div>
             <h3 class="font-bold text-text-primary mb-2">定心的儀式</h3>
-            <p class="text-text-secondary text-sm">出門前摸頭抽籤，讓自己停下來、定下來</p>
+            <p class="text-text-secondary text-sm">出門前摸頭抽一張塔羅，讓自己停下來、定下來</p>
           </div>
           <div class="essence-card p-6 rounded-xl">
             <div class="text-3xl mb-3">🏠</div>
