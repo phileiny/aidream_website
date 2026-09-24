@@ -1,0 +1,256 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const works = [
+  {
+    number: '作品一',
+    title: '木柵順便傳說 #1〈動物園逃脫事件〉',
+    videoId: 'yP1UiVHHL4w',
+    vertical: true,
+    tags: [
+      { label: '類型', value: '在地短影音／喜劇' },
+      { label: '用途', value: '店家社群經營、在地知名度' },
+      { label: '規格', value: '30 秒．直式 1080×1920' },
+    ],
+    making: '腳本到完成版約 3.5 小時（粗剪 2 小時、完成版 1.5 小時）',
+    paragraphs: [
+      '一隻大貓熊為了一碗北海道風・奶油牛奶味噌拉麵，從動物園逃了出來。系列目的是建立記憶點，讓來木柵的人想到這家店。',
+      '全片 AI 生成，但圍裙上的 logo、牆上的主視覺、那碗拉麵的配料，都以店內實際的樣子為準。',
+    ],
+    result: '上架後的第一個週二，該店營業額從前三週平均約 7,500 元提升到 <strong>15,447 元</strong>（店家 POS 數據，單週觀察）。影片觀看 5,423 次。',
+  },
+  {
+    number: '作品二',
+    title: 'Migato《轉動之輪》',
+    videoId: 'j5kpw6pp20M',
+    vertical: true,
+    tags: [
+      { label: '類型', value: '品牌故事／情感敘事' },
+      { label: '用途', value: '產品世界觀、群眾募資前導' },
+      { label: '規格', value: '57 秒．直式 1080×1920' },
+    ],
+    paragraphs: [
+      '燭光、塔羅牌、一位老婆婆，和一隻會發光的貓。同樣的製作方式，這一次要的不是笑聲，是鼻酸。',
+    ],
+  },
+  {
+    number: '作品三',
+    title: '服飾品項短片',
+    videoId: 'Iy9D0sYkjoo',
+    vertical: true,
+    tags: [
+      { label: '類型', value: '商品展示' },
+      { label: '用途', value: '電商商品頁、廣告素材' },
+      { label: '規格', value: '7 秒．直式' },
+    ],
+    paragraphs: [
+      '單一商品、單一場景、固定版型。模特兒與背景一次設定，之後每個品項都能批次產出，二十支看起來仍是同一個品牌。',
+      '適合品項多的產業：服飾、伴手禮、五金、食品。',
+    ],
+  },
+  {
+    number: '作品四',
+    title: '《矽谷之戀》第一集 序場',
+    videoId: 'WPFGsm3vYh8',
+    vertical: false,
+    tags: [
+      { label: '類型', value: '戲劇／網路劇' },
+      { label: '用途', value: '小說改編、IP 開發' },
+      { label: '規格', value: '40 秒（序場）．橫式' },
+    ],
+    paragraphs: [
+      '2000 年代的矽谷，展開了一段遺憾的戀情。序場從兩個工程師談成人生第一筆大單開始：空拍進園區、開香檳、辦公室對戲、晶圓特寫，一路收到片名卡。',
+      '改編自 JD 2002.10.30 同名小說。角色在不同鏡頭之間保持一致，是長篇敘事最難的一關。本片為 10 集網路劇的第一集開場。',
+    ],
+  },
+  {
+    number: '作品五',
+    title: '《琦琦的幽靈嗅》',
+    videoId: '-AzzHISb2UM',
+    vertical: true,
+    tags: [
+      { label: '類型', value: '懸疑短劇' },
+      { label: '用途', value: '自有 IP、系列內容開發' },
+      { label: '規格', value: '直式短影音' },
+    ],
+    paragraphs: [
+      '琦琦聞得到別人聞不到的氣味。醫生說那叫幻嗅，她知道那是另一個世界傳來的訊息。台灣原創的 AI 懸疑短劇。',
+    ],
+  },
+];
+---
+
+<Layout
+  title="AI 影片作品｜星智未來 AI Dream"
+  description="星智未來的 AI 影片作品集，涵蓋短影音、品牌故事、商品展示與網路劇，從企劃到成片一站完成。"
+  image="https://i.ytimg.com/vi/yP1UiVHHL4w/hqdefault.jpg"
+>
+  <Header />
+  <main class="pt-20">
+    <!-- 頁首 -->
+    <section class="py-20 md:py-28 bg-bg-secondary relative overflow-hidden">
+      <div class="absolute inset-0 opacity-30 dark:opacity-20">
+        <div class="absolute top-10 right-20 w-80 h-80 bg-primary/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 left-10 w-64 h-64 bg-gold/20 rounded-full blur-3xl"></div>
+      </div>
+
+      <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-text-primary">
+          AI 影片作品
+        </h1>
+        <p class="text-lg md:text-xl leading-[1.8] text-text-secondary max-w-2xl mx-auto">
+          從 30 秒短影音到 10 集網路劇，從商品展示到品牌故事。<br />
+          每一支都保留客戶的品牌細節，不是套模板。
+        </p>
+      </div>
+    </section>
+
+    <!-- 作品區塊 -->
+    {works.map((work, index) => (
+      <section class={`py-16 md:py-24 ${index % 2 === 0 ? 'bg-bg-primary' : 'bg-bg-secondary'}`}>
+        <div class="max-w-6xl mx-auto px-4">
+          <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <!-- 影片：奇數個在左、偶數個在右 -->
+            <div class={index % 2 === 1 ? 'md:order-2' : ''}>
+              <div
+                class={`video-frame relative overflow-hidden rounded-2xl shadow-xl mx-auto ${work.vertical ? 'is-vertical max-w-xs sm:max-w-sm' : 'is-horizontal w-full'}`}
+              >
+                <button
+                  type="button"
+                  class="lite-yt group absolute inset-0 w-full h-full cursor-pointer"
+                  data-id={work.videoId}
+                  data-title={work.title}
+                  aria-label={`播放影片：${work.title}`}
+                >
+                  <img
+                    src={`https://i.ytimg.com/vi/${work.videoId}/hqdefault.jpg`}
+                    alt={`${work.title} 影片縮圖`}
+                    loading="lazy"
+                    class="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <span class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></span>
+                  <span class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary text-white flex items-center justify-center shadow-lg transition-transform group-hover:scale-110">
+                    <svg class="w-7 h-7 md:w-8 md:h-8 ml-1" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 文字 -->
+            <div class={index % 2 === 1 ? 'md:order-1' : ''}>
+              <p class="text-primary font-semibold mb-2">{work.number}</p>
+              <h2 class="text-2xl md:text-3xl font-bold mb-5 text-text-primary">{work.title}</h2>
+
+              <ul class="flex flex-wrap gap-2 mb-6">
+                {work.tags.map(tag => (
+                  <li class="px-3 py-1 text-base rounded-full bg-primary/10 text-primary dark:bg-primary/20">
+                    <span class="font-semibold">{tag.label}</span>｜{tag.value}
+                  </li>
+                ))}
+              </ul>
+
+              <div class="space-y-4 text-[17px] md:text-lg leading-[1.8] text-text-primary">
+                {work.paragraphs.map(p => <p>{p}</p>)}
+              </div>
+
+              {work.making && (
+                <p class="mt-4 text-[17px] leading-[1.8] text-text-secondary">
+                  <span class="font-semibold">製作時間：</span>{work.making}
+                </p>
+              )}
+
+              {work.result && (
+                <div class="result-box mt-6 p-5 md:p-6 rounded-xl">
+                  <p class="text-sm font-semibold tracking-wide text-gold-dark dark:text-gold mb-2">成效</p>
+                  <p class="text-[17px] md:text-lg leading-[1.8] text-text-primary" set:html={work.result} />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- 行動呼籲 -->
+    <section class="py-20 md:py-28 bg-deep dark:bg-space">
+      <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 text-[#f5f0eb]">
+          您的第一支影片，我們可以一起想
+        </h2>
+        <p class="text-lg leading-[1.8] text-[#c6b8a8] mb-10">
+          不必一次押大。挑一條產品線或一個主題，試行一個月，用數據決定要不要繼續。
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <a
+            href="mailto:Ray@aidream.com.tw"
+            class="inline-block px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold text-lg rounded-full transition-all hover:-translate-y-0.5"
+            aria-label="寄信預約 30 分鐘免費診斷"
+          >
+            預約 30 分鐘免費診斷
+          </a>
+          <a
+            href="tel:0938535787"
+            class="inline-block px-8 py-4 border-2 border-gold text-gold hover:bg-gold hover:text-deep font-semibold text-lg rounded-full transition-all hover:-translate-y-0.5"
+            aria-label="撥打電話 0938-535-787 聯絡我們"
+          >
+            聯絡我們
+          </a>
+        </div>
+        <div class="text-[17px] leading-[1.8] text-[#c6b8a8]">
+          <p class="font-semibold text-[#f5f0eb]">星智未來有限公司 AI DREAM LTD.</p>
+          <p>
+            張瑞涵　<a href="tel:0938535787" class="hover:text-gold transition-colors">0938-535-787</a>　<a href="mailto:Ray@aidream.com.tw" class="hover:text-gold transition-colors">Ray@aidream.com.tw</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .video-frame.is-vertical {
+    aspect-ratio: 9 / 16;
+  }
+
+  .video-frame.is-horizontal {
+    aspect-ratio: 16 / 9;
+  }
+
+  .video-frame {
+    background: #000;
+  }
+
+  .result-box {
+    background: rgba(198, 165, 101, 0.1);
+    border-left: 4px solid var(--color-gold);
+  }
+
+  :global(.dark) .result-box {
+    background: rgba(198, 165, 101, 0.08);
+  }
+
+  .result-box :global(strong) {
+    font-size: 1.35em;
+    color: var(--color-primary);
+  }
+</style>
+
+<script>
+  // lite embed：點擊後才載入 YouTube iframe，避免五個 iframe 拖慢首屏
+  document.querySelectorAll<HTMLButtonElement>('.lite-yt').forEach(button => {
+    button.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${button.dataset.id}?autoplay=1`;
+      iframe.title = button.dataset.title ?? '';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.className = 'absolute inset-0 w-full h-full';
+      button.replaceWith(iframe);
+    });
+  });
+</script>
