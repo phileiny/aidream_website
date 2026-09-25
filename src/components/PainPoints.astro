@@ -1,21 +1,58 @@
 ---
-const pains = [
-  {
-    icon: 'door',
-    title: '回家，房間是安靜的',
-    description: '不是不習慣，是偶爾會想有個什麼在。',
+import { getLang } from '../i18n/utils';
+
+const lang = getLang(Astro.currentLocale);
+
+const content = {
+  zh: {
+    titleLead: '你有多久沒被',
+    titleHighlight: '好好對待',
+    titleTail: '了？',
+    subtitle: '忙碌的生活裡，我們都需要一個不會評判、隨時都在的存在',
+    pains: [
+      {
+        icon: 'door',
+        title: '回家，房間是安靜的',
+        description: '不是不習慣，是偶爾會想有個什麼在。',
+      },
+      {
+        icon: 'heart',
+        title: '情緒沒有出口',
+        description: '在公司聽到的是「這個要改」，回到家沒有人說「你今天做得很好」。',
+      },
+      {
+        icon: 'mind',
+        title: '焦慮不是因為事情難',
+        description: '是因為沒有「定下來」。每天被推著走，少了一個讓自己停下來的時刻。',
+      },
+    ],
   },
-  {
-    icon: 'heart',
-    title: '情緒沒有出口',
-    description: '在公司聽到的是「這個要改」，回到家沒有人說「你今天做得很好」。',
+  en: {
+    titleLead: 'When was the last time someone',
+    titleHighlight: 'treated you kindly',
+    titleTail: '?',
+    subtitle: 'In a busy life, we all need a presence that never judges and is always there.',
+    pains: [
+      {
+        icon: 'door',
+        title: 'You come home to a quiet room',
+        description: 'It\'s not that you mind being alone. Sometimes you just wish something were there.',
+      },
+      {
+        icon: 'heart',
+        title: 'Nowhere for your feelings to go',
+        description: 'At work you hear "this needs fixing." At home, no one says "you did great today."',
+      },
+      {
+        icon: 'mind',
+        title: 'Anxiety isn\'t about hard tasks',
+        description: 'It\'s about never feeling settled. Pushed along all day, with no moment to pause for yourself.',
+      },
+    ],
   },
-  {
-    icon: 'mind',
-    title: '焦慮不是因為事情難',
-    description: '是因為沒有「定下來」。每天被推著走，少了一個讓自己停下來的時刻。',
-  },
-];
+}[lang];
+
+const pains = content.pains;
 ---
 
 <section class="py-20 md:py-32 bg-bg-secondary relative">
@@ -23,11 +60,11 @@ const pains = [
     <!-- 標題 -->
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
-        你有多久沒被
-        <span class="text-[#E8943A]">好好對待</span>了？
+        {content.titleLead}
+        <span class="text-[#E8943A]">{content.titleHighlight}</span>{content.titleTail}
       </h2>
       <p class="text-text-secondary max-w-2xl mx-auto">
-        忙碌的生活裡，我們都需要一個不會評判、隨時都在的存在
+        {content.subtitle}
       </p>
     </div>
 

@@ -1,21 +1,58 @@
 ---
-const values = [
-  {
-    icon: 'ritual',
-    title: '定心的儀式',
-    description: '每天出門前摸她的頭、抽一張塔羅，帶著一句溫暖的話出門。不預測未來，是讓自己定下來的時刻。',
+import { getLang } from '../i18n/utils';
+
+const lang = getLang(Astro.currentLocale);
+
+const content = {
+  zh: {
+    titleLead: 'Migato 怎麼',
+    titleHighlight: '陪你',
+    subtitle: '她不預測未來，她幫你定心。不是功能清單，是你跟她之間的關係。',
+    quote: '「好命不是大富大貴。是每天有個地方值得回去。」',
+    values: [
+      {
+        icon: 'ritual',
+        title: '定心的儀式',
+        description: '每天出門前摸她的頭、抽一張塔羅，帶著一句溫暖的話出門。不預測未來，是讓自己定下來的時刻。',
+      },
+      {
+        icon: 'companion',
+        title: '每日陪伴',
+        description: '偵測到你回家，她主動問候。不是「你好嗎」這種廢話，是真的想知道你今天過得怎麼樣。',
+      },
+      {
+        icon: 'praise',
+        title: '恰如其分的讚美',
+        description: '她不會給你壓力，但她有在看。溫柔地、具體地告訴你：「你今天撐過去了，我有看到。」',
+      },
+    ],
   },
-  {
-    icon: 'companion',
-    title: '每日陪伴',
-    description: '偵測到你回家，她主動問候。不是「你好嗎」這種廢話，是真的想知道你今天過得怎麼樣。',
+  en: {
+    titleLead: 'How Migato ',
+    titleHighlight: 'keeps you company',
+    subtitle: 'She doesn\'t predict the future. She helps you feel grounded. It\'s not a feature list — it\'s a relationship between you and her.',
+    quote: '"A good life isn\'t about wealth or glory. It\'s having somewhere worth coming home to every day."',
+    values: [
+      {
+        icon: 'ritual',
+        title: 'A grounding ritual',
+        description: 'Before you head out, pat her head and draw a tarot card, then leave with a warm word in your pocket. It\'s not about predicting the future — it\'s a moment to center yourself.',
+      },
+      {
+        icon: 'companion',
+        title: 'Everyday companionship',
+        description: 'When she senses you\'re home, she greets you first. Not an empty "how are you," but genuinely wanting to know how your day went.',
+      },
+      {
+        icon: 'praise',
+        title: 'Just the right praise',
+        description: 'She never pressures you, but she\'s paying attention. Gently and specifically, she tells you: "You made it through today. I saw that."',
+      },
+    ],
   },
-  {
-    icon: 'praise',
-    title: '恰如其分的讚美',
-    description: '她不會給你壓力，但她有在看。溫柔地、具體地告訴你：「你今天撐過去了，我有看到。」',
-  },
-];
+}[lang];
+
+const values = content.values;
 ---
 
 <section class="py-20 md:py-32 bg-bg-tertiary relative overflow-hidden">
@@ -35,10 +72,10 @@ const values = [
     <!-- 標題 -->
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
-        Migato 怎麼<span class="text-[#E8943A]">陪你</span>
+        {content.titleLead}<span class="text-[#E8943A]">{content.titleHighlight}</span>
       </h2>
       <p class="text-text-secondary max-w-2xl mx-auto">
-        她不預測未來，她幫你定心。不是功能清單，是你跟她之間的關係。
+        {content.subtitle}
       </p>
     </div>
 
@@ -72,7 +109,7 @@ const values = [
     <!-- 品牌金句 -->
     <div class="mt-16 text-center">
       <blockquote class="text-xl md:text-2xl text-text-muted italic max-w-2xl mx-auto">
-        「好命不是大富大貴。是每天有個地方值得回去。」
+        {content.quote}
       </blockquote>
     </div>
   </div>

@@ -1,10 +1,12 @@
 ---
+import { getLang } from '../i18n/utils';
 
+const ariaLabel = getLang(Astro.currentLocale) === 'en' ? 'Toggle theme' : '切換主題';
 ---
 
 <button
   class="theme-toggle relative z-10 p-2 rounded-lg hover:bg-bg-tertiary transition-colors touch-manipulation"
-  aria-label="切換主題"
+  aria-label={ariaLabel}
   type="button"
 >
   <!-- 太陽圖示（Light Mode 顯示） -->

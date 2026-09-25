@@ -1,7 +1,28 @@
 ---
+import { getLang, localizePath, lineStickerUrl } from '../i18n/utils';
+
+const lang = getLang(Astro.currentLocale);
+
+const content = {
+  zh: {
+    title: '帶牠回家，好運進門',
+    primaryLabel: '認識 Migato',
+    contact: '聯繫我們',
+    stickerIntro: '想先感受 Migato 的魅力？',
+    stickerLink: 'LINE 貼圖已上架 NT$30 →',
+  },
+  en: {
+    title: 'Bring her home, let good luck in',
+    primaryLabel: 'Meet Migato',
+    contact: 'Contact Us',
+    stickerIntro: 'Want a first taste of Migato\'s charm?',
+    stickerLink: 'LINE stickers now available →',
+  },
+}[lang];
+
 const {
-  primaryLabel = '認識 Migato',
-  primaryHref = '/products/migato',
+  primaryLabel = content.primaryLabel,
+  primaryHref = localizePath('/products/migato', lang),
   primaryExternal = false,
 } = Astro.props;
 ---
@@ -19,7 +40,7 @@ const {
 
   <div class="relative z-10 max-w-3xl mx-auto px-4 text-center">
     <h2 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary">
-      帶牠回家，好運進門
+      {content.title}
     </h2>
     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
       <a
@@ -30,21 +51,21 @@ const {
         {primaryLabel}
       </a>
       <a
-        href="/contact"
+        href={localizePath('/contact', lang)}
         class="cta-button-secondary inline-block px-10 py-4 font-semibold text-lg rounded-full transition-all"
       >
-        聯繫我們
+        {content.contact}
       </a>
     </div>
     <p class="text-text-secondary text-sm">
-      想先感受 Migato 的魅力？
+      {content.stickerIntro}
       <a
-        href="https://store.line.me/stickershop/product/33243782/zh-Hant"
+        href={lineStickerUrl[lang]}
         target="_blank"
         rel="noopener noreferrer"
         class="text-[#06C755] hover:underline font-medium"
       >
-        LINE 貼圖已上架 NT$30 →
+        {content.stickerLink}
       </a>
     </p>
   </div>

@@ -1,17 +1,43 @@
 ---
+import { getLang, localizePath, lineStickerUrl } from '../i18n/utils';
+
+const lang = getLang(Astro.currentLocale);
 const currentYear = new Date().getFullYear();
+
+const content = {
+  zh: {
+    tagline: '用 AI 簡化工作的繁瑣，讓 AI 處理瑣事，你專注重要的事。',
+    productsTitle: '產品',
+    companyTitle: '公司',
+    sticker: 'LINE 貼圖',
+    about: '關於我們',
+    contact: '聯繫我們',
+    blog: '部落格',
+    copyright: '星智未來 AI Dream',
+  },
+  en: {
+    tagline: 'Let AI handle the busywork, so you can focus on what matters.',
+    productsTitle: 'Products',
+    companyTitle: 'Company',
+    sticker: 'LINE Stickers',
+    about: 'About',
+    contact: 'Contact',
+    blog: 'Blog',
+    copyright: 'AI Dream',
+  },
+}[lang];
 
 const links = {
   products: [
-    { label: 'Migato', href: '/products/migato' },
-    { label: 'LINE 貼圖', href: 'https://store.line.me/stickershop/product/33243782/zh-Hant', external: true },
-    { label: 'ContraX', href: '/products/contrax' },
-    { label: 'MemoBot', href: '/products/memobot' },
+    { label: 'Migato', href: localizePath('/products/migato', lang) },
+    { label: content.sticker, href: lineStickerUrl[lang], external: true },
+    { label: 'ContraX', href: localizePath('/products/contrax', lang) },
+    { label: 'MemoBot', href: localizePath('/products/memobot', lang) },
   ],
   company: [
-    { label: '關於我們', href: '/about' },
-    { label: '聯繫我們', href: '/contact' },
-    { label: '部落格', href: 'https://blog.aidream.com.tw', external: true },
+    { label: content.about, href: localizePath('/about', lang) },
+    { label: content.contact, href: localizePath('/contact', lang) },
+    { label: content.blog, href: 'https://blog.aidream.com.tw', external: true },
   ],
 };
 ---
@@ -21,17 +47,17 @@ const links = {
     <div class="grid md:grid-cols-4 gap-8 md:gap-12">
       <!-- 品牌資訊 -->
       <div class="md:col-span-2">
-        <a href="/" class="text-2xl font-bold text-text-primary hover:text-primary transition-colors">
+        <a href={localizePath('/', lang)} class="text-2xl font-bold text-text-primary hover:text-primary transition-colors">
           AI Dream
         </a>
         <p class="mt-4 text-text-secondary max-w-sm">
-          用 AI 簡化工作的繁瑣，讓 AI 處理瑣事，你專注重要的事。
+          {content.tagline}
         </p>
       </div>
 
       <!-- 產品連結 -->
       <div>
-        <h4 class="font-semibold mb-4 text-text-primary">產品</h4>
+        <h4 class="font-semibold mb-4 text-text-primary">{content.productsTitle}</h4>
         <ul class="space-y-3">
           {links.products.map(link => (
             <li>
@@ -50,7 +76,7 @@ const links = {
 
       <!-- 公司連結 -->
       <div>
-        <h4 class="font-semibold mb-4 text-text-primary">公司</h4>
+        <h4 class="font-semibold mb-4 text-text-primary">{content.companyTitle}</h4>
         <ul class="space-y-3">
           {links.company.map(link => (
             <li>
@@ -70,7 +96,7 @@ const links = {
 
     <!-- 版權聲明 -->
     <div class="mt-12 pt-8 border-t border-border text-center text-text-muted text-sm">
-      <p>&copy; {currentYear} 星智未來 AI Dream. All rights reserved.</p>
+      <p>&copy; {currentYear} {content.copyright}. All rights reserved.</p>
     </div>
   </div>
 </footer>

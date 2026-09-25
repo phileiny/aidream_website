@@ -1,30 +1,54 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import { getLang, localizePath, getAlternatePath } from '../i18n/utils';
+
+const lang = getLang(Astro.currentLocale);
+
+const content = {
+  zh: {
+    nav: { products: '產品', works: '作品', blog: '部落格', about: '關於我們', contact: '聯繫我們' },
+    logoAlt: '星智未來 AI Dream',
+    cta: '立即諮詢',
+    openMenu: '開啟選單',
+    switchLabel: 'EN',
+    switchAria: 'Switch to English',
+  },
+  en: {
+    nav: { products: 'Products', works: 'Works', blog: 'Blog', about: 'About', contact: 'Contact' },
+    logoAlt: 'AI Dream',
+    cta: 'Get in Touch',
+    openMenu: 'Open menu',
+    switchLabel: '中文',
+    switchAria: '切換至中文',
+  },
+}[lang];
 
 const navLinks = [
-  { href: '/products', label: '產品' },
-  { href: '/works', label: '作品' },
-  { href: 'https://blog.aidream.com.tw', label: '部落格', external: true },
-  { href: '/about', label: '關於我們' },
-  { href: '/contact', label: '聯繫我們' },
+  { href: localizePath('/products', lang), label: content.nav.products },
+  { href: localizePath('/works', lang), label: content.nav.works },
+  { href: 'https://blog.aidream.com.tw', label: content.nav.blog, external: true },
+  { href: localizePath('/about', lang), label: content.nav.about },
+  { href: localizePath('/contact', lang), label: content.nav.contact },
 ];
+
+const switchHref = getAlternatePath(Astro.url.pathname, lang === 'en' ? 'zh' : 'en');
 ---
 
 <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-bg-primary/80 backdrop-blur-md border-b border-border">
   <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 md:h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center group logo-wrapper">
+      <a href={localizePath('/', lang)} class="flex items-center group logo-wrapper">
         <!-- Light Mode Logo -->
         <img
           src="/images/logo_white.png"
-          alt="星智未來 AI Dream"
+          alt={content.logoAlt}
           class="h-8 md:h-10 w-auto logo-light"
         />
         <!-- Dark Mode Logo -->
         <img
           src="/images/logo_black.png"
-          alt="星智未來 AI Dream"
+          alt={content.logoAlt}
           class="h-8 md:h-10 w-auto logo-dark hidden"
         />
       </a>
@@ -42,25 +66,43 @@ const navLinks = [
           </a>
         ))}
 
+        <!-- Language Switch -->
+        <a
+          href={switchHref}
+          hreflang={lang === 'en' ? 'zh-TW' : 'en'}
+          aria-label={content.switchAria}
+          class="text-text-secondary hover:text-text-primary transition-colors font-medium"
+        >
+          {content.switchLabel}
+        </a>
+
         <!-- Theme Toggle -->
         <ThemeToggle />
 
         <!-- CTA Button -->
         <a
-          href="/contact"
+          href={localizePath('/contact', lang)}
           class="px-5 py-2.5 bg-primary hover:bg-primary-dark text-white font-medium rounded-lg transition-all shadow-sm hover:shadow-md"
         >
-          立即諮詢
+          {content.cta}
         </a>
       </div>
 
       <!-- Mobile: Theme Toggle + Menu Button -->
       <div class="flex items-center gap-2 md:hidden">
+        <a
+          href={switchHref}
+          hreflang={lang === 'en' ? 'zh-TW' : 'en'}
+          aria-label={content.switchAria}
+          class="p-2 text-text-secondary hover:text-text-primary transition-colors font-medium text-sm"
+        >
+          {content.switchLabel}
+        </a>
         <ThemeToggle />
         <button
           id="mobile-menu-btn"
           class="p-2 text-text-primary"
-          aria-label="開啟選單"
+          aria-label={content.openMenu}
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -83,10 +125,10 @@ const navLinks = [
           </a>
         ))}
         <a
-          href="/contact"
+          href={localizePath('/contact', lang)}
           class="px-5 py-2.5 bg-primary hover:bg-primary-dark text-white font-medium rounded-lg text-center transition-all"
         >
-          立即諮詢
+          {content.cta}
         </a>
       </div>
     </div>

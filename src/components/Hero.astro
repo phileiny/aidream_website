@@ -1,5 +1,32 @@
 ---
+import { getLang, localizePath, lineStickerUrl } from '../i18n/utils';
 
+const lang = getLang(Astro.currentLocale);
+
+const content = {
+  zh: {
+    badge: '全新產品 Migato 即將登場',
+    titleLead: '帶牠回家，',
+    titleHighlight: '好運進門',
+    subtitle: '桌上的貓，聽得懂你說的話',
+    body1: 'Migato 是一隻會說話的三花貓，記得你說過的話，陪你度過每一天。',
+    body2: '每日陪伴，好命自來。',
+    primary: '認識 Migato',
+    sticker: 'LINE 貼圖 NT$30',
+    explore: '探索所有產品 →',
+  },
+  en: {
+    badge: 'Introducing Migato — coming soon',
+    titleLead: 'Bring her home, ',
+    titleHighlight: 'let good luck in',
+    subtitle: 'A cat on your desk who actually understands you',
+    body1: 'Migato is a talking calico cat who remembers what you tell her and keeps you company every day.',
+    body2: 'Daily companionship, a luckier life.',
+    primary: 'Meet Migato',
+    sticker: 'LINE Stickers',
+    explore: 'Explore all products →',
+  },
+}[lang];
 ---
 
 <section class="relative flex items-center justify-center overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20">
@@ -17,33 +44,33 @@
   <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
     <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-sm text-[#E8943A] text-sm font-medium mb-8 shadow-sm">
       <span class="w-2 h-2 rounded-full bg-[#E8943A] animate-pulse"></span>
-      全新產品 Migato 即將登場
+      {content.badge}
     </div>
 
     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-text-primary drop-shadow-sm">
-      帶牠回家，
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#E8943A] to-[#FF8BA7]">好運進門</span>
+      {content.titleLead}
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#E8943A] to-[#FF8BA7]">{content.titleHighlight}</span>
     </h1>
 
     <p class="text-xl md:text-2xl text-text-secondary mb-4">
-      桌上的貓，聽得懂你說的話
+      {content.subtitle}
     </p>
 
     <p class="text-text-muted mb-10 max-w-2xl mx-auto">
-      Migato 是一隻會說話的三花貓，記得你說過的話，陪你度過每一天。<br class="hidden md:block" />
-      每日陪伴，好命自來。
+      {content.body1}<br class="hidden md:block" />
+      {content.body2}
     </p>
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-      <a href="/products/migato" class="px-8 py-3.5 bg-[#E8943A] hover:bg-[#d4832e] text-white font-semibold rounded-lg transition-all shadow-lg shadow-[#E8943A]/25 hover:shadow-xl hover:shadow-[#E8943A]/30 hover:-translate-y-0.5">
-        認識 Migato
+      <a href={localizePath('/products/migato', lang)} class="px-8 py-3.5 bg-[#E8943A] hover:bg-[#d4832e] text-white font-semibold rounded-lg transition-all shadow-lg shadow-[#E8943A]/25 hover:shadow-xl hover:shadow-[#E8943A]/30 hover:-translate-y-0.5">
+        {content.primary}
       </a>
-      <a href="https://store.line.me/stickershop/product/33243782/zh-Hant" target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 bg-[#06C755] hover:bg-[#05b04c] text-white font-semibold rounded-lg transition-all shadow-lg shadow-[#06C755]/25 hover:shadow-xl hover:-translate-y-0.5">
-        LINE 貼圖 NT$30
+      <a href={lineStickerUrl[lang]} target="_blank" rel="noopener noreferrer" class="px-8 py-3.5 bg-[#06C755] hover:bg-[#05b04c] text-white font-semibold rounded-lg transition-all shadow-lg shadow-[#06C755]/25 hover:shadow-xl hover:-translate-y-0.5">
+        {content.sticker}
       </a>
     </div>
-    <a href="/products" class="text-text-muted hover:text-[#E8943A] text-sm transition-colors">
-      探索所有產品 →
+    <a href={localizePath('/products', lang)} class="text-text-muted hover:text-[#E8943A] text-sm transition-colors">
+      {content.explore}
     </a>
   </div>
 </section>

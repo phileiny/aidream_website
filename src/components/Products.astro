@@ -1,13 +1,40 @@
 ---
+import { getLang, localizePath } from '../i18n/utils';
+
+const lang = getLang(Astro.currentLocale);
+
+const content = {
+  zh: {
+    titleLead: '我們的',
+    titleHighlight: '產品',
+    subtitle: '帶牠回家，好運進門。每日陪伴，好命自來。',
+    learnMore: '了解更多',
+    nickname: '米果',
+    tagline: '台灣第一隻 AI 塔羅陪伴貓',
+    description: '一隻有名字、有個性、有來歷的三花貓。每天為你抽一張塔羅，帶著定心出門；晚上回家，她已經在等你了。',
+    tags: ['AI 塔羅陪伴貓', '台灣原創 IP', '療癒系'],
+  },
+  en: {
+    titleLead: 'Our ',
+    titleHighlight: 'Products',
+    subtitle: 'Bring her home, let good luck in. Daily companionship, a luckier life.',
+    learnMore: 'Learn more',
+    nickname: '',
+    tagline: 'Taiwan\'s first AI tarot companion cat',
+    description: 'A calico cat with a name, a personality, and a story. Each morning she draws a tarot card to send you off feeling grounded; each evening, she\'s already waiting when you get home.',
+    tags: ['AI Tarot Companion', 'Original Taiwanese IP', 'Comforting'],
+  },
+}[lang];
+
 const product = {
   id: 'migato',
   name: 'Migato',
-  nickname: '米果',
-  tagline: '台灣第一隻 AI 塔羅陪伴貓',
-  description: '一隻有名字、有個性、有來歷的三花貓。每天為你抽一張塔羅，帶著定心出門；晚上回家，她已經在等你了。',
-  tags: ['AI 塔羅陪伴貓', '台灣原創 IP', '療癒系'],
+  nickname: content.nickname,
+  tagline: content.tagline,
+  description: content.description,
+  tags: content.tags,
   image: '/images/products/migato.png',
-  href: '/products/migato',
+  href: localizePath('/products/migato', lang),
 };
 ---
 
@@ -16,10 +43,10 @@ const product = {
     <!-- 標題 -->
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
-        我們的<span class="text-[#E8943A]">產品</span>
+        {content.titleLead}<span class="text-[#E8943A]">{content.titleHighlight}</span>
       </h2>
       <p class="text-text-secondary max-w-2xl mx-auto">
-        帶牠回家，好運進門。每日陪伴，好命自來。
+        {content.subtitle}
       </p>
     </div>
 
@@ -68,7 +95,7 @@ const product = {
 
           <!-- 了解更多 -->
           <div class="flex items-center text-[#E8943A] group-hover:text-[#d4832e] transition-colors text-lg font-medium">
-            <span>了解更多</span>
+            <span>{content.learnMore}</span>
             <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
