@@ -13,6 +13,7 @@ const content = {
     tagSeparator: '｜',
     makingLabel: '製作時間：',
     resultLabel: '成效',
+    demoLabel: '示範作品',
     github: '我們把 AI 影片的製作方法整理成公開技術文件，於 GitHub 獲得 169 位開發者收藏',
     ctaTitle: '您的第一支影片，我們可以一起想',
     ctaBody: '不必一次押大。挑一條產品線或一個主題，試行一個月，用數據決定要不要繼續。',
@@ -98,6 +99,22 @@ const content = {
           '琦琦聞得到別人聞不到的氣味。醫生說那叫幻嗅，她知道那是另一個世界傳來的訊息。台灣原創的 AI 懸疑短劇。',
         ],
       },
+      {
+        number: '作品六',
+        title: '武俠動作示範〈一刀〉',
+        videoId: '0EpMGEa70Wk',
+        vertical: false,
+        demo: true,
+        tags: [
+          { label: '類型', value: '武俠／動作' },
+          { label: '用途', value: '類型示範、IP 開發' },
+          { label: '規格', value: '24 秒．橫式 1376×768' },
+        ],
+        paragraphs: [
+          '黃沙、逆光、兩人對峙。「你看見刀的時候，已經晚了。」',
+          '動作戲是 AI 影片最難的一塊：模型做不出接觸的因果，刀碰不到刀。這支片的做法是不拍接觸，只拍前後——越肩構圖遮住接觸點，情緒交給眼神特寫，結果留給背影與留白。',
+        ],
+      },
     ],
   },
   en: {
@@ -109,6 +126,7 @@ const content = {
     tagSeparator: ' | ',
     makingLabel: 'Production time: ',
     resultLabel: 'Results',
+    demoLabel: 'Demo',
     github: 'We\'ve published our AI video production method as open technical documentation, starred by 169 developers on GitHub',
     ctaTitle: 'Let\'s plan your first video together',
     ctaBody: 'No need to bet big up front. Pick one product line or theme, run a one-month pilot, and let the data decide whether to keep going.',
@@ -194,6 +212,22 @@ const content = {
           'Chi-Chi can smell things no one else can. Her doctor calls it phantosmia; she knows they\'re messages from another world. An original Taiwanese AI mystery short drama.',
         ],
       },
+      {
+        number: 'Work 06',
+        title: 'Wuxia Action Demo: One Blade',
+        videoId: '0EpMGEa70Wk',
+        vertical: false,
+        demo: true,
+        tags: [
+          { label: 'Genre', value: 'Wuxia / Action' },
+          { label: 'Purpose', value: 'Genre showcase, IP development' },
+          { label: 'Format', value: '24 sec · Horizontal 1376×768' },
+        ],
+        paragraphs: [
+          'Yellow sand, backlight, two fighters facing off. "By the time you see the blade, it\'s already too late."',
+          'Action is the hardest thing to pull off in AI video: models can\'t render the cause and effect of contact — blades never quite meet. So this piece doesn\'t film the contact, only what comes before and after. Over-the-shoulder framing hides the point of impact, close-ups on the eyes carry the emotion, and the outcome is left to a figure walking away and the silence that follows.',
+        ],
+      },
     ],
   },
 }[lang];
@@ -255,7 +289,14 @@ const works = content.works;
 
           <!-- 文字 -->
           <div class={index % 2 === 1 ? 'md:order-1' : ''}>
-            <p class="text-primary font-semibold mb-2">{work.number}</p>
+            <p class="text-primary font-semibold mb-2">
+              {work.number}
+              {work.demo && (
+                <span class="ml-2 px-3 py-1 text-sm font-medium rounded-full bg-primary/5 text-primary/70 dark:bg-primary/10">
+                  {content.demoLabel}
+                </span>
+              )}
+            </p>
             <h2 class="text-2xl md:text-3xl font-bold mb-5 text-text-primary">{work.title}</h2>
 
             <ul class="flex flex-wrap gap-2 mb-6">
