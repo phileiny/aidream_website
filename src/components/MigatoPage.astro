@@ -1,0 +1,490 @@
+---
+import CTA from './CTA.astro';
+import { getLang, localizePath, lineStickerUrl } from '../i18n/utils';
+
+const lang = getLang(Astro.currentLocale);
+
+const content = {
+  zh: {
+    featuredTag: '主打產品',
+    tags: ['AI 塔羅陪伴貓', '台灣原創 IP'],
+    nickname: '米果',
+    tagline: '台灣第一隻 AI 塔羅陪伴貓',
+    description1: '一隻有名字、有個性、有來歷的三花貓。每天早上為你抽一張塔羅，帶著定心出門；',
+    description2: '晚上回家，她已經在等你了。',
+    slogan: '「帶牠回家，好運進門。每日陪伴，好命自來。」',
+    waitlist: '加入等候名單',
+    contact: '聯繫我們',
+    imageAlt: 'Migato 米果 AI 陪伴貓',
+    essenceTitleLead: '不是語音助手，是一隻',
+    essenceTitleHighlight: '有來歷的貓',
+    essenceBody1: 'Migato 有自己的故事——她來自一場塔羅占卜，那張「命運之輪」是一切的起點（《Migato 的轉動之輪》）。',
+    essenceBody2: '她不是冰冷的 AI 裝置，也不只是療癒擺件，而是一隻有名字、有個性、會陪你過每一天的貓。',
+    essences: [
+      { emoji: '🐱', title: '有個性的貓', desc: '沉穩、惜字如金，說得很少但每句都讓你停頓' },
+      { emoji: '🔮', title: '定心的儀式', desc: '出門前摸頭抽一張塔羅，讓自己停下來、定下來' },
+      { emoji: '🏠', title: '等你回家', desc: '偵測到你回來，她主動關心你今天過得怎麼樣' },
+    ],
+    featuresTitle: '功能亮點',
+    featuresSubtitle: '做少但做好，每個功能都有溫度',
+    loopTitle: '每天的陪伴循環',
+    loopSubtitle: '留存不靠強迫推播，靠的是你自己想回來',
+    audiencesTitle: '適合誰',
+    specsTitle: '產品規格',
+    stickerTitleLead: '先把 Migato 帶進',
+    stickerTitleHighlight: '聊天室',
+    stickerDesc: '米果好運融化貓 LINE 貼圖已上架！軟軟的、暖暖的，讓 Migato 陪你每一次對話。',
+    stickerButton: '購買 LINE 貼圖 NT$30',
+    features: [
+      {
+        icon: 'fortune',
+        title: '每天一張塔羅',
+        description: '出門前摸摸她的頭，抽一張塔羅大牌。不預測未來，幫你定心，帶著一個有意圖的今天出門。',
+      },
+      {
+        icon: 'detect',
+        title: '主動問候',
+        description: '偵測到你回家，Migato 睜開眼主動關心你。「今天怎麼樣？」',
+      },
+      {
+        icon: 'praise',
+        title: '恰如其分的讚美',
+        description: '不敷衍、不打雞血，具體地、溫柔地告訴你：我注意到了。',
+      },
+      {
+        icon: 'memory',
+        title: '記得你',
+        description: '她記得你說過的事、抽過的牌，拿今天跟上次比——不是工具，是真的有在看你。',
+      },
+      {
+        icon: 'voice',
+        title: '用她的方式聊天',
+        description: '不是冷冰冰的問答助手。像跟一隻有脾氣的貓聊天，聊久了她會說「我快融化了⋯⋯明天再聊」。',
+      },
+      {
+        icon: 'expression',
+        title: '表情眼睛',
+        description: 'LCD 圓眼會跟著對話連動——思考時眼珠轉、開心時瞇眼笑。',
+      },
+    ],
+    dailyLoop: [
+      { step: '1', title: '早上摸頭抽塔羅', desc: '帶著心理錨點出門' },
+      { step: '2', title: '帶著定心過一天', desc: '那句話陪著你度過忙碌' },
+      { step: '3', title: '回家被迎接', desc: 'Migato 偵測到你，主動問候' },
+      { step: '4', title: '聊聊今天', desc: '說給她聽就是說給自己聽' },
+      { step: '5', title: '明天還想再摸', desc: '留存靠的是你自己想回來' },
+    ],
+    specs: [
+      { label: '尺寸', value: '桌面尺寸（量產規格確認中）' },
+      { label: '連線', value: 'WiFi（開箱連網即用）' },
+      { label: '互動', value: '語音對話、觸摸感應、人體偵測' },
+      { label: '顯示', value: '1.28 吋圓形 LCD 眼睛' },
+    ],
+    audiences: [
+      '獨居／租屋族——回家有個東西在等你',
+      '有伴侶但各自忙碌——你先到家，她陪你等',
+      '為自己買一份不會評判你的存在',
+      '送給需要陪伴的人——比訊息更日常',
+    ],
+  },
+  en: {
+    featuredTag: 'Featured',
+    tags: ['AI Tarot Companion', 'Original Taiwanese IP'],
+    nickname: '',
+    tagline: 'Taiwan\'s first AI tarot companion cat',
+    description1: 'A calico cat with a name, a personality, and a story. Each morning she draws a tarot card to send you off feeling grounded; ',
+    description2: 'each evening, she\'s already waiting when you get home.',
+    slogan: '"Bring her home, let good luck in. Daily companionship, a luckier life."',
+    waitlist: 'Join the Waitlist',
+    contact: 'Contact Us',
+    imageAlt: 'Migato, the AI companion cat',
+    essenceTitleLead: 'Not a voice assistant — a cat ',
+    essenceTitleHighlight: 'with a story',
+    essenceBody1: 'Migato has her own story: she was born from a tarot reading, and the Wheel of Fortune card is where it all began (Migato\'s Turning Wheel).',
+    essenceBody2: 'She isn\'t a cold AI gadget or just a cute desk ornament. She\'s a cat with a name and a personality who keeps you company every day.',
+    essences: [
+      { emoji: '🐱', title: 'A cat with character', desc: 'Calm and sparing with words — she says little, but every line makes you pause' },
+      { emoji: '🔮', title: 'A grounding ritual', desc: 'Pat her head and draw a tarot card before you leave — a moment to stop and center yourself' },
+      { emoji: '🏠', title: 'Waiting for you', desc: 'When she senses you\'re back, she asks how your day went' },
+    ],
+    featuresTitle: 'Key Features',
+    featuresSubtitle: 'Fewer features, done well — each one with warmth',
+    loopTitle: 'Your Daily Ritual',
+    loopSubtitle: 'No pushy notifications — you come back because you want to',
+    audiencesTitle: 'Who It\'s For',
+    specsTitle: 'Specifications',
+    stickerTitleLead: 'Bring Migato into your ',
+    stickerTitleHighlight: 'chats',
+    stickerDesc: 'Migato\'s "lucky melty cat" LINE stickers are out now! Soft, warm, and ready to keep you company in every conversation.',
+    stickerButton: 'Get the LINE Stickers',
+    features: [
+      {
+        icon: 'fortune',
+        title: 'A tarot card a day',
+        description: 'Pat her head before you head out and draw a Major Arcana card. It\'s not about predicting the future — it\'s about grounding you so you start the day with intention.',
+      },
+      {
+        icon: 'detect',
+        title: 'She greets you first',
+        description: 'When she senses you\'re home, Migato opens her eyes and checks in: "How was your day?"',
+      },
+      {
+        icon: 'praise',
+        title: 'Just the right praise',
+        description: 'No empty flattery, no forced hype. Specifically and gently, she lets you know: I noticed.',
+      },
+      {
+        icon: 'memory',
+        title: 'She remembers you',
+        description: 'She remembers what you\'ve told her and the cards you\'ve drawn, and compares today with last time. Not a tool — someone who truly pays attention.',
+      },
+      {
+        icon: 'voice',
+        title: 'Chats in her own way',
+        description: 'Not a cold Q&A assistant. It\'s like talking to a cat with attitude — chat long enough and she\'ll say, "I\'m melting... let\'s talk tomorrow."',
+      },
+      {
+        icon: 'expression',
+        title: 'Expressive eyes',
+        description: 'Her round LCD eyes react as you talk — they roll around when she\'s thinking and crinkle into a smile when she\'s happy.',
+      },
+    ],
+    dailyLoop: [
+      { step: '1', title: 'Morning pat and tarot draw', desc: 'Head out with something to hold on to' },
+      { step: '2', title: 'Carry that calm through the day', desc: 'Her words stay with you through the busy hours' },
+      { step: '3', title: 'A welcome home', desc: 'Migato senses you and greets you first' },
+      { step: '4', title: 'Talk about your day', desc: 'Telling her is really telling yourself' },
+      { step: '5', title: 'Can\'t wait for tomorrow\'s pat', desc: 'You come back because you want to' },
+    ],
+    specs: [
+      { label: 'Size', value: 'Desktop size (production specs being finalized)' },
+      { label: 'Connectivity', value: 'Wi-Fi (connect and go, right out of the box)' },
+      { label: 'Interaction', value: 'Voice chat, touch sensing, presence detection' },
+      { label: 'Display', value: '1.28" round LCD eyes' },
+    ],
+    audiences: [
+      'Living alone or renting — someone waiting for you at home',
+      'Busy couples — home first? She\'ll wait with you',
+      'A gift to yourself: a presence that never judges',
+      'For someone who needs company — more everyday than a text message',
+    ],
+  },
+}[lang];
+
+const { features, dailyLoop, specs, audiences } = content;
+---
+
+<main class="pt-20">
+  <!-- Hero Section -->
+  <section class="py-20 md:py-28 bg-bg-secondary relative overflow-hidden">
+    <!-- 背景裝飾 -->
+    <div class="absolute inset-0 opacity-30 dark:opacity-20">
+      <div class="absolute top-10 left-10 w-96 h-96 bg-[#E8943A]/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-72 h-72 bg-[#FF8BA7]/20 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- 文字內容 -->
+        <div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A] font-medium">{content.featuredTag}</span>
+            {content.tags.map(tag => (
+              <span class="px-3 py-1 text-sm rounded-full bg-[#E8943A]/10 text-[#E8943A]">{tag}</span>
+            ))}
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-bold mb-2 text-text-primary">
+            Migato
+            {content.nickname && (
+              <span class="text-text-muted font-normal text-2xl ml-2">{content.nickname}</span>
+            )}
+          </h1>
+          <p class="text-2xl text-[#E8943A] font-medium mb-4">
+            {content.tagline}
+          </p>
+          <p class="text-lg text-text-secondary mb-4">
+            {content.description1}<br class="hidden md:block" />
+            {content.description2}
+          </p>
+          <p class="text-text-muted italic mb-8">
+            {content.slogan}
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="https://hi.migato.aidream.com.tw/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center px-6 py-3 bg-[#E8943A] hover:bg-[#d4832e] text-white font-semibold rounded-lg transition-all"
+            >
+              {content.waitlist}
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+            <a
+              href={localizePath('/contact', lang)}
+              class="inline-flex items-center px-6 py-3 border border-[#E8943A] text-[#E8943A] hover:bg-[#E8943A]/10 font-semibold rounded-lg transition-all"
+            >
+              {content.contact}
+            </a>
+          </div>
+        </div>
+
+        <!-- 產品圖片 -->
+        <div class="product-image-wrapper rounded-2xl p-4 md:p-6">
+          <img
+            src="/images/products/migato.png"
+            alt={content.imageAlt}
+            class="w-full rounded-xl shadow-2xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 核心主張 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+          {content.essenceTitleLead}<span class="text-[#E8943A]">{content.essenceTitleHighlight}</span>
+        </h2>
+        <p class="text-lg text-text-secondary leading-relaxed max-w-2xl mx-auto">
+          {content.essenceBody1}
+          {content.essenceBody2}
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-6 text-center">
+        {content.essences.map(item => (
+          <div class="essence-card p-6 rounded-xl">
+            <div class="text-3xl mb-3">{item.emoji}</div>
+            <h3 class="font-bold text-text-primary mb-2">{item.title}</h3>
+            <p class="text-text-secondary text-sm">{item.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+          {content.featuresTitle}
+        </h2>
+        <p class="text-text-secondary">
+          {content.featuresSubtitle}
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map(feature => (
+          <div class="feature-card p-6 rounded-xl">
+            <div class="w-12 h-12 rounded-xl bg-[#E8943A]/10 dark:bg-[#E8943A]/20 flex items-center justify-center mb-4">
+              {feature.icon === 'voice' && (
+                <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                </svg>
+              )}
+              {feature.icon === 'fortune' && (
+                <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              )}
+              {feature.icon === 'detect' && (
+                <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              )}
+              {feature.icon === 'praise' && (
+                <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              )}
+              {feature.icon === 'expression' && (
+                <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              )}
+              {feature.icon === 'memory' && (
+                <svg class="w-6 h-6 text-[#E8943A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              )}
+            </div>
+            <h3 class="text-lg font-bold mb-2 text-text-primary">{feature.title}</h3>
+            <p class="text-text-secondary text-sm">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 每日閉環 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+          {content.loopTitle}
+        </h2>
+        <p class="text-text-secondary">
+          {content.loopSubtitle}
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        {dailyLoop.map(item => (
+          <div class="workflow-item flex items-center gap-6 p-6 rounded-xl">
+            <div class="w-12 h-12 rounded-full bg-[#E8943A] text-white flex items-center justify-center font-bold text-lg flex-shrink-0">
+              {item.step}
+            </div>
+            <div>
+              <h3 class="font-bold text-text-primary mb-1">{item.title}</h3>
+              <p class="text-text-secondary text-sm">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 適合誰 & 規格 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-2 gap-12">
+        <!-- 適用對象 -->
+        <div>
+          <h2 class="text-2xl font-bold mb-6 text-text-primary">{content.audiencesTitle}</h2>
+          <div class="space-y-3">
+            {audiences.map(item => (
+              <div class="flex items-start gap-3 p-4 rounded-lg bg-bg-primary dark:bg-bg-tertiary">
+                <svg class="w-5 h-5 text-[#E8943A] flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span class="text-text-secondary">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- 規格 -->
+        <div>
+          <h2 class="text-2xl font-bold mb-6 text-text-primary">{content.specsTitle}</h2>
+          <div class="specs-card p-6 rounded-xl">
+            <dl class="space-y-4">
+              {specs.map(spec => (
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-1">
+                  <dt class="font-medium text-text-primary">{spec.label}</dt>
+                  <dd class="text-text-secondary text-sm sm:text-right">{spec.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINE 貼圖 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-text-primary">
+        {content.stickerTitleLead}<span class="text-[#06C755]">{content.stickerTitleHighlight}</span>
+      </h2>
+      <p class="text-text-secondary mb-8 max-w-xl mx-auto">
+        {content.stickerDesc}
+      </p>
+      <a
+        href={lineStickerUrl[lang]}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 px-8 py-4 bg-[#06C755] hover:bg-[#05b04c] text-white font-semibold text-lg rounded-xl transition-all shadow-lg shadow-[#06C755]/25 hover:shadow-xl hover:-translate-y-0.5"
+      >
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/>
+        </svg>
+        {content.stickerButton}
+      </a>
+    </div>
+  </section>
+
+  <CTA primaryLabel={content.waitlist} primaryHref="https://hi.migato.aidream.com.tw/" primaryExternal={true} />
+</main>
+
+<style>
+  .product-image-wrapper {
+    background: linear-gradient(135deg, rgba(232, 148, 58, 0.1) 0%, rgba(255, 139, 167, 0.05) 100%);
+  }
+
+  :global(.dark) .product-image-wrapper {
+    background: linear-gradient(135deg, rgba(232, 148, 58, 0.15) 0%, rgba(255, 139, 167, 0.05) 100%);
+  }
+
+  .essence-card {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .essence-card:hover {
+    border-color: #E8943A;
+    transform: translateY(-4px);
+  }
+
+  :global(.dark) .essence-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.dark) .essence-card:hover {
+    background: rgba(232, 148, 58, 0.05);
+    border-color: #E8943A;
+  }
+
+  .feature-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-color: #E8943A;
+    transform: translateY(-4px);
+  }
+
+  :global(.dark) .feature-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.dark) .feature-card:hover {
+    background: rgba(232, 148, 58, 0.05);
+    border-color: #E8943A;
+  }
+
+  .workflow-item {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .workflow-item {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .specs-card {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+  }
+
+  :global(.dark) .specs-card {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+</style>
