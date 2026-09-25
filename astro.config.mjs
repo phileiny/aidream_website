@@ -6,6 +6,10 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://aidream.com.tw',
+  redirects: {
+    // MemoBot 已下架，舊連結導向產品總覽
+    '/products/memobot': '/products',
+  },
   i18n: {
     locales: ['zh', 'en'],
     defaultLocale: 'zh',

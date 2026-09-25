@@ -38,18 +38,6 @@ const content = {
         ],
         tags: ['合約管理', '桌面軟體', 'AI 輔助'],
       },
-      memobot: {
-        nickname: '咩猛',
-        tagline: '你的 AI 行程秘書',
-        description: 'LINE Bot 智能行程助理，用自然語言對話管理行程。像和朋友聊天一樣，輕鬆掌控工作與生活。',
-        features: [
-          { title: '自然語言輸入', desc: '說「下週三下午三點開會」就能建立行程' },
-          { title: '智能提醒', desc: '根據行程類型自動設定合適的提醒時間' },
-          { title: '行程查詢', desc: '問「這週有什麼安排」即可查看行程' },
-          { title: '衝突偵測', desc: '自動檢查時間衝突，避免重複預約' },
-        ],
-        tags: ['行程管理', 'LINE Bot', 'AI 助理'],
-      },
     },
   },
   en: {
@@ -85,18 +73,6 @@ const content = {
         ],
         tags: ['Contract Management', 'Desktop App', 'AI-Assisted'],
       },
-      memobot: {
-        nickname: '',
-        tagline: 'Your AI scheduling assistant',
-        description: 'A smart scheduling assistant on LINE that manages your calendar through natural conversation. Stay on top of work and life as easily as chatting with a friend.',
-        features: [
-          { title: 'Natural language input', desc: 'Say "Meeting next Wednesday at 3 PM" and it\'s on your calendar' },
-          { title: 'Smart reminders', desc: 'Automatically sets the right reminder time based on the event type' },
-          { title: 'Schedule lookup', desc: 'Ask "What\'s on this week?" to see your plans' },
-          { title: 'Conflict detection', desc: 'Automatically checks for time conflicts to prevent double-booking' },
-        ],
-        tags: ['Scheduling', 'LINE Bot', 'AI Assistant'],
-      },
     },
   },
 }[lang];
@@ -117,14 +93,6 @@ const products = [
     image: '/images/products/contraX.png',
     color: 'primary',
     href: localizePath('/products/contrax', lang),
-  },
-  {
-    id: 'memobot',
-    name: 'MemoBot',
-    ...content.products.memobot,
-    image: '/images/products/memobot.png',
-    color: 'accent',
-    href: localizePath('/products/memobot', lang),
   },
 ];
 ---
