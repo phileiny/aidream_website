@@ -1,0 +1,263 @@
+---
+import CTA from './CTA.astro';
+import { getLang, localizePath } from '../i18n/utils';
+
+const lang = getLang(Astro.currentLocale);
+
+const content = {
+  zh: {
+    titleLead: '星智未來的',
+    titleHighlight: 'AI 產品',
+    subtitle: '從桌上的 AI 陪伴貓到工作效率工具，讓 AI 融入你的生活與工作。',
+    customLead: '歡迎',
+    customLink: '提出客製化產品需求',
+    customTail: '',
+    learnMore: '了解更多',
+    products: {
+      migato: {
+        nickname: '米果',
+        tagline: '台灣第一隻 AI 塔羅陪伴貓',
+        description: '一隻有名字、有個性、有來歷的三花貓。每天為你抽一張塔羅，帶著定心出門；晚上回家，她已經在等你了。',
+        features: [
+          { title: '每天一張塔羅', desc: '出門前摸頭抽一張塔羅，帶著定心出門' },
+          { title: '主動問候', desc: '偵測到你回家，她主動關心你今天過得怎麼樣' },
+          { title: '恰如其分的讚美', desc: '不敷衍、不打雞血，溫柔地告訴你：我注意到了' },
+          { title: '記得你', desc: '記得你說過的事、抽過的牌，不是工具，是真的有在看你' },
+        ],
+        tags: ['AI 塔羅陪伴貓', '台灣原創 IP', '療癒系'],
+      },
+      contrax: {
+        nickname: '',
+        tagline: '中小企業的合約管家',
+        description: '專為中小企業設計的合約管理系統，從建立、追蹤、收款到歸檔，一站式管理合約生命週期。',
+        features: [
+          { title: '合約建立', desc: '快速建立各類合約模板，自動填入常用條款' },
+          { title: '進度追蹤', desc: '即時追蹤合約狀態，掌握每一份合約的生命週期' },
+          { title: '收款管理', desc: '自動計算分潤、提醒收款時程，帳務一目了然' },
+          { title: '智能歸檔', desc: 'AI 自動分類歸檔，搜尋秒速找到所需文件' },
+        ],
+        tags: ['合約管理', '桌面軟體', 'AI 輔助'],
+      },
+      memobot: {
+        nickname: '咩猛',
+        tagline: '你的 AI 行程秘書',
+        description: 'LINE Bot 智能行程助理，用自然語言對話管理行程。像和朋友聊天一樣，輕鬆掌控工作與生活。',
+        features: [
+          { title: '自然語言輸入', desc: '說「下週三下午三點開會」就能建立行程' },
+          { title: '智能提醒', desc: '根據行程類型自動設定合適的提醒時間' },
+          { title: '行程查詢', desc: '問「這週有什麼安排」即可查看行程' },
+          { title: '衝突偵測', desc: '自動檢查時間衝突，避免重複預約' },
+        ],
+        tags: ['行程管理', 'LINE Bot', 'AI 助理'],
+      },
+    },
+  },
+  en: {
+    titleLead: 'AI Products',
+    titleHighlight: 'by AI Dream',
+    subtitle: 'From an AI companion cat on your desk to productivity tools — bringing AI into your life and work.',
+    customLead: 'Need something tailored? ',
+    customLink: 'Tell us about your custom product idea',
+    customTail: '.',
+    learnMore: 'Learn more',
+    products: {
+      migato: {
+        nickname: '',
+        tagline: 'Taiwan\'s first AI tarot companion cat',
+        description: 'A calico cat with a name, a personality, and a story. Each morning she draws a tarot card to send you off feeling grounded; each evening, she\'s already waiting when you get home.',
+        features: [
+          { title: 'A tarot card a day', desc: 'Pat her head and draw a card before you leave, and head out feeling grounded' },
+          { title: 'She greets you first', desc: 'When she senses you\'re home, she asks how your day went' },
+          { title: 'Just the right praise', desc: 'No empty flattery, no forced hype — she gently lets you know: I noticed' },
+          { title: 'She remembers you', desc: 'She remembers what you\'ve said and the cards you\'ve drawn. Not a tool — someone who truly pays attention' },
+        ],
+        tags: ['AI Tarot Companion', 'Original Taiwanese IP', 'Comforting'],
+      },
+      contrax: {
+        nickname: '',
+        tagline: 'The contract manager for small businesses',
+        description: 'A contract management system designed for small and medium businesses. Manage the full contract lifecycle — from drafting and tracking to payments and archiving — all in one place.',
+        features: [
+          { title: 'Contract creation', desc: 'Build contract templates fast, with common clauses filled in automatically' },
+          { title: 'Progress tracking', desc: 'Track contract status in real time and stay on top of every contract\'s lifecycle' },
+          { title: 'Payment management', desc: 'Automatic revenue-share calculations and payment reminders keep your books clear' },
+          { title: 'Smart archiving', desc: 'AI sorts and files your documents so you can find anything in seconds' },
+        ],
+        tags: ['Contract Management', 'Desktop App', 'AI-Assisted'],
+      },
+      memobot: {
+        nickname: '',
+        tagline: 'Your AI scheduling assistant',
+        description: 'A smart scheduling assistant on LINE that manages your calendar through natural conversation. Stay on top of work and life as easily as chatting with a friend.',
+        features: [
+          { title: 'Natural language input', desc: 'Say "Meeting next Wednesday at 3 PM" and it\'s on your calendar' },
+          { title: 'Smart reminders', desc: 'Automatically sets the right reminder time based on the event type' },
+          { title: 'Schedule lookup', desc: 'Ask "What\'s on this week?" to see your plans' },
+          { title: 'Conflict detection', desc: 'Automatically checks for time conflicts to prevent double-booking' },
+        ],
+        tags: ['Scheduling', 'LINE Bot', 'AI Assistant'],
+      },
+    },
+  },
+}[lang];
+
+const products = [
+  {
+    id: 'migato',
+    name: 'Migato',
+    ...content.products.migato,
+    image: '/images/products/migato.png',
+    color: 'migato',
+    href: localizePath('/products/migato', lang),
+  },
+  {
+    id: 'contrax',
+    name: 'ContraX',
+    ...content.products.contrax,
+    image: '/images/products/contraX.png',
+    color: 'primary',
+    href: localizePath('/products/contrax', lang),
+  },
+  {
+    id: 'memobot',
+    name: 'MemoBot',
+    ...content.products.memobot,
+    image: '/images/products/memobot.png',
+    color: 'accent',
+    href: localizePath('/products/memobot', lang),
+  },
+];
+---
+
+<main class="pt-20">
+  <!-- Hero Section -->
+  <section class="py-20 md:py-28 bg-bg-secondary relative overflow-hidden">
+    <!-- 背景裝飾 -->
+    <div class="absolute inset-0 opacity-30 dark:opacity-20">
+      <div class="absolute top-20 left-10 w-72 h-72 bg-primary/20 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-10 w-96 h-96 bg-accent/20 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="relative z-10 max-w-4xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-text-primary">
+        {content.titleLead}<br />
+        <span class="text-primary">{content.titleHighlight}</span>
+      </h1>
+      <p class="text-xl text-text-secondary max-w-2xl mx-auto mb-4">
+        {content.subtitle}
+      </p>
+      <p class="text-text-muted">
+        {content.customLead}<a href={localizePath('/contact', lang)} class="text-primary hover:underline">{content.customLink}</a>{content.customTail}
+      </p>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="py-20 md:py-28 bg-bg-primary">
+    <div class="max-w-6xl mx-auto px-4">
+      {products.map((product, index) => (
+        <div class={`product-block flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-12 items-center ${index > 0 ? 'mt-24 md:mt-32' : ''}`}>
+          <!-- 產品視覺 -->
+          <div class="w-full md:w-1/2">
+            <div class={`product-visual rounded-2xl p-4 md:p-6 ${product.color === 'migato' ? 'bg-[#E8943A]/5 dark:bg-[#E8943A]/10' : product.color === 'primary' ? 'bg-primary/5 dark:bg-primary/10' : 'bg-accent/5 dark:bg-accent/10'}`}>
+              <img
+                src={product.image}
+                alt={product.name}
+                class="w-full rounded-xl shadow-lg"
+              />
+            </div>
+          </div>
+
+          <!-- 產品資訊 -->
+          <div class="w-full md:w-1/2">
+            <!-- 標籤 -->
+            <div class="flex flex-wrap gap-2 mb-4">
+              {product.tags.map(tag => (
+                <span class={`px-3 py-1 text-sm rounded-full ${product.color === 'migato' ? 'bg-[#E8943A]/10 text-[#E8943A]' : product.color === 'primary' ? 'bg-primary/10 text-primary' : 'bg-accent/10 text-accent'}`}>
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <!-- 名稱 -->
+            <h2 class="text-3xl md:text-4xl font-bold mb-2 text-text-primary">
+              {product.name}
+              {product.nickname && (
+                <span class="text-text-muted font-normal text-xl ml-2">
+                  {product.nickname}
+                </span>
+              )}
+            </h2>
+
+            <!-- 標語 -->
+            <p class={`text-xl font-medium mb-4 ${product.color === 'migato' ? 'text-[#E8943A]' : product.color === 'primary' ? 'text-primary' : 'text-accent'}`}>
+              {product.tagline}
+            </p>
+
+            <!-- 描述 -->
+            <p class="text-text-secondary mb-8">
+              {product.description}
+            </p>
+
+            <!-- 功能列表 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+              {product.features.map(feature => (
+                <div class="feature-item p-4 rounded-xl bg-bg-secondary dark:bg-bg-tertiary">
+                  <h4 class="font-semibold text-text-primary mb-1">{feature.title}</h4>
+                  <p class="text-sm text-text-secondary">{feature.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            <!-- CTA -->
+            <a
+              href={product.href}
+              class={`inline-flex items-center px-6 py-3 font-semibold rounded-lg transition-all ${
+                product.color === 'migato'
+                  ? 'bg-[#E8943A] hover:bg-[#d4832e] text-white'
+                  : product.color === 'primary'
+                  ? 'bg-primary hover:bg-primary-dark text-white'
+                  : 'bg-accent hover:bg-accent/90 text-gray-900'
+              }`}
+            >
+              {content.learnMore}
+              <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTA />
+</main>
+
+<style>
+  .product-visual {
+    transition: transform 0.3s ease;
+  }
+
+  .product-visual:hover {
+    transform: scale(1.02);
+  }
+
+  .feature-item {
+    border: 1px solid var(--color-border);
+    transition: all 0.2s ease;
+  }
+
+  .feature-item:hover {
+    border-color: var(--color-primary);
+  }
+
+  :global(.dark) .feature-item {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  :global(.dark) .feature-item:hover {
+    border-color: var(--color-primary);
+    background: rgba(107, 127, 255, 0.05);
+  }
+</style>
