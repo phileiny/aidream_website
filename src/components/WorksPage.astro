@@ -23,6 +23,16 @@ const content = {
     qrAria: '加入星智未來 LINE（另開新視窗）',
     qrAlt: '星智未來 LINE QR code',
     qrCaption: '掃描加 LINE',
+    introVideo: {
+      lead: '先花 60 秒，看懂我們怎麼說故事',
+      videoId: '7uYswHenDsA',
+      title: '熊貓逃出動物園，只為了一碗拉麵',
+      tags: [
+        { label: '類型', value: '品牌動畫 MV／服務介紹' },
+        { label: '規格', value: '63 秒．直式 1080×1920．原創歌曲' },
+      ],
+      description: '把《木柵順便傳說》改編成熱血動畫 MV，用一首歌講完故事行銷的四個元素：在地符號、時事、反差、產品就是理由。角色與場景 AI 生圖，動畫以程式逐格渲染，歌曲 AI 生成並逐拍對剪；唯一的寫實畫面是依店內實品生成的拉麵。',
+    },
     works: [
       {
         number: '作品一',
@@ -39,7 +49,7 @@ const content = {
           '一隻大貓熊為了一碗北海道風・奶油牛奶味噌拉麵，從動物園逃了出來。系列目的是建立記憶點，讓來木柵的人想到這家店。',
           '全片 AI 生成，但圍裙上的 logo、牆上的主視覺、那碗拉麵的配料，都以店內實際的樣子為準。',
         ],
-        result: '上架後的第一個週二，該店營業額從前三週平均約 7,500 元提升到 <strong>15,447 元</strong>（店家 POS 數據，單週觀察）。影片觀看 5,423 次。',
+        result: '上架後的週二，營業額約為前三週平均的兩倍（店家 POS 數據；觀察時間還短，持續追蹤中，不全歸因於影片）。零廣告費，只分享到地方社團，三天自然觀看破萬。',
       },
       {
         number: '作品二',
@@ -251,6 +261,34 @@ const works = content.works;
         {content.intro1}<br />
         {content.intro2}
       </p>
+
+      <!-- 開場影片：服務介紹片，不算作品卡；目前只有中文版 -->
+      {'introVideo' in content && (
+        <div class="mt-14">
+          <p class="text-xl md:text-2xl font-semibold mb-6 text-primary">{content.introVideo.lead}</p>
+          <div class="video-frame is-vertical relative overflow-hidden rounded-2xl shadow-xl mx-auto w-full max-w-[360px]">
+            <iframe
+              src={`https://www.youtube.com/embed/${content.introVideo.videoId}`}
+              title={content.introVideo.title}
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              class="absolute inset-0 w-full h-full"
+            ></iframe>
+          </div>
+          <h2 class="mt-8 text-2xl md:text-3xl font-bold mb-5 text-text-primary">{content.introVideo.title}</h2>
+          <ul class="flex flex-wrap justify-center gap-2 mb-6">
+            {content.introVideo.tags.map(tag => (
+              <li class="px-3 py-1 text-base rounded-full bg-primary/10 text-primary dark:bg-primary/20">
+                <span class="font-semibold">{tag.label}</span>{content.tagSeparator}{tag.value}
+              </li>
+            ))}
+          </ul>
+          <p class="max-w-2xl mx-auto text-left text-[17px] md:text-lg leading-[1.8] text-text-primary">
+            {content.introVideo.description}
+          </p>
+        </div>
+      )}
     </div>
   </section>
 
