@@ -146,6 +146,16 @@ const content = {
     qrAria: 'Add AI Dream on LINE (opens in a new window)',
     qrAlt: 'AI Dream LINE QR code',
     qrCaption: 'Scan to add us on LINE',
+    introVideo: {
+      lead: 'Take 60 seconds to see how we tell stories',
+      videoId: '7uYswHenDsA',
+      title: 'A Panda Escapes the Zoo — All for a Bowl of Ramen',
+      tags: [
+        { label: 'Genre', value: 'Animated brand MV / Service intro' },
+        { label: 'Format', value: '63 sec · Vertical 1080×1920 · Original song' },
+      ],
+      description: 'We turned Muzha Drop-By Legends into an upbeat animated MV that uses one song to cover the four elements of story marketing: local symbols, current events, contrast, and the product as the reason. Characters and scenes are AI-generated images, the animation is rendered frame by frame in code, and the song is AI-generated and cut to the beat. The only photorealistic shot is the ramen, generated from the real dish served in the shop.',
+    },
     works: [
       {
         number: 'Work 01',
@@ -162,7 +172,7 @@ const content = {
           'A giant panda breaks out of the zoo for a bowl of Hokkaido-style butter-milk miso ramen. The series is designed to be memorable, so people visiting Muzha think of this restaurant.',
           'The entire video is AI-generated, yet the logo on the apron, the key visual on the wall, and the toppings on the ramen all match what\'s actually in the shop.',
         ],
-        result: 'On the first Tuesday after release, the restaurant\'s revenue rose from an average of about NT$7,500 over the previous three weeks to <strong>NT$15,447</strong> (store POS data, single-week observation). The video received 5,423 views.',
+        result: 'On the Tuesday after release, revenue was roughly double the average of the previous three weeks (store POS data; the observation period is still short and we\'re continuing to track it — not all of it can be attributed to the video). With zero ad spend and shared only in local community groups, the video passed 10,000 organic views in three days.',
       },
       {
         number: 'Work 02',
@@ -262,33 +272,31 @@ const works = content.works;
         {content.intro2}
       </p>
 
-      <!-- 開場影片：服務介紹片，不算作品卡；目前只有中文版 -->
-      {'introVideo' in content && (
-        <div class="mt-14">
-          <p class="text-xl md:text-2xl font-semibold mb-6 text-primary">{content.introVideo.lead}</p>
-          <div class="video-frame is-vertical relative overflow-hidden rounded-2xl shadow-xl mx-auto w-full max-w-[360px]">
-            <iframe
-              src={`https://www.youtube.com/embed/${content.introVideo.videoId}`}
-              title={content.introVideo.title}
-              loading="lazy"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
-              class="absolute inset-0 w-full h-full"
-            ></iframe>
-          </div>
-          <h2 class="mt-8 text-2xl md:text-3xl font-bold mb-5 text-text-primary">{content.introVideo.title}</h2>
-          <ul class="flex flex-wrap justify-center gap-2 mb-6">
-            {content.introVideo.tags.map(tag => (
-              <li class="px-3 py-1 text-base rounded-full bg-primary/10 text-primary dark:bg-primary/20">
-                <span class="font-semibold">{tag.label}</span>{content.tagSeparator}{tag.value}
-              </li>
-            ))}
-          </ul>
-          <p class="max-w-2xl mx-auto text-left text-[17px] md:text-lg leading-[1.8] text-text-primary">
-            {content.introVideo.description}
-          </p>
+      <!-- 開場影片：服務介紹片，不算作品卡 -->
+      <div class="mt-14">
+        <p class="text-xl md:text-2xl font-semibold mb-6 text-primary">{content.introVideo.lead}</p>
+        <div class="video-frame is-vertical relative overflow-hidden rounded-2xl shadow-xl mx-auto w-full max-w-[360px]">
+          <iframe
+            src={`https://www.youtube.com/embed/${content.introVideo.videoId}`}
+            title={content.introVideo.title}
+            loading="lazy"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            class="absolute inset-0 w-full h-full"
+          ></iframe>
         </div>
-      )}
+        <h2 class="mt-8 text-2xl md:text-3xl font-bold mb-5 text-text-primary">{content.introVideo.title}</h2>
+        <ul class="flex flex-wrap justify-center gap-2 mb-6">
+          {content.introVideo.tags.map(tag => (
+            <li class="px-3 py-1 text-base rounded-full bg-primary/10 text-primary dark:bg-primary/20">
+              <span class="font-semibold">{tag.label}</span>{content.tagSeparator}{tag.value}
+            </li>
+          ))}
+        </ul>
+        <p class="max-w-2xl mx-auto text-left text-[17px] md:text-lg leading-[1.8] text-text-primary">
+          {content.introVideo.description}
+        </p>
+      </div>
     </div>
   </section>
 
