@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiceAiPage from '../../components/ServiceAiPage.astro';
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: '中小企業 AI 導入',
+  serviceType: 'AI 導入、AI 代理、系統導入與接手維運',
+  provider: { '@type': 'Organization', name: '星智未來有限公司', url: 'https://aidream.com.tw/' },
+  areaServed: 'TW',
+  url: 'https://aidream.com.tw/services/ai/',
+};
+---
+
+<Layout
+  title="中小企業 AI 導入・資訊化｜免費健診、AI 代理案例｜星智未來"
+  description="想資訊化、想導入 AI，先來一次免費健診。一則一星負評，AI 代理 28 秒從 71,815 張畫面裡找到那位客人。看星智未來怎麼幫企業把 AI 用在真正的問題上。"
+  image="/images/ai/laptop_28s.jpg"
+  keywords="AI 導入, 中小企業 AI 導入, 資訊化, 數位轉型, 免費健診, AI 導入案例, AI 導入顧問, AI 代理, 系統接手"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceLd)} />
+  <Header />
+  <ServiceAiPage />
+  <Footer />
+</Layout>

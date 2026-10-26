@@ -19,10 +19,10 @@
   --color-gold: #c6a565;
   --color-gold-dark: #a8894d;
 
-  /* 文字色 - 深棕色系 (Logo #715725) */
+  /* 文字色 - 深棕色系（原取自 Logo #715725；2026-10 為可讀性調深，Logo 本身不變） */
   --color-text-primary: #3d2e1f;
-  --color-text-secondary: #715725;
-  --color-text-muted: #a09080;
+  --color-text-secondary: #56463a;
+  --color-text-muted: #7a6a5a;
 
   --color-border: #e5ddd3;
   --color-border-hover: #d4c9bc;
@@ -57,7 +57,7 @@
 
   --color-text-primary: #f5f0eb;
   --color-text-secondary: #c6b8a8;
-  --color-text-muted: #8a7a68;
+  --color-text-muted: #a8988a;
 
   --color-border: rgba(198, 165, 101, 0.2);
   --color-border-hover: rgba(198, 165, 101, 0.3);

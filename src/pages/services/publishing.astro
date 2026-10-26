@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServicePublishingPage from '../../components/ServicePublishingPage.astro';
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI 出版',
+  serviceType: '電子書出版、AI 有聲書製作、小說改編 AI 短劇',
+  provider: { '@type': 'Organization', name: '星智未來有限公司', url: 'https://aidream.com.tw/' },
+  areaServed: 'TW',
+  url: 'https://aidream.com.tw/services/publishing/',
+};
+---
+
+<Layout
+  title="AI 出版｜電子書出版、AI 有聲書製作、小說改編短劇｜星智未來"
+  description="你寫了一本書，我們把它做成電子書、有聲書和 AI 短劇。和作者簽授權、一起經營，讓一個故事被讀、被聽、也被看見。"
+  image="/images/publishing/sv_valley.jpg"
+  keywords="電子書出版, AI 有聲書製作, 有聲書製作, 小說改編, AI 短劇製作, 自費出版"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceLd)} />
+  <Header />
+  <ServicePublishingPage />
+  <Footer />
+</Layout>

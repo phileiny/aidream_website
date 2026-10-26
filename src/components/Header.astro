@@ -1,6 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
-import { getLang, localizePath, getAlternatePath } from '../i18n/utils';
+import { getLang, localizePath } from '../i18n/utils';
 
 const lang = getLang(Astro.currentLocale);
 
@@ -10,28 +10,24 @@ const content = {
     logoAlt: '星智未來 AI Dream',
     cta: '立即諮詢',
     openMenu: '開啟選單',
-    switchLabel: 'EN',
-    switchAria: 'Switch to English',
   },
   en: {
     nav: { products: 'Products', works: 'Works', blog: 'Blog', about: 'About', contact: 'Contact' },
     logoAlt: 'AI Dream',
     cta: 'Get in Touch',
     openMenu: 'Open menu',
-    switchLabel: '中文',
-    switchAria: '切換至中文',
   },
 }[lang];
 
+// 2026-10 改版：三條服務放最前面（內部連結帶關鍵字，對 SEO 有幫助）；部落格、Migato 移到頁尾
 const navLinks = [
-  { href: localizePath('/products', lang), label: content.nav.products },
-  { href: localizePath('/works', lang), label: content.nav.works },
-  { href: 'https://blog.aidream.com.tw', label: content.nav.blog, external: true },
+  { href: '/services/video/', label: 'AI 影片製作' },
+  { href: '/services/ai/', label: 'AI 導入' },
+  { href: '/services/publishing/', label: 'AI 出版' },
+  { href: '/services/video/#works', label: content.nav.works },
   { href: localizePath('/about', lang), label: content.nav.about },
   { href: localizePath('/contact', lang), label: content.nav.contact },
 ];
-
-const switchHref = getAlternatePath(Astro.url.pathname, lang === 'en' ? 'zh' : 'en');
 ---
 
 <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-bg-primary/80 backdrop-blur-md border-b border-border">
@@ -54,27 +50,17 @@ const switchHref = getAlternatePath(Astro.url.pathname, lang === 'en' ? 'zh' : '
       </a>
 
       <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center gap-8">
+      <div class="hidden lg:flex items-center gap-7">
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="text-text-secondary hover:text-text-primary transition-colors font-medium"
+            class="text-text-primary hover:text-primary transition-colors font-medium text-[17px]"
             target={link.external ? '_blank' : undefined}
             rel={link.external ? 'noopener noreferrer' : undefined}
           >
             {link.label}
           </a>
         ))}
-
-        <!-- Language Switch -->
-        <a
-          href={switchHref}
-          hreflang={lang === 'en' ? 'zh-TW' : 'en'}
-          aria-label={content.switchAria}
-          class="text-text-secondary hover:text-text-primary transition-colors font-medium"
-        >
-          {content.switchLabel}
-        </a>
 
         <!-- Theme Toggle -->
         <ThemeToggle />
@@ -89,15 +75,7 @@ const switchHref = getAlternatePath(Astro.url.pathname, lang === 'en' ? 'zh' : '
       </div>
 
       <!-- Mobile: Theme Toggle + Menu Button -->
-      <div class="flex items-center gap-2 md:hidden">
-        <a
-          href={switchHref}
-          hreflang={lang === 'en' ? 'zh-TW' : 'en'}
-          aria-label={content.switchAria}
-          class="p-2 text-text-secondary hover:text-text-primary transition-colors font-medium text-sm"
-        >
-          {content.switchLabel}
-        </a>
+      <div class="flex items-center gap-2 lg:hidden">
         <ThemeToggle />
         <button
           id="mobile-menu-btn"
@@ -112,12 +90,12 @@ const switchHref = getAlternatePath(Astro.url.pathname, lang === 'en' ? 'zh' : '
     </div>
 
     <!-- Mobile Navigation -->
-    <div id="mobile-menu" class="hidden md:hidden pb-4">
+    <div id="mobile-menu" class="hidden lg:hidden pb-4">
       <div class="flex flex-col gap-4">
         {navLinks.map(link => (
           <a
             href={link.href}
-            class="text-text-secondary hover:text-text-primary transition-colors py-2 font-medium"
+            class="text-text-primary hover:text-primary transition-colors py-2 font-medium text-lg"
             target={link.external ? '_blank' : undefined}
             rel={link.external ? 'noopener noreferrer' : undefined}
           >

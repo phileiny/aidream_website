@@ -1,101 +1,71 @@
 ---
-import { getLang, localizePath, lineStickerUrl } from '../i18n/utils';
-
-const lang = getLang(Astro.currentLocale);
+// 頁尾：2026-10 改版，對齊三條服務（AI 影片製作、AI 導入、AI 出版）
 const currentYear = new Date().getFullYear();
+const lineUrl = 'https://line.me/ti/p/vnlYIFBlYi';
 
-const content = {
-  zh: {
-    tagline: '用 AI 簡化工作的繁瑣，讓 AI 處理瑣事，你專注重要的事。',
-    productsTitle: '產品',
-    companyTitle: '公司',
-    sticker: 'LINE 貼圖',
-    about: '關於我們',
-    contact: '聯繫我們',
-    blog: '部落格',
-    copyright: '星智未來 AI Dream',
+const columns = [
+  {
+    title: '服務',
+    links: [
+      { label: 'AI 影片製作', href: '/services/video/' },
+      { label: 'AI 導入', href: '/services/ai/' },
+      { label: 'AI 出版', href: '/services/publishing/' },
+    ],
   },
-  en: {
-    tagline: 'Let AI handle the busywork, so you can focus on what matters.',
-    productsTitle: 'Products',
-    companyTitle: 'Company',
-    sticker: 'LINE Stickers',
-    about: 'About',
-    contact: 'Contact',
-    blog: 'Blog',
-    copyright: 'AI Dream',
+  {
+    title: '公司',
+    links: [
+      { label: '作品', href: '/services/video/#works' },
+      { label: '關於我們', href: '/about/' },
+      { label: '聯繫我們', href: '/contact/' },
+      { label: '部落格', href: 'https://blog.aidream.com.tw', external: true },
+      { label: 'Migato 米果', href: '/products/migato/' },
+    ],
   },
-}[lang];
-
-const links = {
-  products: [
-    { label: 'Migato', href: localizePath('/products/migato', lang) },
-    { label: content.sticker, href: lineStickerUrl[lang], external: true },
-    { label: 'ContraX', href: localizePath('/products/contrax', lang) },
-  ],
-  company: [
-    { label: content.about, href: localizePath('/about', lang) },
-    { label: content.contact, href: localizePath('/contact', lang) },
-    { label: content.blog, href: 'https://blog.aidream.com.tw', external: true },
-  ],
-};
+];
 ---
 
 <footer class="bg-bg-primary border-t border-border">
   <div class="max-w-6xl mx-auto px-4 py-12 md:py-16">
-    <div class="grid md:grid-cols-4 gap-8 md:gap-12">
+    <div class="grid md:grid-cols-4 gap-10 md:gap-12">
       <!-- 品牌資訊 -->
       <div class="md:col-span-2">
-        <a href={localizePath('/', lang)} class="text-2xl font-bold text-text-primary hover:text-primary transition-colors">
-          AI Dream
+        <a href="/" class="text-2xl font-bold text-text-primary hover:text-primary transition-colors">
+          星智未來 AI Dream
         </a>
-        <p class="mt-4 text-text-secondary max-w-sm">
-          {content.tagline}
+        <p class="mt-4 text-text-secondary max-w-sm leading-[1.8]">
+          用 AI 說故事，也用 AI 把事情做完。
         </p>
-      </div>
-
-      <!-- 產品連結 -->
-      <div>
-        <h4 class="font-semibold mb-4 text-text-primary">{content.productsTitle}</h4>
-        <ul class="space-y-3">
-          {links.products.map(link => (
-            <li>
-              <a
-                href={link.href}
-                class="text-text-secondary hover:text-primary transition-colors"
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
+        <ul class="mt-6 space-y-2 text-text-secondary">
+          <li>LINE　<a href={lineUrl} target="_blank" rel="noopener" class="hover:text-primary transition-colors">@243olfpn</a></li>
+          <li>Email　<a href="mailto:service@aidream.com.tw" class="hover:text-primary transition-colors">service@aidream.com.tw</a></li>
         </ul>
       </div>
 
-      <!-- 公司連結 -->
-      <div>
-        <h4 class="font-semibold mb-4 text-text-primary">{content.companyTitle}</h4>
-        <ul class="space-y-3">
-          {links.company.map(link => (
-            <li>
-              <a
-                href={link.href}
-                class="text-text-secondary hover:text-primary transition-colors"
-                target={link.external ? '_blank' : undefined}
-                rel={link.external ? 'noopener noreferrer' : undefined}
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {columns.map(col => (
+        <div>
+          <h4 class="font-semibold mb-4 text-text-primary">{col.title}</h4>
+          <ul class="space-y-3">
+            {col.links.map(link => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-text-secondary hover:text-primary transition-colors"
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
 
     <!-- 版權聲明 -->
     <div class="mt-12 pt-8 border-t border-border text-center text-text-muted text-sm">
-      <p>&copy; {currentYear} {content.copyright}. All rights reserved.</p>
+      <p>&copy; {currentYear} 星智未來有限公司 AI Dream. All rights reserved.</p>
     </div>
   </div>
 </footer>

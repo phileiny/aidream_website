@@ -1,0 +1,179 @@
+---
+import LineCta from './LineCta.astro';
+
+// 文字照 docs/改版-2026-10/文案.md〈服務頁：AI 出版〉，寫法同 AI 導入頁（explain-ladder 第 1、2 層）
+// 圖片是《矽谷之戀》第一集的 AI 劇照
+const forms = [
+  { verb: '讀', title: '電子書', body: '校稿、排版、書封，做成可以上架的 EPUB。改字前，作者先點頭。', icon: 'book' },
+  { verb: '聽', title: '有聲書', body: '經作者授權，用 AI 複製作者自己的聲音朗讀。每本附 30 秒預告。', icon: 'headphones' },
+  { verb: '看', title: 'AI 短劇', body: '先拍一支 demo 或第一集，讓出版社、平台一看就懂。', icon: 'film' },
+];
+
+const icons: Record<string, string> = {
+  book: 'M4 5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2V5zM4 19a2 2 0 0 1 2-2h12',
+  headphones: 'M4 15v-3a8 8 0 0 1 16 0v3M4 15h3v5H4zM17 15h3v5h-3z',
+  film: 'M4 5h16v14H4zM8 5v14M16 5v14M4 9h4M4 15h4M16 9h4M16 15h4',
+};
+
+const svFacts = [
+  ['10 集', '小說改編的橫屏網路劇'],
+  ['15 個', '角色，每一顆鏡頭都是同一張臉'],
+  ['7 分 50 秒', '第一集，畫面與人聲都由 AI 生成'],
+];
+
+const steps = [
+  { title: '聊你的書', body: '你寫了什麼，想讓誰看見' },
+  { title: '簽授權', body: '授權哪些形式、多久、怎麼分' },
+  { title: '先做一樣', body: '電子書或 demo，看反應再往下' },
+  { title: '一起經營', body: '上架、宣傳、後面的集數' },
+];
+
+const faqs = [
+  { q: '版權還是我的嗎？', a: '是。你授權的是改編和發行，著作權還是你的。' },
+  { q: '我的聲音會被拿去做別的嗎？', a: '不會。聲音只用在你授權的那本書。' },
+  { q: '一定要三樣都做嗎？', a: '不用。可以只做電子書，或只拍一支 demo。' },
+];
+
+const arrow = 'M5 12h14M13 6l6 6-6 6';
+---
+
+<main class="pt-16 md:pt-20">
+  <!-- 封面 -->
+  <section class="relative min-h-[min(72vh,680px)] md:min-h-[min(80vh,800px)] flex items-end overflow-hidden bg-deep">
+    <img src="/images/publishing/sv_valley.jpg" alt="《矽谷之戀》第一集劇照：2001 年的矽谷" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1a1410] via-[#1a1410]/75 to-[#1a1410]/20"></div>
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 pb-14 md:pb-20">
+      <h1 class="text-[#f5f0eb]">
+        <span class="block text-lg md:text-xl font-semibold tracking-wider text-gold mb-4">AI 出版｜電子書・有聲書・改編短劇</span>
+        <span class="block text-[2rem] leading-snug md:text-6xl md:leading-tight font-bold"><span class="inline-block">你寫了一本書，</span><span class="inline-block">我們讓它</span><span class="inline-block">被讀、被聽、</span><span class="inline-block">也被看見</span></span>
+      </h1>
+      <p class="mt-6 text-xl md:text-2xl leading-relaxed text-[#e6ddd2]">和作者簽授權，<br class="sm:hidden" />把一個故事做成三種樣子。</p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-4">
+        <a href="https://line.me/ti/p/vnlYIFBlYi" target="_blank" rel="noopener" class="text-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">加 LINE 聊聊</a>
+        <a href="#case" class="text-center px-8 py-4 border-2 border-[#f5f0eb]/70 text-[#f5f0eb] hover:bg-[#f5f0eb] hover:text-deep font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">看《矽谷之戀》</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 一本書 → 三種樣子 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary">一本書，三種樣子</h2>
+      <p class="mt-4 text-xl text-center text-text-primary">一本書寫完，常常就停在書架上。你繼續寫，其他的交給我們。</p>
+      <div class="mt-12 grid md:grid-cols-[auto_auto_1fr] items-center gap-6 md:gap-8">
+        <div class="mx-auto w-36 md:w-44 aspect-[3/4] rounded-xl bg-deep text-[#f5f0eb] flex flex-col items-center justify-center shadow-lg">
+          <svg class="w-12 h-12 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icons.book} /></svg>
+          <p class="mt-3 text-2xl font-bold">你的書</p>
+        </div>
+        <svg class="w-10 h-10 mx-auto text-primary rotate-90 md:rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow} /></svg>
+        <ul class="grid gap-4">
+          {forms.map(f => (
+            <li class="flex items-center gap-5 p-5 md:p-6 rounded-2xl bg-bg-secondary border border-border">
+              <span class="flex-shrink-0 w-16 h-16 rounded-full bg-primary text-white flex flex-col items-center justify-center shadow-md">
+                <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icons[f.icon]} /></svg>
+              </span>
+              <div>
+                <h3 class="text-2xl font-bold text-text-primary">被{f.verb}：{f.title}</h3>
+                <p class="mt-1 text-lg leading-relaxed text-text-primary">{f.body}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 案例：矽谷之戀 -->
+  <section id="case" class="py-16 md:py-24 bg-bg-secondary scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="grid grid-cols-2 gap-3">
+        <img src="/images/publishing/sv_cover.jpg" alt="《矽谷之戀》書封：JD 著，每個人都在尋找最適合自己的筆蓋" loading="lazy" class="w-full rounded-xl shadow-md aspect-[5/8] object-cover" />
+        <div class="flex flex-col gap-3">
+          <img src="/images/publishing/sv_alarm.jpg" alt="《矽谷之戀》第一集：2001 年 9 月 11 日清晨 6:32 的鬧鐘" loading="lazy" class="w-full flex-1 min-h-0 rounded-xl shadow-md object-cover object-left" />
+          <img src="/images/publishing/sv_calendar.jpg" alt="《矽谷之戀》第一集：翻到 2002 年 5 月的月曆" loading="lazy" class="w-full flex-1 min-h-0 rounded-xl shadow-md object-cover" />
+        </div>
+      </div>
+      <div>
+        <p class="kicker">案例　小說改編</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-snug text-text-primary">《矽谷之戀》<br /><span class="text-primary"><span class="inline-block">從一本小說，</span><span class="inline-block">到十集網路劇</span></span></h2>
+        <p class="mt-5 text-lg md:text-xl leading-[1.8] text-text-primary">作者 JD 寫的小說：2001 年的矽谷，一段遺憾的戀情。我們簽下改編授權，拍成網路劇；電子書同步製作中。</p>
+        <dl class="mt-6">
+          {svFacts.map(([k, v]) => (
+            <div class="flex items-baseline gap-4 py-3 border-b border-border last:border-0">
+              <dt class="w-32 flex-shrink-0 text-xl font-bold text-primary">{k}</dt>
+              <dd class="text-lg leading-relaxed text-text-primary">{v}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="mt-6 gold-box p-5 rounded-xl text-lg leading-[1.8] text-text-primary">
+          <b class="text-primary">怎麼分工：</b>年代和人物的事實，以作者為準；劇本由我們寫，重大改編先跟作者確認。
+        </p>
+        <a href="https://youtu.be/i7vb3YeVDCg" target="_blank" rel="noopener" class="mt-7 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white hover:bg-primary-dark font-semibold text-lg transition-colors">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+          看第一集
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 怎麼合作 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <p class="kicker">怎麼合作</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-text-primary">四步，從一本書開始</h2>
+      <ol class="mt-10 flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-3">
+        {steps.map((t, i) => (
+          <Fragment>
+            <li class="flex-1 p-6 rounded-2xl bg-bg-secondary border border-border">
+              <p class="text-base font-semibold text-primary-dark dark:text-gold">第 {i + 1} 步</p>
+              <h3 class="mt-1 text-2xl font-bold text-text-primary">{t.title}</h3>
+              <p class="mt-1 text-lg text-balance text-text-primary">{t.body}</p>
+            </li>
+            {i < steps.length - 1 && (
+              <svg class="w-7 h-7 mx-auto text-primary rotate-90 md:rotate-0 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow} /></svg>
+            )}
+          </Fragment>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 常見問題 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary text-center">常見問題</h2>
+      <div class="divide-y divide-border border-y border-border">
+        {faqs.map(f => (
+          <details class="group py-5">
+            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none text-xl font-semibold text-text-primary">
+              {f.q}
+              <span class="text-primary text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-lg leading-[1.8] text-text-primary">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <LineCta title="你的書，下一個樣子是什麼？" />
+</main>
+
+<style>
+  .kicker {
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+  }
+
+  .gold-box {
+    background: rgba(198, 165, 101, 0.1);
+    border-left: 4px solid var(--color-gold);
+  }
+
+  :global(.dark) .gold-box {
+    background: rgba(198, 165, 101, 0.08);
+  }
+</style>

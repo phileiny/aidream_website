@@ -1,22 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import PainPoints from '../components/PainPoints.astro';
-import Solution from '../components/Solution.astro';
-import Products from '../components/Products.astro';
-import CTA from '../components/CTA.astro';
+import HomePage from '../components/HomePage.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<Layout>
+<Layout
+  title="星智未來｜AI 影片製作公司．中小企業 AI 導入．AI 出版"
+  description="星智未來是 AI 影片製作公司，做品牌短劇、廣告影片、包月短影音；也幫中小企業做 AI 導入（免費健診），和作者一起做電子書、有聲書與改編短劇。"
+>
   <Header />
-  <main>
-    <Hero />
-    <PainPoints />
-    <Solution />
-    <Products />
-    <CTA />
-  </main>
+  <HomePage />
   <Footer />
 </Layout>

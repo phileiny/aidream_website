@@ -1,0 +1,178 @@
+---
+import LineCta from './LineCta.astro';
+
+// 首頁：文案照 docs/改版-2026-10/文案.md〈首頁 版本 A〉（影片在前門），寫法同服務頁（explain-ladder 第 1、2 層）
+const services = [
+  { href: '/services/video/', img: '/images/works/mz_panda.jpg', alt: '拉麵店《木柵順便傳說》劇照', eyebrow: 'AI 影片製作', title: '用一個故事，讓人記住你', body: '品牌短劇、廣告影片、包月短影音。不用拍攝，不用演員。' },
+  { href: '/services/ai/', img: '/images/ai/laptop_28s.jpg', alt: '筆電上的查詢結果：9 小時 → 28 秒', eyebrow: 'AI 導入', title: '讓 AI 回答你答不出來的問題', body: '想資訊化、想導入 AI，先來一次免費健診。' },
+  { href: '/services/publishing/', img: '/images/publishing/sv_cover.jpg', alt: '《矽谷之戀》書封', eyebrow: 'AI 出版', title: '一本書，三種樣子', body: '電子書、有聲書、改編短劇，和作者一起經營。' },
+];
+
+const featured = [
+  { img: '/images/works/laifu_gun.jpg', alt: '搬家公司：客人的爸爸端著槍，搬家像打仗', kind: '搬家公司', title: '《搬家不用打仗》', body: '嚴陣以待的客人，遇到一家「您先休息就好」的搬家公司。' },
+  { img: '/images/works/mz_panda.jpg', alt: '木柵順便傳說第一集：一隻熊貓走在木柵街上', kind: '拉麵店', title: '《木柵順便傳說》', body: '上架後的週二，營業額約為前三週平均的兩倍。' },
+  { img: '/images/works/sv_jackie.jpg', alt: '矽谷之戀第一集：Jackie 在小吃店笑', kind: 'AI 短劇', title: '《矽谷之戀》', body: '小說改編的十集網路劇，15 個角色，每顆鏡頭同一張臉。' },
+];
+
+const reasons = [
+  { word: '快', body: '影片從聊天到交片，兩週內。' },
+  { word: '準', body: '人、店、產品照實際的做；報表一筆一筆對得上。' },
+  { word: '可信任', body: '長期客戶從 2019 年起，每個月準時交付。' },
+];
+
+const people = [
+  { img: '/images/team/nicole.jpg', name: '妮可', role: '編劇與品質確認', body: '八年影視企劃、十年品牌策略。' },
+  { img: '/images/team/ray.jpg', name: '瑞導', role: '導演與製作', body: '25 年系統整合與軟體開發。' },
+];
+
+const arrow = 'M5 12h14M13 6l6 6-6 6';
+---
+
+<main class="pt-16 md:pt-20">
+  <!-- 封面 -->
+  <section class="relative min-h-[min(76vh,720px)] md:min-h-[min(84vh,840px)] flex items-end overflow-hidden bg-deep">
+    <img src="/images/works/sv_jackie.jpg" alt="《矽谷之戀》第一集劇照" class="absolute inset-0 w-full h-full object-cover object-[65%_center]" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1a1410] via-[#1a1410]/70 to-[#1a1410]/10"></div>
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 pb-14 md:pb-20">
+      <h1 class="text-[#f5f0eb]">
+        <span class="block text-lg md:text-xl font-semibold tracking-wider text-gold mb-4">星智未來 AI Dream</span>
+        <span class="block text-[2rem] leading-snug md:text-6xl md:leading-tight font-bold"><span class="inline-block">用 AI 影片，</span><span class="inline-block">把品牌的故事</span><span class="inline-block">說到人心裡</span></span>
+      </h1>
+      <p class="mt-6 text-xl md:text-2xl leading-relaxed text-[#e6ddd2]">也用 AI，<br class="sm:hidden" />幫中小企業把事情做完。</p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-4">
+        <a href="/services/video/#works" class="text-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">看作品</a>
+        <a href="https://line.me/ti/p/vnlYIFBlYi" target="_blank" rel="noopener" class="text-center px-8 py-4 border-2 border-[#f5f0eb]/70 text-[#f5f0eb] hover:bg-[#f5f0eb] hover:text-deep font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">加 LINE 聊聊</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 我們做三件事 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="kicker text-center">我們做三件事</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary"><span class="inline-block">AI 影片製作・</span><span class="inline-block">AI 導入・</span><span class="inline-block">AI 出版</span></h2>
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        {services.map(s => (
+          <a href={s.href} class="group flex flex-col rounded-2xl overflow-hidden bg-bg-secondary border border-border hover:shadow-xl transition-shadow">
+            <div class="aspect-[4/3] overflow-hidden bg-deep">
+              <img src={s.img} alt={s.alt} loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+            </div>
+            <div class="p-7 flex flex-col flex-1">
+              <p class="text-base font-semibold tracking-wider text-primary-dark dark:text-gold">{s.eyebrow}</p>
+              <h3 class="mt-2 text-2xl font-bold leading-snug text-text-primary">{s.title}</h3>
+              <p class="mt-3 text-lg leading-relaxed text-text-primary flex-1">{s.body}</p>
+              <p class="mt-5 inline-flex items-center gap-2 text-lg font-semibold text-primary">
+                了解{s.eyebrow}
+                <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow} /></svg>
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 作品精選 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary">AI 影片作品精選</h2>
+      <p class="mt-3 text-xl text-center text-text-primary">畫面全部由 AI 生成。</p>
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        {featured.map(w => (
+          <a href="/services/video/#works" class="group block rounded-2xl overflow-hidden bg-bg-primary border border-border hover:shadow-xl transition-shadow">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img src={w.img} alt={w.alt} loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+            </div>
+            <div class="p-6">
+              <p class="text-base font-semibold text-primary-dark dark:text-gold">{w.kind}</p>
+              <h3 class="mt-1 text-2xl font-bold text-text-primary">{w.title}</h3>
+              <p class="mt-2 text-lg leading-relaxed text-text-primary">{w.body}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p class="mt-10 text-center">
+        <a href="/services/video/#works" class="inline-block px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">看全部 AI 影片作品</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- 一則一星評論 -->
+  <section class="py-16 md:py-24 bg-deep">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+      <div>
+        <p class="kicker" style="color: var(--color-gold)">不只拍片｜AI 導入</p>
+        <h2 class="text-3xl md:text-5xl font-bold leading-tight text-[#f5f0eb]">一則一星評論，<br />28 秒找到那位客人</h2>
+        <p class="mt-6 text-lg md:text-xl leading-[1.8] text-[#e6ddd2]">老闆只想知道：是哪一位客人？<br />當時櫃台發生了什麼事？</p>
+        <a href="/services/ai/" class="mt-8 inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">
+          看 AI 導入怎麼做
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow} /></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 md:gap-5">
+        <div class="p-6 rounded-2xl bg-white/5 border border-white/15 text-center">
+          <p class="text-base text-[#c6b8a8]">以前：翻錄影</p>
+          <p class="mt-2 text-4xl md:text-5xl font-bold tabular-nums text-[#f5f0eb]">9.5<span class="text-xl ml-1">小時</span></p>
+          <p class="mt-2 text-base tabular-nums text-[#c6b8a8]">71,815 張畫面</p>
+        </div>
+        <svg class="w-9 h-9 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow} /></svg>
+        <div class="p-6 rounded-2xl bg-primary text-white text-center shadow-lg">
+          <p class="text-base text-white/90">現在：AI 代理</p>
+          <p class="mt-2 text-4xl md:text-5xl font-bold tabular-nums">28<span class="text-xl ml-1">秒</span></p>
+          <p class="mt-2 text-base text-white/90">交出 4 個候選</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 為什麼找我們 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary">為什麼找我們</h2>
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        {reasons.map(r => (
+          <div class="p-8 rounded-2xl bg-bg-secondary border border-border text-center">
+            <p class="text-5xl font-bold text-primary">{r.word}</p>
+            <p class="mt-4 text-xl leading-relaxed text-balance text-text-primary">{r.body}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-8 text-center">
+        <span class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gold/15 text-primary-dark dark:text-gold text-base md:text-lg font-semibold">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z" /></svg>
+          <span><span class="inline-block">2026「AI 代理邊緣應用」黑客松｜</span><span class="inline-block">52 隊入選 15 隊</span></span>
+        </span>
+      </p>
+    </div>
+  </section>
+
+  <!-- 誰會跟你合作 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary">誰會跟你合作</h2>
+      <div class="mt-12 grid sm:grid-cols-2 gap-10">
+        {people.map(p => (
+          <div class="text-center">
+            <img src={p.img} alt={`${p.name}，${p.role}`} loading="lazy" class="mx-auto w-40 h-40 md:w-48 md:h-48 rounded-full object-cover shadow-lg ring-4 ring-bg-primary" />
+            <h3 class="mt-5 text-2xl font-bold text-text-primary">{p.name}</h3>
+            <p class="mt-1 text-lg font-semibold text-primary-dark dark:text-gold">{p.role}</p>
+            <p class="mt-2 text-lg text-text-primary">{p.body}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-10 text-center"><a href="/about/" class="text-lg font-semibold text-primary underline underline-offset-4">更多關於我們</a></p>
+    </div>
+  </section>
+
+  <LineCta title="你手上那件事，我們可以一起想" body="不必一次押大。先挑一件事試試看，用結果決定要不要繼續。" />
+</main>
+
+<style>
+  .kicker {
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+  }
+</style>

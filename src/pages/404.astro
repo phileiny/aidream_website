@@ -6,10 +6,6 @@ import NotFoundPage from '../components/NotFoundPage.astro';
 ---
 
 <Layout title="頁面不存在 - 星智未來 AI Dream" description="您要找的頁面可能已移除或網址錯誤">
-  <!-- GitHub Pages 對所有不存在的網址都回傳這個 404.html，英文路徑改導向英文 404 頁 -->
-  <script is:inline>
-    if (location.pathname.startsWith('/en/')) location.replace('/en/404/');
-  </script>
   <Header />
   <NotFoundPage />
   <Footer />

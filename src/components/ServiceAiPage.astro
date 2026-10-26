@@ -1,0 +1,278 @@
+---
+import LineCta from './LineCta.astro';
+
+// 文字照 docs/改版-2026-10/文案.md〈服務頁：AI 導入〉，再照 explain-ladder 第 1、2 層改寫：
+// 先講結論、一句一件事、流程和比較用圖。圖片是〈一顆星〉的 AI 劇照，沒有真實客人。
+const flow = [
+  { title: '免費健診', body: '先看你的流程，找出最該解決的問題', icon: 'search' },
+  { title: '接起資料', body: '鏡頭、POS、Excel、LINE，進同一個地方', icon: 'link' },
+  { title: '讓 AI 回答', body: '用一句話問，答案附出處', icon: 'chat' },
+  { title: '每月接手', body: '上線後我們維運，你不用養工程師', icon: 'calendar' },
+];
+
+const beats = [
+  { mark: '20:41', title: '一星評論貼出來了', body: '「店員沒提醒集點，兌換時還百般刁難。」' },
+  { mark: '老闆', title: '只想知道兩件事', body: '這是哪一位客人？當時櫃台發生了什麼？' },
+  { mark: '28 秒', title: 'AI 找到了', body: '19:59 到 20:05，那位客人一直低頭刷手機付款。' },
+];
+
+const icons: Record<string, string> = {
+  search: 'M21 21l-4.35-4.35M11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14z',
+  link: 'M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1',
+  chat: 'M4 5h16v11H8l-4 4V5z',
+  calendar: 'M7 3v3M17 3v3M4 8h16M5 5h14v15H5z',
+};
+
+const storeFacts = [
+  ['28 秒', '從 71,815 張畫面找出 4 個候選'],
+  ['約 20 秒', '貼上評論，第一名就是那一次'],
+  ['全程加密', '金鑰由老闆保管，人頭以小青蛙遮蓋'],
+];
+
+const checkup = [
+  { title: '聊你的流程', body: '資料從哪來、交給誰、哪一步最卡。' },
+  { title: '列出問題和風險', body: '哪些該先解決，哪些可以等。' },
+  { title: '不用先決定', body: '不收費，看完再決定要不要做。' },
+];
+
+const reports = ['工程款表', '管口及下人孔報表', '異常報表'];
+
+const takeover = [
+  { title: '免費健診', body: '列出關鍵風險' },
+  { title: '付費盤點', body: '把系統盤點清楚' },
+  { title: '每月維運', body: '接手，再慢慢重構' },
+];
+
+const faqs = [
+  { q: '我的資料會被拿去訓練別人的 AI 嗎？', a: '不會。資料只用在你的系統。' },
+  { q: '一定要上雲端嗎？', a: '不一定。AI 可以放在你公司的主機上跑。' },
+  { q: '我的資料安全嗎？', a: '瑞導主導過 ISO 27001、27701、27017、27018 四項資安認證。需要更完整的規劃時，我們和合作的資安團隊一起把關。' },
+  { q: '費用怎麼算？', a: '系統開發一次報價。上線後的維運，收固定月費。' },
+];
+
+const filmUrl = 'https://youtu.be/Y05zTIPLSk8';
+const dot = 'mt-3 w-2 h-2 rounded-full bg-primary flex-shrink-0';
+---
+
+<main class="pt-16 md:pt-20">
+  <!-- 封面 -->
+  <section class="relative min-h-[min(72vh,680px)] md:min-h-[min(80vh,800px)] flex items-end overflow-hidden bg-deep">
+    <img src="/images/ai/boss_night.jpg" alt="深夜，老闆在客廳打開筆電" class="absolute inset-0 w-full h-full object-cover object-[70%_center]" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1a1410] via-[#1a1410]/70 to-[#1a1410]/10"></div>
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 pb-14 md:pb-20">
+      <h1 class="text-[#f5f0eb]">
+        <span class="block text-lg md:text-xl font-semibold tracking-wider text-gold mb-4">中小企業資訊化・AI 導入</span>
+        <span class="block text-4xl md:text-6xl font-bold leading-tight"><span class="inline-block">AI 導入，</span><span class="inline-block">從一個你答不出來的問題開始</span></span>
+      </h1>
+      <p class="mt-6 text-xl md:text-2xl leading-relaxed text-[#e6ddd2]">想資訊化、想導入 AI，<br class="sm:hidden" />先來一次免費健診。</p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-4">
+        <a href="https://line.me/ti/p/vnlYIFBlYi" target="_blank" rel="noopener" class="text-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">預約免費健診</a>
+        <a href="#story" class="text-center px-8 py-4 border-2 border-[#f5f0eb]/70 text-[#f5f0eb] hover:bg-[#f5f0eb] hover:text-deep font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">看一個真實的例子</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 我們幫你做什麼：流程圖 -->
+  <section class="py-16 md:py-20 bg-bg-primary">
+    <div class="max-w-6xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary">我們幫你做四件事</h2>
+      <ol class="mt-12 grid md:grid-cols-4 gap-6 md:gap-0">
+        {flow.map((f, i) => (
+          <li class="relative flex md:flex-col items-center md:text-center gap-5 md:gap-4 md:px-4">
+            {i < flow.length - 1 && <span class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-primary/30" aria-hidden="true"></span>}
+            <span class="relative z-10 flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
+              <svg class="w-8 h-8 md:w-9 md:h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icons[f.icon]} /></svg>
+            </span>
+            <div>
+              <p class="text-base font-semibold text-primary-dark dark:text-gold">第 {i + 1} 步</p>
+              <h3 class="text-2xl font-bold text-text-primary">{f.title}</h3>
+              <p class="mt-1 text-lg leading-relaxed text-text-primary">{f.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 免費健診 -->
+  <section id="checkup" class="py-16 md:py-20 bg-deep scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+      <div>
+        <p class="kicker" style="color: var(--color-gold)">第一步，不收費</p>
+        <h2 class="text-3xl md:text-5xl font-bold leading-tight text-[#f5f0eb]">先來一次<br />免費健診</h2>
+        <p class="mt-6 text-lg md:text-xl leading-[1.8] text-[#e6ddd2]">想資訊化、想導入 AI，<br />但不知道從哪裡開始？<br />先讓我們看看你的流程。</p>
+        <a href="https://line.me/ti/p/vnlYIFBlYi" target="_blank" rel="noopener" class="mt-8 inline-block px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">加 LINE 預約健診</a>
+      </div>
+      <ul class="space-y-4">
+        {checkup.map(c => (
+          <li class="flex gap-5 p-6 rounded-2xl bg-white/5 border border-white/10">
+            <svg class="w-7 h-7 mt-0.5 flex-shrink-0 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7" /></svg>
+            <div>
+              <h3 class="text-2xl font-bold text-[#f5f0eb]">{c.title}</h3>
+              <p class="mt-1 text-lg leading-relaxed text-[#c6b8a8]">{c.body}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 一個真實的例子：三拍 -->
+  <section id="story" class="py-16 md:py-24 bg-bg-secondary scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="kicker text-center"><span class="inline-block">一個真實的例子｜</span><span class="inline-block">2026 年 9 月 20 日，星期六晚上</span></p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary">一則一星評論</h2>
+      <ol class="mt-12 grid md:grid-cols-3 gap-5">
+        {beats.map((b, i) => (
+          <li class={`p-7 rounded-2xl border ${i === 2 ? 'bg-deep border-deep' : 'bg-bg-primary border-border'}`}>
+            <p class={`text-3xl font-bold tabular-nums ${i === 2 ? 'text-gold' : 'text-primary'}`}>{b.mark}</p>
+            <h3 class={`mt-3 text-2xl font-bold ${i === 2 ? 'text-[#f5f0eb]' : 'text-text-primary'}`}>{b.title}</h3>
+            <p class={`mt-2 text-lg md:text-xl leading-[1.8] ${i === 2 ? 'text-[#e6ddd2]' : 'text-text-primary'}`}>{b.body}</p>
+          </li>
+        ))}
+      </ol>
+
+      <!-- 數字對照 -->
+      <div class="mt-14 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+        <img src="/images/ai/laptop_28s.jpg" alt="筆電上的查詢結果：以前要翻 9 小時的監視器，現在 28 秒" loading="lazy" class="w-full rounded-xl shadow-md aspect-video object-cover" />
+        <div>
+          <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 md:gap-5">
+            <div class="p-5 rounded-2xl bg-bg-primary border border-border text-center">
+              <p class="text-base text-text-primary">以前：翻錄影</p>
+              <p class="mt-2 text-3xl md:text-4xl font-bold tabular-nums text-text-primary">9.5<span class="text-xl ml-1">小時</span></p>
+              <p class="mt-1 text-base tabular-nums text-text-primary">71,815 張畫面</p>
+            </div>
+            <svg class="w-8 h-8 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            <div class="p-5 rounded-2xl bg-primary text-white text-center shadow-md">
+              <p class="text-base text-white/85">現在：AI 代理</p>
+              <p class="mt-2 text-3xl md:text-4xl font-bold tabular-nums">28<span class="text-xl ml-1">秒</span></p>
+              <p class="mt-1 text-base text-white/85">交出 4 個候選</p>
+            </div>
+          </div>
+          <ul class="mt-8 space-y-3 text-lg md:text-xl leading-[1.8] text-text-primary">
+            <li class="flex gap-3"><span class={dot}></span>一個月後重算一次，結果一模一樣。</li>
+            <li class="flex gap-3"><span class={dot}></span>現在把評論貼進去，約 20 秒就有答案。</li>
+          </ul>
+          <a href={filmUrl} target="_blank" rel="noopener" class="mt-8 inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary text-primary hover:bg-primary hover:text-white font-semibold transition-colors">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+            看這個故事拍成的短片《一顆星》
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 案例 01 -->
+  <section id="cases" class="py-16 md:py-24 bg-bg-primary scroll-mt-20">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <img src="/images/ai/couple_laptop.jpg" alt="老闆和太太一起看筆電上的查詢結果" loading="lazy" class="w-full rounded-xl shadow-md aspect-video object-cover" />
+      <div>
+        <p class="kicker">案例　01　門店 AI 代理</p>
+        <p class="mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold/15 text-primary-dark dark:text-gold text-base md:text-lg font-semibold">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87L18.18 22 12 18.56 5.82 22 7 14.14l-5-4.87 7.1-1.01L12 2z" /></svg>
+          <span><span class="inline-block">2026「AI 代理邊緣應用」黑客松｜</span><span class="inline-block">52 隊入選 15 隊</span></span>
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-snug text-text-primary">店裡發生什麼事，<br /><span class="text-primary">問一句就知道</span></h2>
+        <dl class="mt-7">
+          {storeFacts.map(([k, v]) => (
+            <div class="flex items-baseline gap-4 py-4 border-b border-border last:border-0">
+              <dt class="w-28 flex-shrink-0 text-2xl font-bold text-primary">{k}</dt>
+              <dd class="text-lg leading-relaxed text-text-primary">{v}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="mt-6 gold-box p-5 rounded-xl text-lg leading-[1.8] text-text-primary">
+          <b class="text-primary">適合：</b>零售業，以及要「中控」多家店監視器的業者。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 案例 02 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div class="md:order-2 p-8 md:p-10 rounded-2xl bg-bg-primary border border-border">
+        <p class="text-base font-semibold tracking-wider text-primary-dark dark:text-gold mb-5">每個月交出三份報表</p>
+        <ul class="space-y-3">
+          {reports.map((r, i) => (
+            <li class="flex items-center gap-4 p-4 rounded-xl bg-bg-secondary border border-border">
+              <span class="w-9 h-9 rounded-lg bg-primary/10 text-primary font-bold flex items-center justify-center">{i + 1}</span>
+              <span class="text-xl font-semibold text-text-primary">{r}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-6 text-lg text-text-primary">2019 年 3 月起，每個月準時交付。</p>
+      </div>
+      <div class="md:order-1">
+        <p class="kicker">案例　02　傳統系統導入</p>
+        <h2 class="text-3xl md:text-4xl font-bold leading-snug text-text-primary">AI 之前，<br /><span class="text-primary">先讓資料進系統</span></h2>
+        <ul class="mt-7 space-y-3 text-lg md:text-xl leading-[1.8] text-text-primary">
+          <li class="flex gap-3"><span class={dot}></span>客戶：公共工程巡檢承包商，八到十位巡檢員。</li>
+          <li class="flex gap-3"><span class={dot}></span>我們先做巡檢 App，回報直接進系統。</li>
+          <li class="flex gap-3"><span class={dot}></span>每個月，報表由系統跑出來，不再用手對。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 系統接手 -->
+  <section class="py-16 md:py-20 bg-bg-primary">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <p class="kicker">也可以這樣合作</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-text-primary">系統只有一個人懂？我們來接手</h2>
+      <ol class="mt-10 flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4">
+        {takeover.map((t, i) => (
+          <Fragment>
+            <li class="flex-1 p-6 rounded-2xl bg-bg-secondary border border-border">
+              <p class="text-base font-semibold text-primary-dark dark:text-gold">第 {i + 1} 步</p>
+              <h3 class="mt-1 text-2xl font-bold text-text-primary">{t.title}</h3>
+              <p class="mt-1 text-lg text-text-primary">{t.body}</p>
+            </li>
+            {i < takeover.length - 1 && (
+              <svg class="w-7 h-7 mx-auto text-primary rotate-90 md:rotate-0 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+            )}
+          </Fragment>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 常見問題 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary text-center">常見問題</h2>
+      <div class="divide-y divide-border border-y border-border">
+        {faqs.map(f => (
+          <details class="group py-5">
+            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none text-xl font-semibold text-text-primary">
+              {f.q}
+              <span class="text-primary text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-lg leading-[1.8] text-text-primary">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <LineCta title="想資訊化、想導入 AI？先約一次免費健診" body="告訴我們你每天在問、卻沒人答得出來的那個問題。" />
+</main>
+
+<style>
+  .kicker {
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+  }
+
+  .gold-box {
+    background: rgba(198, 165, 101, 0.1);
+    border-left: 4px solid var(--color-gold);
+  }
+
+  :global(.dark) .gold-box {
+    background: rgba(198, 165, 101, 0.08);
+  }
+</style>

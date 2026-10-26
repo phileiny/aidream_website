@@ -10,7 +10,6 @@ const content = {
     home: '返回首頁',
     contact: '聯繫我們',
     suggestions: '或許您想找的是：',
-    products: '產品列表',
     about: '關於我們',
   },
   en: {
@@ -72,8 +71,9 @@ const content = {
       <div class="mt-12 pt-8 border-t border-border">
         <p class="text-text-muted text-sm mb-4">{content.suggestions}</p>
         <div class="flex flex-wrap justify-center gap-4">
-          <a href={localizePath('/products', lang)} class="text-primary hover:underline">{content.products}</a>
-          <a href={localizePath('/products/contrax', lang)} class="text-primary hover:underline">ContraX</a>
+          <a href="/services/video/" class="text-primary hover:underline">AI 影片製作</a>
+          <a href="/services/ai/" class="text-primary hover:underline">AI 導入</a>
+          <a href="/services/publishing/" class="text-primary hover:underline">AI 出版</a>
           <a href={localizePath('/about', lang)} class="text-primary hover:underline">{content.about}</a>
         </div>
       </div>

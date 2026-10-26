@@ -1,0 +1,28 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiceVideoPage from '../../components/ServiceVideoPage.astro';
+
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI 影片製作',
+  serviceType: 'AI 影片製作、AI 故事行銷、AI 短劇製作',
+  provider: { '@type': 'Organization', name: '星智未來有限公司', url: 'https://aidream.com.tw/' },
+  areaServed: 'TW',
+  url: 'https://aidream.com.tw/services/video/',
+};
+---
+
+<Layout
+  title="AI 影片製作公司｜AI 故事行銷、品牌短劇、廣告影片｜星智未來"
+  description="星智未來是 AI 影片製作公司，做 AI 故事行銷。你講你的事，我們把它變成一支有劇情的影片：30 秒、4 分鐘、8 分鐘都做得到，不用拍攝、不用找演員。腳本確認後 7 個工作天交片。"
+  image="/images/works/sv_church.jpg"
+  keywords="AI 影片製作, AI 影片製作公司, AI 故事行銷, AI 短劇製作, AI 廣告影片, 企業形象影片, AI 影片 報價"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceLd)} />
+  <Header />
+  <ServiceVideoPage />
+  <Footer />
+</Layout>

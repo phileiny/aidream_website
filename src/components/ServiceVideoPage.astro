@@ -1,0 +1,336 @@
+---
+import LineCta from './LineCta.astro';
+
+// 敘事照給 Nicole 的〈AI 故事行銷〉PDF；文字照 explain-ladder 第 1、2 層改寫（先講結論、一句一件事、流程和數字用圖）
+// 官網公開版：客戶名稱寫「搬家公司」「拉麵店」（Ray 10-26）；這頁同時取代原本的作品頁
+const promises = [
+  { big: '30 秒～8 分鐘', label: '長度照故事決定' },
+  { big: '7 個工作天', label: '腳本確認後交片' },
+  { big: '0 拍攝・0 演員', label: '你只要講故事、看片' },
+];
+
+const pains = [
+  '介紹寫得再完整，滑過去的人只記得三秒。',
+  '自己拍的影片，拍不到看的人心裡那一下。',
+  '找團隊實拍一支要幾萬，還要喬時間、找演員。',
+];
+
+const steps = [
+  { title: '聊 30 分鐘', body: '你講，我們找出最該被記住的那句話', icon: 'chat' },
+  { title: '寫劇本', body: '一個故事一個反轉，你點頭才往下', icon: 'pen' },
+  { title: '選角、做場景', body: '人、店、產品都照你的樣子做', icon: 'user' },
+  { title: '拍片、剪片', body: 'AI 生成畫面，我們導戲、剪接、配樂', icon: 'film' },
+  { title: '兩次修改', body: '手機就能看片、標問題', icon: 'check' },
+];
+
+const icons: Record<string, string> = {
+  chat: 'M4 5h16v11H8l-4 4V5z',
+  pen: 'M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4',
+  user: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',
+  film: 'M4 5h16v14H4zM8 5v14M16 5v14M4 9h4M4 15h4M16 9h4M16 15h4',
+  check: 'M5 12l5 5L20 7',
+};
+
+const works = [
+  {
+    kind: '搬家公司',
+    title: '搬家公司',
+    subtitle: '《搬家不用打仗》',
+    body: '嚴陣以待的客人，遇到一家「您先休息就好」的搬家公司。',
+    facts: [['10 個', '固定角色，老闆照本人做'], ['11 項', '服務，一項一個畫面'], ['4 天', '照客戶 6 條意見交新版']],
+    links: [['劇情版', 'https://youtube.com/shorts/jQCWOH7mh1U'], ['30 秒服務版', 'https://youtube.com/shorts/BLnlpNoc34s']],
+    pics: [['laifu_gun.jpg', '搬家公司：客人的爸爸端著槍，搬家像打仗'], ['laifu_door.jpg', '搬家公司：搬完家的第一頓晚餐']],
+    tall: true,
+  },
+  {
+    kind: '拉麵店',
+    title: '拉麵店',
+    subtitle: '《木柵順便傳說》',
+    body: '一集一個木柵傳說，每一集都「順便」經過這家店。',
+    facts: [['老闆', '親自入鏡，店和菜單都是真的'], ['在地', '寫給木柵人看'], ['系列', '角色可以一直用']],
+    links: [['第一集　動物園逃脫事件', 'https://youtube.com/shorts/yP1UiVHHL4w'], ['第二集　呂洞賓分手傳說', 'https://youtube.com/shorts/sVD3FFuUbfc']],
+    pics: [['mz_panda.jpg', '木柵順便傳說第一集：一隻熊貓走在木柵街上'], ['mz_temple.jpg', '木柵順便傳說第二集：情侶拜月老']],
+    tall: true,
+  },
+  {
+    kind: '解說片',
+    title: '星智見聞',
+    subtitle: '每週 4 分鐘的 AI 新聞',
+    body: '把一週的科技新聞講成一個故事。你的產品也可以這樣講。',
+    facts: [['AI 主播', '同一張臉，每週出現'], ['圖解', '數字用畫面講'], ['兩種', '橫屏長片＋直屏短片']],
+    links: [['星智見聞　第 42 週', 'https://youtu.be/uiHndI-6luo'], ['曾鳴談 AI 的下一步', 'https://www.youtube.com/watch?v=O4kO8VUCLkk']],
+    pics: [['xz_chart.jpg', '星智見聞：全球手機出貨量圖解'], ['xz_host.jpg', '星智見聞：AI 主播']],
+    tall: false,
+  },
+  {
+    kind: 'AI 短劇',
+    title: '矽谷之戀',
+    subtitle: '十集橫屏網路劇',
+    body: '改編自小說。我們拿來證明質感：臉要像、光要對、戲要有。',
+    facts: [['15 個', '角色，每一顆鏡頭同一張臉'], ['7 分 50 秒', '第一集'], ['原聲', '角色自己講話，不是配音']],
+    links: [['第一集', 'https://youtu.be/i7vb3YeVDCg']],
+    pics: [['sv_jackie.jpg', '矽谷之戀第一集：Jackie 在小吃店笑'], ['sv_church.jpg', '矽谷之戀第一集：教會聚會廳']],
+    tall: false,
+  },
+  {
+    kind: '品牌故事',
+    title: 'Migato',
+    subtitle: '《Migato 的轉動之輪》',
+    body: '產品還沒上市，先讓人認識它是誰、為什麼存在。',
+    facts: [['起源故事', '妮可寫、妮可配音'], ['先有 IP', '角色、世界觀、聲音一次定好'], ['直屏', '發在 Shorts']],
+    links: [['起源故事', 'https://youtube.com/shorts/j5kpw6pp20M']],
+    pics: [['migato_a.jpg', 'Migato 的轉動之輪：米果'], ['migato_b.jpg', 'Migato 的轉動之輪：愚者牌']],
+    tall: true,
+  },
+];
+
+const wall = [
+  ['sv_jackie.jpg', '矽谷之戀　第一集', 'https://youtu.be/i7vb3YeVDCg'],
+  ['xz_title.jpg', '星智見聞｜手機為什麼又變貴？', 'https://youtu.be/uiHndI-6luo'],
+  ['zm_title.jpg', '曾鳴談 AI 的下一步', 'https://www.youtube.com/watch?v=O4kO8VUCLkk'],
+  ['robot_dance.jpg', '教機器人跳閃身步，結果它…', 'https://youtube.com/shorts/c51DKB8a3kQ'],
+  ['laifu_kitchen.jpg', '搬家公司｜「我搬家……是逃難。」', 'https://youtube.com/shorts/jQCWOH7mh1U'],
+  ['mz_panda.jpg', '木柵順便傳說 #1 動物園逃脫事件', 'https://youtube.com/shorts/yP1UiVHHL4w'],
+  ['migato_a.jpg', '《Migato 的轉動之輪》', 'https://youtube.com/shorts/j5kpw6pp20M'],
+  ['qiqi_ghost.jpg', '琦琦的幽靈嗅｜靈體背後的故事 EP1-3', 'https://youtube.com/shorts/EfvSNd2RJ0w'],
+];
+
+const reasons = [
+  { title: '先有故事', body: '觀眾記得的是一個反轉，不是一堆字卡。' },
+  { title: '像你', body: '人照本人做，店照實景做。' },
+  { title: '改到位', body: '你的意見，一條一條對照著改。' },
+  { title: '省事', body: '不用拍攝、不用演員，兩週內交片。' },
+];
+
+const terms = [
+  { title: '聊 30 分鐘', body: '不收費' },
+  { title: '看劇本與報價', body: '你同意才開工' },
+  { title: '7 個工作天交片', body: '兩次免費修改' },
+];
+
+const faqs = [
+  { q: 'AI 影片多少錢？', a: '依片長、場景數、角色數報價。先聊 30 分鐘，不收費。' },
+  { q: '多久可以交片？', a: '腳本確認後 7 個工作天。從聊天到交片，兩週內。' },
+  { q: '可以改幾次？', a: '交片後兩次免費修改，限字幕、配樂、剪輯節奏。改故事方向或腳本，另行報價。' },
+  { q: '可以用我們的人、店、產品嗎？', a: '可以。人照本人做，場景照實景做，產品照實品做。' },
+  { q: '影片可以用多久？', a: '款項付清後可永久使用。交 mp4、字幕檔、縮圖。' },
+];
+
+const n2 = (i: number) => String(i + 1).padStart(2, '0');
+const dot = 'mt-3 w-2 h-2 rounded-full bg-primary flex-shrink-0';
+const arrow = 'M5 12h14M13 6l6 6-6 6';
+---
+
+<main class="pt-16 md:pt-20">
+  <!-- 封面 -->
+  <section class="relative min-h-[min(72vh,680px)] md:min-h-[min(80vh,800px)] flex items-end overflow-hidden bg-deep">
+    <img src="/images/works/sv_church.jpg" alt="《矽谷之戀》第一集劇照：教會聚會廳" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1a1410] via-[#1a1410]/70 to-[#1a1410]/10"></div>
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 pb-14 md:pb-20">
+      <h1 class="text-[#f5f0eb]">
+        <span class="block text-lg md:text-xl font-semibold tracking-wider text-gold mb-4">AI 影片製作｜AI 故事行銷</span>
+        <span class="block text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"><span class="inline-block">用一個故事，</span><span class="inline-block">讓人記住你</span></span>
+      </h1>
+      <p class="mt-6 text-2xl md:text-2xl leading-relaxed text-[#e6ddd2]">你講你的事，<br class="sm:hidden" />我們做成有劇情的影片。</p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-4">
+        <a href="https://line.me/ti/p/vnlYIFBlYi" target="_blank" rel="noopener" class="text-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">加 LINE 聊聊</a>
+        <a href="#works" class="text-center px-8 py-4 border-2 border-[#f5f0eb]/70 text-[#f5f0eb] hover:bg-[#f5f0eb] hover:text-deep font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">看作品</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三個大數字 -->
+  <section class="bg-bg-primary border-b border-border">
+    <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border">
+      {promises.map(p => (
+        <div class="py-8 md:py-10 text-center">
+          <p class="text-3xl md:text-4xl font-bold text-primary tabular-nums">{p.big}</p>
+          <p class="mt-2 text-lg md:text-xl text-text-primary">{p.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 01 會遇到的事 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+      <div>
+        <p class="kicker">01　做品牌宣傳會遇到的事</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-snug text-text-primary">人家不是沒看到你，<br />是看過就忘了</h2>
+        <ul class="space-y-3 text-lg md:text-xl leading-[1.8] text-text-primary">
+          {pains.map(p => <li class="flex gap-3"><span class={dot}></span><span>{p}</span></li>)}
+        </ul>
+      </div>
+      <figure class="p-8 md:p-10 rounded-2xl bg-deep text-[#f5f0eb]">
+        <blockquote class="text-2xl md:text-3xl font-bold leading-snug">「你們服務這麼好，<br />怎麼沒有很有名？」</blockquote>
+        <figcaption class="mt-5 text-lg leading-[1.8] text-[#c6b8a8]">一位搬家公司的客人，搬完家後問老闆娘。<br />這句話，後來成了那家公司最多人看的貼文。</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 02 我們怎麼做：流程圖 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="kicker text-center">02　我們怎麼做</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary">不是拍廣告，是幫你把故事講出來</h2>
+      <ol class="mt-12 grid md:grid-cols-5 gap-6 md:gap-0">
+        {steps.map((s, i) => (
+          <li class="relative flex md:flex-col items-center md:text-center gap-5 md:gap-4 md:px-3">
+            {i < steps.length - 1 && <span class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-primary/30" aria-hidden="true"></span>}
+            <span class="relative z-10 flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
+              <svg class="w-8 h-8 md:w-9 md:h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icons[s.icon]} /></svg>
+            </span>
+            <div>
+              <p class="text-base font-semibold text-primary-dark dark:text-gold">第 {i + 1} 步</p>
+              <h3 class="text-2xl font-bold text-text-primary">{s.title}</h3>
+              <p class="mt-1 text-lg leading-relaxed text-text-primary">{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 作品 01–05 -->
+  <div id="works" class="scroll-mt-20">
+    {works.map((w, i) => (
+      <section class={`py-16 md:py-20 ${i % 2 === 0 ? 'bg-bg-secondary' : 'bg-bg-primary'}`}>
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+          <div class={`grid gap-3 ${w.tall ? 'grid-cols-2' : 'grid-cols-1'} ${i % 2 === 1 ? 'md:order-2' : ''}`}>
+            {w.pics.map(([src, alt]) => (
+              <img src={`/images/works/${src}`} alt={alt} loading="lazy" class={`w-full rounded-xl object-cover shadow-md ${w.tall ? 'aspect-[9/16]' : 'aspect-video'}`} />
+            ))}
+          </div>
+          <div class={i % 2 === 1 ? 'md:order-1' : ''}>
+            <p class="kicker">作品　{n2(i)}　{w.kind}</p>
+            <h2 class="text-3xl md:text-4xl font-bold leading-snug text-text-primary">{w.title}<br /><span class="text-primary">{w.subtitle}</span></h2>
+            <p class="mt-4 text-xl md:text-xl leading-[1.7] text-text-primary">{w.body}</p>
+            <dl class="mt-6">
+              {w.facts.map(([k, v]) => (
+                <div class="flex items-baseline gap-4 py-3 border-b border-border last:border-0">
+                  <dt class="w-28 flex-shrink-0 text-2xl font-bold text-primary">{k}</dt>
+                  <dd class="text-lg leading-relaxed text-text-primary">{v}</dd>
+                </div>
+              ))}
+            </dl>
+            <div class="mt-6 flex flex-wrap gap-3">
+              {w.links.map(([label, url]) => (
+                <a href={url} target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-primary text-white hover:bg-primary-dark font-semibold transition-colors">
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+                  {label}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <!-- 作品一覽 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="kicker">作品　一覽</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary">八支，畫面全部由 AI 生成</h2>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
+        {wall.map(([src, title, url]) => (
+          <a href={url} target="_blank" rel="noopener" class="group block rounded-xl overflow-hidden bg-bg-primary border border-border hover:shadow-lg transition-shadow">
+            <div class="aspect-[4/3] overflow-hidden"><img src={`/images/works/${src}`} alt={title} loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" /></div>
+            <p class="p-4 text-base md:text-lg font-semibold leading-snug text-text-primary">{title}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 為什麼是我們 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="kicker text-center">03　為什麼是我們</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center text-text-primary">AI 影片很多，有故事、像你的很少</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {reasons.map((r, i) => (
+          <div class="p-7 rounded-2xl bg-bg-secondary border border-border text-center">
+            <p class="text-4xl font-bold text-primary tabular-nums">{n2(i)}</p>
+            <h3 class="mt-2 text-2xl font-bold text-text-primary">{r.title}</h3>
+            <p class="mt-2 text-lg leading-[1.7] text-balance text-text-primary">{r.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 合作方式 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <p class="kicker">04　合作方式</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-text-primary">三步開始，依需求報價</h2>
+      <ol class="mt-10 flex flex-col md:flex-row items-stretch md:items-center justify-center gap-3 md:gap-4">
+        {terms.map((t, i) => (
+          <Fragment>
+            <li class="flex-1 p-6 rounded-2xl bg-bg-primary border border-border">
+              <p class="text-base font-semibold text-primary-dark dark:text-gold">第 {i + 1} 步</p>
+              <h3 class="mt-1 text-2xl font-bold text-text-primary">{t.title}</h3>
+              <p class="mt-1 text-lg text-text-primary">{t.body}</p>
+            </li>
+            {i < terms.length - 1 && (
+              <svg class="w-7 h-7 mx-auto text-primary rotate-90 md:rotate-0 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow} /></svg>
+            )}
+          </Fragment>
+        ))}
+      </ol>
+      <p class="mt-10 gold-box p-6 rounded-2xl text-left text-lg md:text-xl leading-[1.8] text-text-primary">
+        <b class="text-primary">第一支拍什麼？</b>你最常被問的那個問題，或最想讓人記住的那件事。
+      </p>
+      <div class="mt-6 grid md:grid-cols-2 gap-5 text-left">
+        <div class="p-6 rounded-2xl bg-bg-primary border border-border">
+          <h3 class="text-2xl font-bold text-text-primary">每月固定產出</h3>
+          <p class="mt-2 text-lg leading-[1.7] text-text-primary">每月固定幾支，角色和風格延續。</p>
+        </div>
+        <div class="p-6 rounded-2xl bg-bg-primary border border-border">
+          <h3 class="text-2xl font-bold text-text-primary">給行銷公司</h3>
+          <p class="mt-2 text-lg leading-[1.7] text-text-primary">你接案，我們製作。可用你的品牌保密交付。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常見問題 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary text-center">常見問題</h2>
+      <div class="divide-y divide-border border-y border-border">
+        {faqs.map(f => (
+          <details class="group py-5">
+            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none text-xl font-semibold text-text-primary">
+              {f.q}
+              <span class="text-primary text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-lg leading-[1.8] text-text-primary">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <LineCta title="先講你的故事，其他交給我們" />
+</main>
+
+<style>
+  .kicker {
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+  }
+
+  .gold-box {
+    background: rgba(198, 165, 101, 0.1);
+    border-left: 4px solid var(--color-gold);
+  }
+
+  :global(.dark) .gold-box {
+    background: rgba(198, 165, 101, 0.08);
+  }
+</style>
