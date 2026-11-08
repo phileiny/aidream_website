@@ -9,6 +9,7 @@ const services = [
 ];
 
 const featured = [
+  { href: '/services/wedding/#film', img: '/images/works/ss_white.jpg', alt: '《三生嫁衣》：白紗下的她笑了', kind: 'AI 婚禮影片', title: '《三生嫁衣》', body: '三輩子，每一世她都嫁給同一個人。原創故事、原創主題曲。' },
   { img: '/images/works/laifu_gun.jpg', alt: '搬家公司：客人的爸爸端著槍，搬家像打仗', kind: '搬家公司', title: '《搬家不用打仗》', body: '嚴陣以待的客人，遇到一家「您先休息就好」的搬家公司。' },
   { img: '/images/works/mz_panda.jpg', alt: '木柵順便傳說第一集：一隻熊貓走在木柵街上', kind: '拉麵店', title: '《木柵順便傳說》', body: '上架後的週二，營業額約為前三週平均的兩倍。' },
   { img: '/images/works/sv_jackie.jpg', alt: '矽谷之戀第一集：Jackie 在小吃店笑', kind: 'AI 短劇', title: '《矽谷之戀》', body: '小說改編的十集網路劇，15 個角色，每顆鏡頭同一張臉。' },
@@ -31,16 +32,17 @@ const arrow = 'M5 12h14M13 6l6 6-6 6';
 <main class="pt-16 md:pt-20">
   <!-- 封面 -->
   <section class="relative min-h-[min(76vh,720px)] md:min-h-[min(84vh,840px)] flex items-end overflow-hidden bg-deep">
-    <img src="/images/works/sv_jackie.jpg" alt="《矽谷之戀》第一集劇照" class="absolute inset-0 w-full h-full object-cover object-[65%_center]" fetchpriority="high" />
+    <!-- 2026-11-08：封面改主打婚禮故事片《三生嫁衣》（strategy 11-07 方向 A） -->
+    <img src="/images/works/ss_veil.jpg" alt="《三生嫁衣》劇照：掀起蓋頭，戴著鳳冠的新娘笑了" class="absolute inset-0 w-full h-full object-cover object-[70%_center]" fetchpriority="high" />
     <div class="absolute inset-0 bg-gradient-to-t from-[#1a1410] via-[#1a1410]/70 to-[#1a1410]/10"></div>
     <div class="relative z-10 w-full max-w-6xl mx-auto px-4 pb-14 md:pb-20">
       <h1 class="text-[#f5f0eb]">
-        <span class="block text-lg md:text-xl font-semibold tracking-wider text-gold mb-4">星智未來 AI Dream</span>
-        <span class="block text-[2rem] leading-snug md:text-6xl md:leading-tight font-bold"><span class="inline-block">用 AI 影片，</span><span class="inline-block">把品牌的故事</span><span class="inline-block">說到人心裡</span></span>
+        <span class="block text-lg md:text-xl font-semibold tracking-wider text-gold mb-4">新作品｜AI 婚禮故事片《三生嫁衣》</span>
+        <span class="block text-[2rem] leading-snug md:text-6xl md:leading-tight font-bold"><span class="inline-block">三輩子，</span><span class="inline-block">都嫁給你</span></span>
       </h1>
-      <p class="mt-6 text-xl md:text-2xl leading-relaxed text-[#e6ddd2]">也用 AI，<br class="sm:hidden" />幫中小企業把事情做完。</p>
+      <p class="mt-6 text-xl md:text-2xl leading-relaxed text-[#e6ddd2]">把你們的故事，拍成一部有劇情、<br class="sm:hidden" />有原創主題曲的婚禮短片。</p>
       <div class="mt-9 flex flex-col sm:flex-row gap-4">
-        <a href="/services/video/#works" class="text-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">看作品</a>
+        <a href="/services/wedding/#film" class="text-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">看《三生嫁衣》</a>
         <a href="https://line.me/ti/p/vnlYIFBlYi" target="_blank" rel="noopener" class="text-center px-8 py-4 border-2 border-[#f5f0eb]/70 text-[#f5f0eb] hover:bg-[#f5f0eb] hover:text-deep font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">加 LINE 聊聊</a>
       </div>
     </div>
@@ -77,9 +79,9 @@ const arrow = 'M5 12h14M13 6l6 6-6 6';
     <div class="max-w-6xl mx-auto px-4">
             <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary">AI 影片作品精選</h2>
       <p class="mt-3 text-xl text-center text-text-primary">畫面全部由 AI 生成。</p>
-      <div class="mt-12 grid md:grid-cols-3 gap-6">
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {featured.map(w => (
-          <a href="/services/video/#works" class="group block rounded-2xl overflow-hidden bg-bg-primary border border-border hover:shadow-xl transition-shadow">
+          <a href={w.href ?? '/services/video/#works'} class="group block rounded-2xl overflow-hidden bg-bg-primary border border-border hover:shadow-xl transition-shadow">
             <div class="aspect-[4/5] overflow-hidden">
               <img src={w.img} alt={w.alt} loading="lazy" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
             </div>

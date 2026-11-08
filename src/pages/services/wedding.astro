@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import ServiceWeddingPage from '../../components/ServiceWeddingPage.astro';
+
+const url = 'https://aidream.com.tw/services/wedding/';
+const serviceLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'AI 婚禮影片｜婚禮故事片',
+  serviceType: 'AI 婚禮影片、婚禮故事片、求婚影片、婚禮微電影',
+  provider: { '@type': 'Organization', name: '星智未來有限公司', url: 'https://aidream.com.tw/' },
+  areaServed: 'TW',
+  url,
+  offers: {
+    '@type': 'Offer',
+    description: '婚禮故事片 1 分半，含一首原創主題曲',
+    priceSpecification: { '@type': 'PriceSpecification', minPrice: 25000, priceCurrency: 'TWD' },
+  },
+};
+const videoLd = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: '三生嫁衣｜Richard & Jackie 的三生三世',
+  description: 'Richard 和 Jackie，三生三世。每一世她都穿上嫁衣，嫁給同一個人。原創故事、原創主題曲〈三生嫁衣〉。',
+  thumbnailUrl: 'https://aidream.com.tw/images/works/ss_thumb.jpg',
+  uploadDate: '2026-11-08',
+  duration: 'PT1M38S',
+  embedUrl: 'https://www.youtube-nocookie.com/embed/3N0B_4LUFfE',
+};
+---
+
+<Layout
+  title="AI 婚禮影片｜婚禮故事片、原創主題曲｜星智未來"
+  description="把你們的故事拍成一部有劇情的婚禮短片：每一世的妝造照你們的臉做，附一首照你們故事寫的原創主題曲。1 分半 NT$25,000 起，劇本確認後 7 個工作天交片。婚顧、求婚公司代製另談。"
+  image="/images/works/ss_thumb.jpg"
+  keywords="AI 婚禮影片, 婚禮故事片, 婚禮微電影, 求婚影片, 三生三世, 婚禮影片 原創歌曲, 婚宴播放影片, 婚顧 代製"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(videoLd)} />
+  <Header />
+  <ServiceWeddingPage />
+  <Footer />
+</Layout>

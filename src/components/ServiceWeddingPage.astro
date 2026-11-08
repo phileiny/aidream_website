@@ -1,0 +1,231 @@
+---
+import LineCta from './LineCta.astro';
+
+// 婚禮場景頁（2026-11-08）：照 aidream-strategy/analysis/2026-11-07_工具貶值與方向選擇.md
+// 方向 A「婚禮故事片」＋網站三件事（品質＝作品、交期、價格）。主打作品《三生嫁衣》。
+// 價格 Ray 11-08 定：1.5 分鐘 NT$25,000 起，含一首原創主題曲；婚顧代製另談。
+// 不寫是誰來詢價、不寫用什麼工具拍（Ray 11-08）。Richard、Jackie 是星智未來自己的角色。
+const VIDEO_ID = '3N0B_4LUFfE';   // YouTube 不公開，嵌入可播
+
+const promises = [
+  { big: 'NT$25,000 起', label: '1 分半，一個完整的故事' },
+  { big: '原創主題曲', label: '照你們的故事寫詞' },
+  { big: '7 個工作天', label: '劇本確認後交片' },
+];
+
+const lives = [
+  { img: 'ss_snow.jpg', alt: '《三生嫁衣》第一世：她披著紅斗篷在雪中的城門前等他', label: '第一世', body: '大婚那晚，城外烽火。他出征，她在雪裡等。' },
+  { img: 'ss_platform.jpg', alt: '《三生嫁衣》第二世：月台上她摀著嘴哭，認出了他', label: '第二世', body: '民國的月台，人潮裡，她一眼認出他。' },
+  { img: 'ss_white.jpg', alt: '《三生嫁衣》這一世：白紗下的她笑了', label: '這一世', body: '門一開，這一次，換他在等她。' },
+];
+
+const diffs = [
+  ['有劇情', '不是照片加動態。有開頭、有轉折、有讓人起身鼓掌的那一刻。'],
+  ['是你們', '用你們的照片做每一世的妝造，看得出來是你們兩個人。'],
+  ['原創主題曲', '歌詞照你們的故事寫，可以公開播放，不怕版權問題。'],
+  ['不用到場', '不用換裝、不用出外景。你們只要講故事、看片。'],
+];
+
+const steps = [
+  { title: '聊你們的故事', body: '怎麼認識、哪一句話、哪個地方，30 分鐘', icon: 'chat' },
+  { title: '寫劇本和歌詞', body: '你們點頭才往下', icon: 'pen' },
+  { title: '定造型', body: '照你們的臉，做每一世的妝造', icon: 'user' },
+  { title: '拍片、配歌', body: '導戲、剪接、原創主題曲', icon: 'film' },
+  { title: '兩次修改', body: '手機就能看片、標問題', icon: 'check' },
+];
+
+const icons: Record<string, string> = {
+  chat: 'M4 5h16v11H8l-4 4V5z',
+  pen: 'M4 20h4L19 9l-4-4L4 16v4zM14 6l4 4',
+  user: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0',
+  film: 'M4 5h16v14H4zM8 5v14M16 5v14M4 9h4M4 15h4M16 9h4M16 15h4',
+  check: 'M5 12l5 5L20 7',
+};
+
+const includes = ['劇本', '每一世的妝造與場景', '拍片、剪接', '一首原創主題曲（先給兩版挑，歌詞可改一次）', '歌詞字幕、片頭片尾', '交片後兩次修改'];
+
+const faqs = [
+  { q: '婚禮故事片多少錢？', a: '1 分半 NT$25,000 起，含一首原創主題曲。世數、造型套數變多，或片子更長，依需求報價。先聊 30 分鐘，不收費。' },
+  { q: '多久可以交片？', a: '劇本確認後 7 個工作天。婚期前一個月來找我們，時間最從容。' },
+  { q: '會像我們嗎？', a: '我們用你們的照片做每一世的妝造。需要正面、側面清楚的照片各幾張，會在開工前告訴你們要哪些。' },
+  { q: '一定要拍三世嗎？', a: '不用。三世是《三生嫁衣》的故事。你們的故事可能是一世、兩個城市，或從相遇那天一路到婚禮。' },
+  { q: '主題曲可以公開播放嗎？', a: '可以。歌是為你們寫的原創歌，婚宴、社群、YouTube 都能放。不含真人歌手錄唱，也不能改用現成的流行歌。' },
+  { q: '我們是婚顧、求婚公司，可以合作嗎？', a: '可以。你接案，我們製作，可以用你的品牌交付。代製價格另談。' },
+];
+
+const dot = 'mt-3 w-2 h-2 rounded-full bg-primary flex-shrink-0';
+---
+
+<main class="pt-16 md:pt-20">
+  <!-- 封面 -->
+  <section class="relative min-h-[min(76vh,720px)] md:min-h-[min(84vh,840px)] flex items-end overflow-hidden bg-deep">
+    <img src="/images/works/ss_gate.jpg" alt="《三生嫁衣》劇照：白紗與西裝的新人站在古城門前，白鴿飛起" class="absolute inset-0 w-full h-full object-cover object-[40%_center]" fetchpriority="high" />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#1a1410] via-[#1a1410]/70 to-[#1a1410]/10"></div>
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-4 pb-14 md:pb-20">
+      <h1 class="text-[#f5f0eb]">
+        <span class="block text-lg md:text-xl font-semibold tracking-wider text-gold mb-4">AI 婚禮影片｜婚禮故事片</span>
+        <span class="block text-4xl md:text-6xl lg:text-7xl font-bold leading-tight"><span class="inline-block">把你們的故事，</span><span class="inline-block">拍成一部電影</span></span>
+      </h1>
+      <p class="mt-6 text-xl md:text-2xl leading-relaxed text-[#e6ddd2]">有劇情、有你們的臉，<br class="sm:hidden" />還有一首只屬於你們的歌。</p>
+      <div class="mt-9 flex flex-col sm:flex-row gap-4">
+        <a href="#film" class="text-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">看《三生嫁衣》</a>
+        <a href="https://line.me/ti/p/vnlYIFBlYi" target="_blank" rel="noopener" class="text-center px-8 py-4 border-2 border-[#f5f0eb]/70 text-[#f5f0eb] hover:bg-[#f5f0eb] hover:text-deep font-semibold text-xl rounded-full transition-all hover:-translate-y-0.5">加 LINE 聊聊</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品質、價格、交期 -->
+  <section class="bg-bg-primary border-b border-border">
+    <div class="max-w-6xl mx-auto px-4 grid sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border">
+      {promises.map(p => (
+        <div class="py-8 md:py-10 text-center">
+          <p class="text-3xl md:text-4xl font-bold text-primary tabular-nums">{p.big}</p>
+          <p class="mt-2 text-lg md:text-xl text-text-primary">{p.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 主打作品 -->
+  <section id="film" class="scroll-mt-20 py-16 md:py-24 bg-deep">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="kicker text-center" style="color: var(--color-gold)">作品｜原創故事・原創歌曲</p>
+      <h2 class="text-3xl md:text-5xl font-bold text-center leading-tight text-[#f5f0eb]">《三生嫁衣》</h2>
+      <p class="mt-4 text-xl md:text-2xl text-center leading-relaxed text-[#e6ddd2]">Richard 和 Jackie，三輩子，<br class="sm:hidden" />每一世她都嫁給同一個人。</p>
+      <div class="mt-10 aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black">
+        <iframe
+          class="w-full h-full"
+          src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}?rel=0`}
+          title="《三生嫁衣》Richard & Jackie 的三生三世"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="mt-12 grid md:grid-cols-3 gap-6">
+        {lives.map(l => (
+          <figure class="rounded-2xl overflow-hidden bg-white/5 border border-white/15">
+            <img src={`/images/works/${l.img}`} alt={l.alt} loading="lazy" class="w-full aspect-video object-cover" />
+            <figcaption class="p-6">
+              <p class="text-base font-semibold tracking-wider text-gold">{l.label}</p>
+              <p class="mt-2 text-lg leading-[1.7] text-[#f5f0eb]">{l.body}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 和照片轉動態不一樣 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+      <div>
+        <p class="kicker">01　不一樣的地方</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 leading-snug text-text-primary">不是讓照片動起來，<br />是幫你們拍一部戲</h2>
+        <dl>
+          {diffs.map(([k, v]) => (
+            <div class="flex items-baseline gap-4 py-3 border-b border-border last:border-0">
+              <dt class="w-32 flex-shrink-0 text-2xl font-bold text-primary">{k}</dt>
+              <dd class="text-lg leading-relaxed text-text-primary">{v}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <img src="/images/works/ss_crown.jpg" alt="《三生嫁衣》：鏡中的她戴上鳳冠" loading="lazy" class="w-full aspect-[4/5] rounded-xl object-cover shadow-md" />
+        <img src="/images/works/ss_jade.jpg" alt="《三生嫁衣》：兩半玉佩合在一起" loading="lazy" class="w-full aspect-[4/5] rounded-xl object-cover shadow-md" />
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 我們怎麼做 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="kicker text-center">02　我們怎麼做</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary">你們講故事，其他交給我們</h2>
+      <ol class="mt-12 grid md:grid-cols-5 gap-6 md:gap-0">
+        {steps.map((s, i) => (
+          <li class="relative flex md:flex-col items-center md:text-center gap-5 md:gap-4 md:px-3">
+            {i < steps.length - 1 && <span class="hidden md:block absolute top-10 left-1/2 w-full h-0.5 bg-primary/30" aria-hidden="true"></span>}
+            <span class="relative z-10 flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-full bg-primary text-white flex items-center justify-center shadow-md">
+              <svg class="w-8 h-8 md:w-9 md:h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={icons[s.icon]} /></svg>
+            </span>
+            <div>
+              <p class="text-base font-semibold text-primary-dark dark:text-gold">第 {i + 1} 步</p>
+              <h3 class="text-2xl font-bold text-text-primary">{s.title}</h3>
+              <p class="mt-1 text-lg leading-relaxed text-text-primary">{s.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 03 價格 -->
+  <section class="py-16 md:py-24 bg-bg-secondary">
+    <div class="max-w-5xl mx-auto px-4">
+      <p class="kicker text-center">03　價格</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-text-primary">寫清楚，再開工</h2>
+      <div class="mt-10 grid md:grid-cols-2 gap-6">
+        <div class="p-8 rounded-2xl bg-bg-primary border-2 border-primary">
+          <p class="text-base font-semibold tracking-wider text-primary-dark dark:text-gold">給新人</p>
+          <h3 class="mt-2 text-2xl font-bold text-text-primary">婚禮故事片 1 分半</h3>
+          <p class="mt-3 text-4xl md:text-5xl font-bold text-primary tabular-nums">NT$25,000<span class="text-2xl ml-1">起</span></p>
+          <ul class="mt-6 space-y-2 text-lg leading-[1.7] text-text-primary">
+            {includes.map(t => <li class="flex gap-3"><span class={dot}></span><span>{t}</span></li>)}
+          </ul>
+          <p class="mt-5 text-base leading-relaxed text-text-secondary">世數、造型套數變多，或片子更長，依需求報價。</p>
+        </div>
+        <div class="p-8 rounded-2xl bg-bg-primary border border-border flex flex-col">
+          <p class="text-base font-semibold tracking-wider text-primary-dark dark:text-gold">給婚顧、求婚公司</p>
+          <h3 class="mt-2 text-2xl font-bold text-text-primary">代製合作</h3>
+          <p class="mt-3 text-4xl md:text-5xl font-bold text-primary">另談</p>
+          <p class="mt-6 text-lg leading-[1.8] text-text-primary flex-1">你接案，我們製作。可以用你的品牌交付，新人的故事由你訪談或我們一起訪談。</p>
+          <a href="/contact/" class="mt-6 self-start inline-block px-6 py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold text-lg rounded-full transition-all">聯繫我們</a>
+        </div>
+      </div>
+      <p class="mt-8 gold-box p-6 rounded-2xl text-lg md:text-xl leading-[1.8] text-text-primary">
+        <b class="text-primary">什麼時候放？</b>婚宴進場前、敬酒之間、求婚那一刻，或是結婚紀念日。
+      </p>
+    </div>
+  </section>
+
+  <!-- 常見問題 -->
+  <section class="py-16 md:py-24 bg-bg-primary">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary text-center">常見問題</h2>
+      <div class="divide-y divide-border border-y border-border">
+        {faqs.map(f => (
+          <details class="group py-5">
+            <summary class="flex justify-between items-center gap-4 cursor-pointer list-none text-xl font-semibold text-text-primary">
+              {f.q}
+              <span class="text-primary text-2xl leading-none transition-transform group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <p class="mt-3 text-lg leading-[1.8] text-text-primary">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <LineCta title="先說說，你們是怎麼認識的" body="聊 30 分鐘，不收費。我們會告訴你，你們的故事可以怎麼拍。" />
+</main>
+
+<style>
+  .kicker {
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--color-primary);
+  }
+
+  .gold-box {
+    background: rgba(198, 165, 101, 0.1);
+    border-left: 4px solid var(--color-gold);
+  }
+
+  :global(.dark) .gold-box {
+    background: rgba(198, 165, 101, 0.08);
+  }
+</style>
